@@ -1,0 +1,32 @@
+{
+  "_about": "Plain-language notes written for this website, not part of the paper. Keyed by section id. Shown collapsed, clearly marked as additions.",
+  "tldr": "Simulators are slow, so finding their best inputs by trial and error is expensive. The authors train a small neural network to imitate the simulator, then write that network into a constraint program, a readable model where you state what you want rather than how to compute it. A solver can then search for good decisions without calling the simulator again. Solving many versions with different objective weights traces out the set of best trade-offs.",
+  "takeaways": [
+    "Picking objective weights with an even-spread (low-discrepancy) method instead of at random found more and more diverse trade-offs (Table 5).",
+    "Simpler activation functions made the network much faster to solve, at some cost in solution diversity (Table 6).",
+    "Bigger networks were more accurate but slower to solve.",
+    "On an agent-based Food Wars simulation, the solver's predictions mostly matched what the simulation then produced (Table 7)."
+  ],
+  "sections": {
+    "s1": "A manager wants the best inputs for a complex system, such as how much stock to buy. Trying every option in a simulator takes too long, and a pure maths model misses the system's messy behaviour. This paper combines both: learn the simulator's behaviour, then optimize over what was learned.",
+    "s2-1": "Constraint programming lets you write rules close to how people think, like 'machine A never produces more than machine B'. Table 1 contrasts it with classic algebra-based optimization, which is fast but only accepts problems of a specific mathematical shape.",
+    "s2-2": "When generating many test settings, random picks clump together and leave gaps. Low-discrepancy sequences such as Halton and Sobol place points more evenly. Drag the slider in Figure 1 to watch this happen.",
+    "s2-3": "Instead of calling the simulator over and over during the search (black-box optimization), learn a model of it once from data and hand that model to the solver. The solver can then exploit the model's structure (Table 2).",
+    "s2-4": "Earlier work combined constraint programming with business-process models, but required describing how the system works step by step. Here you only describe what you want; the simulator handles how the system behaves.",
+    "s3": "The recipe in Figure 2: simulate, train a network on the results, embed the network and the business goals in a constraint model, then solve many weighted versions to map the trade-offs. Tap the steps in the figure to jump to where each one is explained.",
+    "s3-1": "The network replaces the simulator during solving. It must be accurate enough to trust, but simple enough for a solver to reason about. That balance is the central design tension of the paper.",
+    "s3-1-1": "Inside a solver, each activation function becomes a formula. The sigmoid's exponential is hard for most solvers, so the authors try two simpler shapes. Figure 3 lets you compare all three and see where they differ.",
+    "s3-2": "Table 3 maps problem concepts to constraint-programming parts: facts become constraints, goals become the objective, possible actions become decision variables. Algorithm 1 shows the whole restaurant problem in a few readable lines.",
+    "s3-3": "With several goals there is rarely one best answer. Solving with many different weightings of the goals gives a spread of good trade-offs, and the decision maker chooses afterwards. The weights must sum to one, which is what Montgomery sampling ensures.",
+    "s4": "Three experiments: two on a restaurant simulation to test design choices, and one on a more complex agent-based Food Wars simulation. Table 4 lists the four scores used to judge them.",
+    "s4-1": "The restaurant must choose how much of each ingredient to buy. Buy too much and food spoils; buy too little and orders fail.",
+    "s4-2": "Montgomery sampling beat uniform random weights on both the number of trade-offs found and their spread, and it gives the same result every run.",
+    "s4-3": "The solver matters a lot: Gurobi was much faster than JaCoP. Among activations, taylor1 was fastest and allowed bigger, more accurate networks, but found less diverse solutions.",
+    "s4-4": "Acting as a governor of fruit foragers: give healthcare (longer max age) or a collaboration bonus to make the population less violent, while keeping at least 100 foragers alive.",
+    "s4-4-2": "The six solutions reach similar outcomes through very different inputs. A higher collaboration bonus can stand in for a higher max age, so the decision maker can pick whichever lever is cheaper.",
+    "s4-5": "Even-spread weight sampling helps, bigger networks trade speed for accuracy, and simpler activations trade diversity for speed.",
+    "s5": "For very large problems the authors suggest splitting them into smaller ones. Future work includes activations that are both simple and one-to-one, and letting the solver call the simulator when unsure (constraint acquisition).",
+    "appA": "Montgomery sampling throws away points and loses some of the evenness of the original sequence. This proposed alternative rotates the whole Halton point cloud onto the 'weights sum to one' plane instead. The paper leaves testing it as future work; the demo below runs it live.",
+    "appB": "This is what an embedded network looks like to the solver: every unit is one constraint. Hidden units use max(…, 0), and the outputs use the power2 form, written as y·(1 + n²) = 1, which is the same as y = 1/(1 + n²)."
+  }
+}

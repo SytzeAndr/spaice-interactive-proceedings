@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SPAICE Interactive Proceedings</title>
+<meta name="description" content="Interactive editions of papers from the SPAICE proceedings: explorable figures, term explanations and the original PDF side by side.">
+<meta name="theme-color" content="#f6f7f9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#11151d" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='5' fill='%232343b8'/%3E%3Cellipse cx='16' cy='16' rx='14' ry='6' fill='none' stroke='%232343b8' stroke-width='2' transform='rotate(-25 16 16)'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/vendor/katex/katex.min.css">
+<link rel="stylesheet" href="assets/style.css">
+<script>
+  // apply the saved theme before first paint to avoid a flash
+  try { const t = localStorage.getItem("ip-theme"); if (t && t !== "auto") document.documentElement.dataset.theme = t;
+        const s = localStorage.getItem("ip-size"); if (s) document.documentElement.style.setProperty("--text-scale", s); } catch (e) {}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div id="progress" aria-hidden="true"></div>
+<div id="app"><main id="main"><p class="loading">Loading…</p></main></div>
+<noscript><p class="loading">This interactive edition needs JavaScript. The original PDFs are in the <code>papers/</code> folder.</p></noscript>
+<script defer src="assets/vendor/katex/katex.min.js"></script>
+<script type="module" src="assets/app.js"></script>
+</body>
+</html>

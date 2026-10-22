@@ -1,0 +1,24 @@
+name: Check papers
+
+# Runs on every push and pull request. Open the "Actions" tab on GitHub to see the result.
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  fidelity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -r requirements.txt
+      - name: Paper text still matches its PDF
+        run: |
+          for d in papers/*/; do
+            echo "== $d"; python pipeline/check_fidelity.py "$d"
+          done
+      - name: JSON files are valid
+        run: for f in papers/index.json papers/*/*.json; do python -m json.tool "$f" > /dev/null || exit 1; done
+      - uses: actions/setup-node@v4
+        with: { node-version: "22" }
+      - name: JavaScript has no syntax errors
+        run: for f in assets/*.js; do node --check "$f"; done
