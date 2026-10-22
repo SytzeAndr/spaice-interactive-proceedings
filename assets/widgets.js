@@ -751,4 +751,172 @@ function nnembed(el, ctx) {
   onTheme(draw);
 }
 
-export const WIDGETS = { sampling2d, workflow, activations, montgomery3d, montgomerystep, composite, table5chart, table6chart, table7chart, appendixA, nnembed };
+
+/* ======================= Any proceedings table with numbers: bar chart per column ======================= */
+const isNumCell = (v) => /^[-+−±~≈<>]?\s*\d[\d.,]*\s*(%|×|x|e[-−]?\d+)?(\s*±\s*[\d.,]+)?\s*$/i.test(String(v).trim());
+const numOf = (v) => parseFloat(String(v).replace(/−/g, "-").replace(/,(?=\d{3}\b)/g, "").split("±")[0].replace(/[^\d.eE+-]/g, ""));
+const errOf = (v) => { const m = String(v).split("±")[1]; return m ? parseFloat(m.replace(/[^\d.eE+-]/g, "")) : 0; };
+
+function tablechart(el, ctx) {
+  const b = ctx.paper.blocks.find((x) => x.id === el.dataset.table);
+  const rows = b.rows, ncol = b.head.length;
+  const numCols = [...Array(ncol).keys()].filter((j) => rows.filter((r) => isNumCell(r[j])).length >= Math.max(2, rows.length * 0.6));
+  const labelCols = [...Array(ncol).keys()].filter((j) => !numCols.includes(j));
+  // carry labels down (merged cells in the PDF leave the cell below empty)
+  const label = (i) => labelCols.map((j) => { for (let k = i; k >= 0; k--) if (rows[k][j]) return k === i ? rows[k][j] : ""; return ""; })
+    .filter(Boolean).join(" · ") || `Row ${i + 1}`;
+  const full = (i) => labelCols.map((j) => { for (let k = i; k >= 0; k--) if (rows[k][j]) return rows[k][j]; return ""; }).filter(Boolean).join(", ") || `Row ${i + 1}`;
+  el.innerHTML = `<div class="controls"><label>Column <select aria-label="Column to chart">${numCols.map((j) => `<option value="${j}">${esc(b.head[j] || `Column ${j + 1}`)}</option>`).join("")}</select></label>
+    <button type="button" class="btn quiet sort" aria-pressed="false">Sort by value</button></div>
+    <div class="plot"></div><p class="toy">Drawn from the table data read out of the PDF. Hover or tap a bar for its row.</p>`;
+  let cj = numCols[0], sorted = false;
+  const host = el.querySelector(".plot"), tip = tipFor(host);
+  const render = () => {
+    const C = col();
+    host.querySelectorAll("svg").forEach((x) => x.remove());
+    let items = rows.map((r, i) => ({ i, v: numOf(r[cj]), e: errOf(r[cj]), raw: r[cj], lab: full(i) })).filter((d) => isFinite(d.v));
+    if (sorted) items = [...items].sort((a, b) => b.v - a.v);
+    const H = 22, top = 8, left = 150, W = 560, h = top + items.length * H + 34;
+    const lo = Math.min(0, ...items.map((d) => d.v - d.e)), hi = Math.max(0, ...items.map((d) => d.v + d.e)) || 1;
+    const s = svg("svg", { viewBox: `0 0 ${W} ${h}`, role: "img", "aria-label": `Bar chart of ${b.head[cj]}` });
+    host.append(s);
+    const sx = (v) => left + ((v - lo) / (hi - lo)) * (W - left - 16);
+    for (const t of niceTicks(lo, hi, 5)) {
+      svg("line", { x1: sx(t), x2: sx(t), y1: top, y2: h - 26, class: "gridl" }, s);
+      svg("text", { x: sx(t), y: h - 10, "text-anchor": "middle", "font-size": 11 }, s).textContent = fmt(t);
+    }
+    items.forEach((d, k) => {
+      const y = top + k * H;
+      const lab = d.lab.length > 24 ? d.lab.slice(0, 23) + "…" : d.lab;
+      svg("text", { x: left - 8, y: y + H / 2 + 4, "text-anchor": "end", "font-size": 11 }, s).textContent = lab;
+      const x0 = sx(Math.min(0, d.v)), x1 = sx(Math.max(0, d.v));
+      svg("rect", { x: x0, y: y + 3, width: Math.max(1, x1 - x0), height: H - 8, rx: 3, fill: C.s1 }, s);
+      if (d.e) svg("line", { x1: sx(d.v - d.e), x2: sx(d.v + d.e), y1: y + H / 2 - 1, y2: y + H / 2 - 1, stroke: C.ink, "stroke-width": 1.2 }, s);
+      const hit = svg("rect", { x: 0, y, width: W, height: H, fill: "transparent" }, s);
+      const show = () => tip.show(`<b>${esc(d.lab)}</b><br>${esc(b.head[cj] || "")}: ${esc(d.raw)}`, (x1 / W) * host.clientWidth, ((y + 4) / W) * host.clientWidth);
+      hit.addEventListener("pointerenter", show); hit.addEventListener("pointerdown", show); hit.addEventListener("pointerleave", () => tip.hide());
+    });
+  };
+  el.querySelector("select").onchange = (e) => { cj = +e.target.value; render(); };
+  el.querySelector(".sort").onclick = (e) => { sorted = !sorted; e.target.setAttribute("aria-pressed", sorted); render(); };
+  render(); onTheme(render);
+}
+
+/* ======================= Recovered line plots (proceedings) ======================= */
+// Data come from the vector drawing in the PDF (pipeline/digitize.py); names and axis titles from proceedings/interactive.json.
+function plot(el, ctx) {
+  const spec = ctx.paper.meta.interactive[el.dataset.fig];
+  el.innerHTML = `<p class="toy">Loading…</p>`;
+  fetch(el.dataset.src).then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); }).then((D) => drawPlot(el, spec, D))
+    .catch((e) => { el.innerHTML = `<p style="color:var(--ink-3)">The interactive version could not load (${esc(e.message)}). The original is in the other tab.</p>`; });
+}
+function drawPlot(el, spec, D) {
+  const S = D.series.map((s, i) => ({ ...s, name: spec.names?.[i] || s.name || `Series ${i + 1}`, on: true,
+    pts: [...s.lines.flat(), ...s.markers].sort((a, b) => a[0] - b[0]) }));
+  const all = S.flatMap((s) => s.pts.map((p) => p[0]));
+  const X0 = Math.min(D.x.ticks[0], ...all), X1 = Math.max(D.x.ticks.at(-1), ...all);
+  let lo = X0, hi = X1;
+  const csvName = `${el.dataset.fig}.csv`;
+  el.innerHTML = `<div class="legend toggles">${S.map((s, i) => `<button type="button" aria-pressed="true" data-i="${i}" class="${s.dash ? "dash" : ""}" style="--c:${s.color === "#000000" ? "var(--ink)" : s.color}">${esc(s.name)}</button>`).join("")}</div>
+    <div class="plot zoomable"></div>
+    <div class="controls range"><label>From <input type="range" class="r0" min="0" max="1000" value="0" aria-label="Start of the visible range"></label>
+      <label>To <input type="range" class="r1" min="0" max="1000" value="1000" aria-label="End of the visible range"></label>
+      <button type="button" class="btn quiet reset">Reset zoom</button>
+      <button type="button" class="btn quiet csv">Download data (CSV)</button></div>
+    <p class="toy">Redrawn from the vector graphics in the PDF; values are as precise as the original drawing.${spec.omitted ? ` Not included: ${esc(spec.omitted)}.` : ""} Hover or tap to read values; drag across the plot (mouse) or use the sliders to zoom.</p>`;
+  const host = el.querySelector(".plot"), tip = tipFor(host);
+  const r0 = el.querySelector(".r0"), r1 = el.querySelector(".r1");
+  const W = host.clientWidth && host.clientWidth < 520 ? 400 : 600, H = W < 600 ? 340 : 320, m = { t: 12, r: D.y2 ? 58 : 14, b: 44, l: 58 };
+  let view;
+  const yr = (axis) => {
+    const ps = S.filter((s) => s.on && s.axis === axis).flatMap((s) => s.pts.filter((p) => p[0] >= lo && p[0] <= hi));
+    const full = lo === X0 && hi === X1, tk = (axis === "y2" ? D.y2 : D.y).ticks;
+    if (!ps.length) return [tk[0], tk.at(-1)];
+    let a = Math.min(...ps.map((p) => p[1])), b = Math.max(...ps.map((p) => p[1]));
+    if (full) { a = Math.min(a, tk[0]); b = Math.max(b, tk.at(-1)); }
+    const pad = (b - a || Math.abs(a) || 1) * 0.04; return [a - pad, b + pad];
+  };
+  const render = () => {
+    const C = col();
+    host.querySelectorAll("svg").forEach((x) => x.remove());
+    const s = svg("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": `Line chart: ${spec.y} against ${spec.x}` });
+    host.append(s);
+    const sx = (v) => m.l + ((v - lo) / (hi - lo)) * (W - m.l - m.r);
+    const mk = ([a, b]) => (v) => H - m.b - ((v - a) / (b - a)) * (H - m.t - m.b);
+    const ya = yr("y"), sy = mk(ya), ya2 = D.y2 ? yr("y2") : null, sy2 = ya2 ? mk(ya2) : null;
+    const g = svg("g", { class: "axis" }, s);
+    const full = lo === X0 && hi === X1;
+    const xt = full ? D.x.ticks : niceTicks(lo, hi, 5), yt = full ? D.y.ticks : niceTicks(ya[0], ya[1], 5);
+    for (const t of yt) { svg("line", { x1: m.l, x2: W - m.r, y1: sy(t), y2: sy(t), class: "gridl" }, g);
+      svg("text", { x: m.l - 6, y: sy(t) + 4, "text-anchor": "end", "font-size": 11 }, g).textContent = fmt(t, 4); }
+    if (D.y2) for (const t of full ? D.y2.ticks : niceTicks(ya2[0], ya2[1], 5))
+      svg("text", { x: W - m.r + 6, y: sy2(t) + 4, "font-size": 11 }, g).textContent = fmt(t, 4);
+    for (const t of xt) { svg("line", { x1: sx(t), x2: sx(t), y1: H - m.b, y2: H - m.b + 4 }, g);
+      svg("text", { x: sx(t), y: H - m.b + 16, "text-anchor": "middle", "font-size": 11 }, g).textContent = fmt(t, 4); }
+    svg("line", { x1: m.l, x2: W - m.r, y1: H - m.b, y2: H - m.b }, g);
+    svg("text", { x: (m.l + W - m.r) / 2, y: H - 6, "text-anchor": "middle", "font-size": 11.5 }, g).textContent = spec.x;
+    const yl = (x, txt) => svg("text", { x, y: (m.t + H - m.b) / 2, "text-anchor": "middle", "font-size": 11, transform: `rotate(-90 ${x} ${(m.t + H - m.b) / 2})` }, g).textContent = txt;
+    yl(12, spec.y); if (D.y2) yl(W - 8, spec.y2);
+    const id = `clip-${el.dataset.fig}-${Math.random().toString(36).slice(2, 7)}`;
+    svg("rect", { x: m.l, y: m.t - 2, width: W - m.l - m.r, height: H - m.t - m.b + 2 }, svg("clipPath", { id }, svg("defs", {}, s)));
+    const pl = svg("g", { "clip-path": `url(#${id})` }, s);
+    S.forEach((se) => {
+      if (!se.on) return;
+      const Y = se.axis === "y2" ? sy2 : sy, c = se.color === "#000000" ? C.ink : se.color;
+      for (const l of se.lines) svg("polyline", { points: l.map((p) => `${sx(p[0]).toFixed(1)},${Y(p[1]).toFixed(1)}`).join(" "), fill: "none", stroke: c, "stroke-width": 1.6, "stroke-dasharray": se.dash ? "5 3" : null, "stroke-linejoin": "round" }, pl);
+      for (const p of se.markers) svg("circle", { cx: sx(p[0]), cy: Y(p[1]), r: 3, fill: c }, pl);
+    });
+    const cross = svg("line", { y1: m.t, y2: H - m.b, stroke: C.ink3, "stroke-dasharray": "2 2", visibility: "hidden" }, s);
+    const band = svg("rect", { y: m.t, height: H - m.t - m.b, fill: C.ink3, opacity: 0.15, visibility: "hidden" }, s);
+    view = { s, sx, inv: (px) => lo + ((px - m.l) / (W - m.l - m.r)) * (hi - lo), cross, band, sy, sy2 };
+  };
+  const toX = (e) => { const r = view.s.getBoundingClientRect(); return ((e.clientX - r.left) / r.width) * W; };
+  const near = (pts, x) => { let b = null, d = Infinity; for (const p of pts) { const k = Math.abs(p[0] - x); if (k < d) { d = k; b = p; } } return b; };
+  const hover = (e) => {
+    const px = toX(e); if (px < m.l || px > W - m.r) { tip.hide(); view.cross.setAttribute("visibility", "hidden"); return; }
+    const x = view.inv(px);
+    view.cross.setAttribute("x1", px); view.cross.setAttribute("x2", px); view.cross.setAttribute("visibility", "visible");
+    const at = (s) => { // value on the drawn line at x (linear between drawn points); markers: nearest marker
+      for (const l of s.lines) for (let k = 1; k < l.length; k++) {
+        const [a, b] = [l[k - 1], l[k]];
+        if ((a[0] - x) * (b[0] - x) <= 0) return a[0] === b[0] ? a[1] : a[1] + ((x - a[0]) / (b[0] - a[0])) * (b[1] - a[1]);
+      }
+      const p = near(s.markers, x); return p && Math.abs(p[0] - x) < (hi - lo) * 0.04 ? p[1] : null;
+    };
+    const rows = S.filter((s) => s.on).map((s) => { const v = at(s);
+      return v === null ? null : `<span style="color:${s.color === "#000000" ? "inherit" : s.color}">■</span> ${esc(s.name)}: <b>${fmt(v, 4)}</b>`; }).filter(Boolean);
+    const r = view.s.getBoundingClientRect();
+    if (rows.length) tip.show(`${esc(spec.x)} ≈ ${fmt(x, 4)}<br>${rows.join("<br>")}`, (px / W) * r.width, 40); else tip.hide();
+  };
+  let drag = null;
+  host.addEventListener("pointermove", (e) => {
+    hover(e);
+    if (drag !== null) { const a = Math.min(drag, toX(e)), b = Math.max(drag, toX(e)); view.band.setAttribute("x", a); view.band.setAttribute("width", b - a); view.band.setAttribute("visibility", "visible"); }
+  });
+  host.addEventListener("pointerdown", (e) => { hover(e); if (e.pointerType === "mouse") drag = toX(e); });
+  host.addEventListener("pointerleave", () => { tip.hide(); view.cross.setAttribute("visibility", "hidden"); });
+  window.addEventListener("pointerup", (e) => {
+    if (drag === null) return;
+    const a = view.inv(Math.min(drag, toX(e))), b = view.inv(Math.max(drag, toX(e))); drag = null;
+    if (Math.abs(toX(e) - (view.sx(a))) > 8 || b - a > (hi - lo) * 0.02) { lo = Math.max(X0, a); hi = Math.min(X1, b); syncSliders(); }
+    render();
+  });
+  const syncSliders = () => { r0.value = Math.round(((lo - X0) / (X1 - X0)) * 1000); r1.value = Math.round(((hi - X0) / (X1 - X0)) * 1000); };
+  const fromSliders = () => { let a = +r0.value, b = +r1.value; if (b - a < 10) { if (document.activeElement === r0) a = b - 10; else b = a + 10; }
+    lo = X0 + (a / 1000) * (X1 - X0); hi = X0 + (b / 1000) * (X1 - X0); render(); };
+  r0.oninput = r1.oninput = fromSliders;
+  el.querySelector(".reset").onclick = () => { lo = X0; hi = X1; syncSliders(); render(); };
+  host.addEventListener("dblclick", () => { lo = X0; hi = X1; syncSliders(); render(); });
+  el.querySelectorAll(".toggles button").forEach((b) => b.onclick = () => {
+    const se = S[+b.dataset.i]; se.on = !se.on; b.setAttribute("aria-pressed", se.on); render(); });
+  el.querySelector(".csv").onclick = () => {
+    const q = (v) => /[",\n]/.test(v) ? `"${v.replace(/"/g, '""')}"` : v;
+    const lines = [["series", spec.x, "value"].map(q).join(",")];
+    for (const s of S) for (const p of s.pts) lines.push([q(s.name), p[0], p[1]].join(","));
+    const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([lines.join("\n")], { type: "text/csv" })); a.download = csvName; a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  };
+  render(); onTheme(render);
+}
+
+export const WIDGETS = { plot, tablechart,  sampling2d, workflow, activations, montgomery3d, montgomerystep, composite, table5chart, table6chart, table7chart, appendixA, nnembed };

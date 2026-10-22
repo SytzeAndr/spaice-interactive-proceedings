@@ -1,0 +1,1057 @@
+{
+ "sessions": [
+  {
+   "num": "3.1",
+   "name": "Onboard AI 1",
+   "kind": "oral",
+   "chair": "Leone Costi",
+   "papers": [
+    "reward-free-continual-adaptation-resilient-space-robots",
+    "comparative-performance-analysis-classical-ai-based-launch",
+    "astropie-53-towards-understanding-failure-modes-human"
+   ]
+  },
+  {
+   "num": "3.2",
+   "name": "Space Flight Dynamics 1",
+   "kind": "oral",
+   "chair": "Marcus Märtens",
+   "papers": [
+    "data-centric-preprocessing-gnss-based-orbit-determination",
+    "high-fidelity-low-earth-orbit-determination-physics",
+    "offline-approximate-value-iteration-reinforcement-learning-approach"
+   ]
+  },
+  {
+   "num": "3.3",
+   "name": "Astrophysics 1",
+   "kind": "oral",
+   "chair": "Victor Rodriguez",
+   "papers": [
+    "identification-rare-weak-signals-machine-learning-citizen",
+    "metallicity-conditioned-transformer-based-generative-model-planetary",
+    "faithful-neural-embeddings-3d-exoplanet-climate-modeling"
+   ]
+  },
+  {
+   "num": "3.4",
+   "name": "Operations",
+   "kind": "oral",
+   "chair": "Laurent Hili",
+   "papers": [
+    "onboard-predictive-fault-management-seranis-resource-aware",
+    "comparative-study-reconstruction-based-deep-learning-models",
+    "foundation-model-assessment-state-health-prediction-space"
+   ]
+  },
+  {
+   "num": "3.5",
+   "name": "Guidance, Navigation and Control 1",
+   "kind": "oral",
+   "chair": "Lorenzo Capra",
+   "papers": [
+    "mpc-underactuated-spacecraft-control-lyapunov-supervised-physics",
+    "adversarial-reinforcement-learning-robust-planetary-landing",
+    "learning-cross-view-correspondences-geo-localization-planetary",
+    "geometry-learned-representations-event-based-multi-modal"
+   ]
+  },
+  {
+   "num": "3.6",
+   "name": "Earth Observation 1",
+   "kind": "oral",
+   "chair": "Lorenzo Papa",
+   "papers": [
+    "deploying-neural-networks-fpgas-earth-observation-satellites",
+    "assessing-impact-off-nadir-image-acquisition-performance",
+    "resource-efficient-super-resolution-multispectral-data-progressive",
+    "towards-robust-efficient-multispectral-change-detection"
+   ]
+  },
+  {
+   "num": "3.7",
+   "name": "Astrophysics 2",
+   "kind": "oral",
+   "chair": "Victoria Da Poian",
+   "papers": [
+    "memetic-co-design-2d-locomotion-at-variable",
+    "ai-enhanced-spatial-reconstruction-thin-plastic-scintillators",
+    "breccia-basalt-classification-thin-sections-apollo-rocks"
+   ]
+  },
+  {
+   "num": "3.8",
+   "name": "Operations 2",
+   "kind": "oral",
+   "chair": "Luís Simões",
+   "papers": [
+    "semhopqa-automated-pipeline-generating-question-answer-benchmarks",
+    "multi-agent-work-flow-automated-mbse-model",
+    "analysis-space-research-through-neural-topic-modeling"
+   ]
+  },
+  {
+   "num": "3.9",
+   "name": "Earth Observation 2 / Operations 3",
+   "kind": "oral",
+   "chair": "Audrey Berquand",
+   "papers": [
+    "robust-flood-extent-mapping-gated-fusion-multi",
+    "tenka-physics-guided-multimodal-deep-learning-bolide",
+    "methane-detection-board-satellites-unorthorectified-imagery",
+    "floodcatch-physics-guided-machine-learning-flood-dynamics"
+   ]
+  },
+  {
+   "num": "3.10",
+   "name": "Astrophysics 3",
+   "kind": "oral",
+   "chair": "Claudia Soares",
+   "papers": [
+    "fun-q1-scouring-first-euclid-data-astrophysical",
+    "improving-faint-object-detection-space-situational-awareness",
+    "developing-digital-twin-magao-x-telemetry-based",
+    "traceable-spectral-inference-influence-functions-efficient-data"
+   ]
+  },
+  {
+   "num": "3.11",
+   "name": "Onboard AI 2",
+   "kind": "oral",
+   "chair": "Paolo Panicucci",
+   "papers": [
+    "leveraging-parallel-computing-visual-onboard-attitude-tracking",
+    "prior-knowledge-informed-centroiding-cnn-planetary-small",
+    "ai-driven-framework-automated-identification-classification-multi",
+    "agile-earth-observation-satellite-scheduling-hybrid-repair"
+   ]
+  },
+  {
+   "num": "3.12",
+   "name": "Space Flight Dynamics 2 / Guidance, Navigation and Control 2",
+   "kind": "oral",
+   "chair": "Harry Holt",
+   "papers": [
+    "improving-board-shape-models-sun-sensors-implicit",
+    "identification-gravitational-constant-satellite-trajectories-neural-ordinary",
+    "second-order-gradient-informed-spacecraft-neural-guidance",
+    "learning-based-reconstruction-space-resident-objects-single"
+   ]
+  },
+  {
+   "num": "4.1",
+   "name": "Wednesday 21 October",
+   "kind": "poster",
+   "chair": null,
+   "papers": [
+    "enhancing-ai-trustworthiness-rover-navigation-risk-aware",
+    "launcher-trajectory-criticality-prediction-recurrent-neural-networks",
+    "structure-aware-unsupervised-anomaly-detection-spacecraft-telemetry",
+    "exploring-trade-off-between-structured-pruning-fault",
+    "physics-informed-convlstm-networks-transient-thermal-modeling",
+    "incremental-online-learning-european-space-agency-benchmark",
+    "marker-free-computer-vision-driven-autonomous-docking",
+    "detecting-lunar-craters-at-scale",
+    "hardware-aware-comparison-keypoint-vs-end-end",
+    "vstb-camera-loop-testbed-space-vision-ai",
+    "geoai-practice-evaluating-unified-open-source-library",
+    "aligning-human-oversight-aerospace-cross-sector-approach",
+    "planet-detection-protoplanetary-disks-symmetry-exploitation-contrastive",
+    "quantum-inspired-convolutional-networks-high-resolution-pseudo",
+    "reinforcement-learning-co-planar-multi-target-mission",
+    "covariance-estimation-orbit-determination-physics-informed-extreme",
+    "syndaq-synthetic-data-generation-qualification"
+   ]
+  },
+  {
+   "num": "4.2",
+   "name": "Friday 23 October",
+   "kind": "poster",
+   "chair": null,
+   "papers": [
+    "ai-based-classification-simulated-cosmic-radiation-bit",
+    "space-kbp-dataset-end-end-knowledge-base",
+    "stellar-apps-software-execution-platform-ai-space",
+    "reinforcement-learning-optimized-sensor-placement-boosting-large",
+    "uncertainty-aware-surrogate-modeling-thrust-vectoring-performance",
+    "reducing-false-positives-wide-field-astronomical-streak",
+    "towards-automated-grain-size-analysis-exomars-preliminary",
+    "ground-orbit-enabling-real-time-board-anomaly",
+    "online-learning-dynamic-constellation-topologies",
+    "transformer-attention-as-domain-clustering-tool-space",
+    "cross-task-analysis-post-training-quantization-robustness",
+    "data-driven-framework-space-tailored-state-health",
+    "differentiable-mascons-spatialmass-joint-optimization-framework-asteroid",
+    "accelerating-integer-quantized-ai-related-workloads-space",
+    "manusat-onboard-edge-ai-health-monitoring-cmg",
+    "early-detection-satellite-telemetry-data-anomalies-hyperdimensional",
+    "boosting-sentinel-2-crop-disease-classification-self",
+    "rapid-prediction-exoplanetary-cloud-properties-autoencoders",
+    "automated-satellite-conjunction-management-transformer-based-bayesian"
+   ]
+  }
+ ],
+ "papers": [
+  {
+   "id": "reward-free-continual-adaptation-resilient-space-robots",
+   "title": "Reward-Free Continual Adaptation for Resilient Space Robots",
+   "start": 13,
+   "end": 17,
+   "session": "Onboard AI 1",
+   "sessionNum": "3.1",
+   "kind": "oral",
+   "authors": "Andrej Orsula, Miguel Olivares-Mendez, Carol Martinez",
+   "abstract": "Space robots operate in extreme environments where hardware degradation can critically compromise traditional control strategies. While continual reinforcement learning offers a promising mechanism for online adaptation, it inherently requires access to a reward signal during deployment. However, precise reward computation in space is often infeasible due to the lack of external tracking systems and the overall complexity of the environment. To address the challenge of unobservable rewards, we introduce a reward-free continual learning framework that leverages latentstate world models. By pre-training a model-based agent across diverse simulations, the world model learns a robust predictor of the reward structure within its latent space. Upon deployment to an environment with severe hardware degradation, we freeze the observation encoder and reward predictor to update only the transition dynamics of the world model through unsupervised rollouts. By training the policy entirely on imagined trajectories generated by this updated world model, the agent adapts to altered dynamics without receiving new rewards. We demonstrate our approach across simulated planetary traversal, orbital navigation, and precision assembly tasks subjected to severe morphological failures. The source code is available at https://github.com/AndrejOrsula/space_robotics_bench."
+  },
+  {
+   "id": "comparative-performance-analysis-classical-ai-based-launch",
+   "title": "Comparative Performance Analysis of Classical and AI-Based Launch Adapter Ring Detection for Robotic On-Orbit Servicing",
+   "start": 18,
+   "end": 22,
+   "session": "Onboard AI 1",
+   "sessionNum": "3.1",
+   "kind": "oral",
+   "authors": "Kirimamuni Supuni Kaveendya, Lina Maria Amaya-Mejia, Miguel Olivares-Mendez, Carol Martinez",
+   "abstract": "The Launch Adapter Ring (LAR) is a structural landmark that serves as a grasping interface and a distinct visual feature. Accurate and real-time detection of LAR is crucial for a successful robotic on-orbit servicing (OOS) mission. This paper conducts a comparative analysis of a classical computer vision (CV) approach vs a deep learning (DL)-based approach for LAR detection under varying lighting conditions and distance/scale changes. The classical approach relies on edge extraction and geometric ring detection, while the learning-based method employs a lightweight YOLOv8n convolutional neural network for real-time object detection. Detection accuracy and computational latency metrics are evaluated in both methods. The results demonstrate that the YOLOv8n detector provides higher robustness under illumination variations, while the classical method offers significantly lower computational costs, balancing between computational efficiency and detection accuracy."
+  },
+  {
+   "id": "astropie-53-towards-understanding-failure-modes-human",
+   "title": "AstroPIE-53: Towards Understanding Failure Modes of Human Pose Estimation in Space",
+   "start": 23,
+   "end": 27,
+   "session": "Onboard AI 1",
+   "sessionNum": "3.1",
+   "kind": "oral",
+   "authors": "Stephanie Käs, Marten Flaig, Lukas Woyke, Osmanalp Ömeroğlu, Felix Krückel, Onur Alp Çulha, Bastian Leibe",
+   "abstract": "Reliable monitoring of astronauts is essential for safety, situational awareness, and autonomous assistance in space missions. While modern computer vision enables accurate human detection and pose estimation on Earth, its robustness in space environments remains largely unquantified due to limited data availability. We present AstroPIE-53, a pilot dataset of 53 annotated astronaut videos collected from publicly available mission footage. To respect copyright restrictions, we release video identifiers, reconstruction scripts, and dense annotations rather than raw videos. The dataset includes bounding boxes, challenge classes, and human-annotated pose failure tags. We benchmark state-of-the-art person detection and pose estimation models under realistic zero-shot deployment conditions and perform the first systematic failure analysis for astronaut monitoring. Our results reveal substantial performance degradation caused by occlusions, unusual body orientations, low contrast, and microgravity motion patterns."
+  },
+  {
+   "id": "data-centric-preprocessing-gnss-based-orbit-determination",
+   "title": "Data-Centric Preprocessing for GNSS-Based Orbit Determination via AI, Signal Processing, and Orbital Dynamics",
+   "start": 29,
+   "end": 33,
+   "session": "Space Flight Dynamics 1",
+   "sessionNum": "3.2",
+   "kind": "oral",
+   "authors": "Marta Guimarães, Robert Arthur, Cláudia Soares, Chiara Manfletti, Gerarda De Pasquale",
+   "abstract": "GNSS-based orbit determination relies on input measurements whose quality can vary significantly across mission phases and operating conditions. In such settings, inappropriate data conditioning may either improve estimation robustness or, if misapplied, degrade convergence and numerical stability. This work proposes a data-centric preprocessing pipeline designed to operate safely under heterogeneous data quality conditions. The method combines lightweight physical sanity checks with a structure-aware ML classifier that gates increasingly assumption-dependent signal-processing-based cleaning stages. The pipeline targets localised measurement irregularities across multiple orbital representations while explicitly avoiding overcleaning in weakly structured segments. In representative scenarios, it agrees with a baseline batch least-squares estimator on obvious outliers and additionally identifies dynamically inconsistent samples that remain invisible to position-only residual analysis. The results show that datacentric AI preprocessing reduces residual dispersion and improves convergence behaviour, resulting in a more stable and statistically consistent orbit determination without modifying the underlying dynamical model."
+  },
+  {
+   "id": "high-fidelity-low-earth-orbit-determination-physics",
+   "title": "High-Fidelity Low Earth Orbit Determination with Physics-Informed Extreme Learning Machines",
+   "start": 34,
+   "end": 39,
+   "session": "Space Flight Dynamics 1",
+   "sessionNum": "3.2",
+   "kind": "oral",
+   "authors": "Fabian Dallinger, Benedikt Aigner, Thomas Andert, Roger Förstner",
+   "abstract": "Accurate orbit determination in Low Earth Orbit (LEO) requires dynamic models that capture non-ideal perturbations such as Earth’s non-spherical gravity field, atmospheric drag, solar radiation pressure, and third-body effects. Classical Weighted Least Squares and Extended Kalman Filter approaches are well established, but they typically require a sufficiently accurate initial state to ensure convergence [1, 2]. Building on the Physics-Informed Extreme Learning Machine (PIELM) formulations introduced by Scorsoglio et al. [3–5], this paper investigates PIELMs as an efficient alternative for LEO orbit determination that can be trained without requiring an a-priori state estimate by coupling measurement fitting with enforcement of the equations of motion. The physics loss extends beyond twobody motion by embedding a high-fidelity acceleration model including spherical-harmonic geopotential perturbations up to degree and order 70 × 70, a cannonball drag model, solar radiation pressure with eclipse handling, and point-mass third-body perturbations. Results on a representative ISS LEO arc show that the extended force model enables accurate trajectory reconstruction and supports cold-start orbit determination in high-fidelity LEO settings."
+  },
+  {
+   "id": "offline-approximate-value-iteration-reinforcement-learning-approach",
+   "title": "Offline Approximate Value Iteration: A Reinforcement Learning Approach for Satellite Constellation Deployment",
+   "start": 40,
+   "end": 45,
+   "session": "Space Flight Dynamics 1",
+   "sessionNum": "3.2",
+   "kind": "oral",
+   "authors": "Tristan Leuridan, Yi-Ping Fang, Adam Abdin",
+   "abstract": "This paper introduces a reinforcement learning-based approximate dynamic programming approach to optimize the deployment of Walker-type satellite constellations under uncertainties, including launch failures and satellite malfunctions. We formulate the problem as a Markov Decision Process that incorporates low-injection orbit launches, continuous low-thrust orbit raising, and variable satellite loads. We adopt the offline approximate value iteration solution method, using linear function approximation with basis functions and action pruning strategies to substantially reduce the computational and memory requirements for finding optimal decision policies. Preliminary results demonstrate convergence to policies with low expected costs and deployment times, both of which are lower than those of a rolling-horizon baseline, showcasing a novel application of approximate dynamic programming in space logistics."
+  },
+  {
+   "id": "identification-rare-weak-signals-machine-learning-citizen",
+   "title": "Identification of Rare and Weak Signals with Machine Learning and Citizen Science: Planet Hunting with TESS and PLATO",
+   "start": 47,
+   "end": 52,
+   "session": "Astrophysics 1",
+   "sessionNum": "3.3",
+   "kind": "oral",
+   "authors": "Sofia Platymesi, Suzanne Aigrain, Chris Lintott, Maximilian N. Günther",
+   "abstract": "Detecting rare and weak signals in vast astronomical datasets remains a central challenge in astronomy. Exoplanet discovery requires screening large datasets rich in confounding variability. We present a decision and prioritisation framework that combines machine learning with citizen science to identify such signals in data from the planet-hunting telescope, TESS. An ensemble comprising three complementary ResNet architectures is trained on over 1,000,000 labelled TESS lightcurves to emulate human decision-making. The system learns from human judgment, quantifies inter-model uncertainty, and uses this information to prioritise and escalate candidates. This human-AI framework preserves sensitivity to both standard planetary and atypical astrophysical signals while reducing the volume of data requiring human screening. Preliminary results show that the model recovered the same fraction of known objects of interest as the volunteer reviewers and reproduced 87% of their shortlisted targets. Inspection of the remaining 13% showed that the missed targets had been falsely flagged by volunteers and did not warrant follow-up, suggesting that the model has the potential to outperform human reviewers. We outline how this architecture can be extended from TESS to PLATO, arguing that uncertainty-aware, humancentred prioritisation systems offer a generalisable approach for future space-based survey operations."
+  },
+  {
+   "id": "metallicity-conditioned-transformer-based-generative-model-planetary",
+   "title": "A metallicity-conditioned transformer-based generative model of planetary systems",
+   "start": 53,
+   "end": 57,
+   "session": "Astrophysics 1",
+   "sessionNum": "3.3",
+   "kind": "oral",
+   "authors": "Sara Marques, Yann Alibert",
+   "abstract": "Finding exoplanets similar to Earth (Earth twins) is one of the main challenges in exoplanetary science, and the goal of numerous observational surveys. Blind surveys are, however, inefficient in term of observational resources. With numerous new missions planned, leveraging all available information to develop targeted observational strategies, is essential to maximize scientific returns. We extend the character-based generative model framework in [1] by introducing stellar metallicity [Fe/H] as an explicit system-level conditioning variable. This modification enables the model to capture how host star composition influences planetary system configurations and improves predictions on their architectures. The sequence representation encodes stellar metallicity as the initial character, with subsequent characters representing individual planetary properties. We validate the approach on observed multi-planet systems by hiding all planets except one and attempt at inferring the distribution of properties of the remaining planets. We test the system presented in [1] (TOI 469) as well as two additional systems initially discovered by the TESS satellite [2] and further characterized by CHEOPS [3] (TOI 836 and TOI 1064). Results demonstrate that the model successfully predicts the properties of hidden planets and that conditioning on host star metallicity produces more constrained posterior distributions."
+  },
+  {
+   "id": "faithful-neural-embeddings-3d-exoplanet-climate-modeling",
+   "title": "Faithful Neural Embeddings for 3D Exoplanet Climate Modeling",
+   "start": 58,
+   "end": 63,
+   "session": "Astrophysics 1",
+   "sessionNum": "3.3",
+   "kind": "oral",
+   "authors": "Amit Reza, Ludmila Carone, Christiane Helling",
+   "abstract": "With the rapid advancement of telescopes like JWST and Ariel, there is an urgent need for efficient 3D climate models to interpret observations of exoplanet atmospheres. Traditional 3D general circulation models (GCMs) are computationally intensive, prompting the development of machine learning (ML) emulators to accelerate simulations. Recent work, such as that by Plaschzug et al. 2026 [1], uses a dense neural network (DNN) to predict local gas temperatures and winds from input parameters, including local gas pressure, spatial coordinates (longitude and latitude), and global temperature. However, this model relies on predicting individual temperature values (points) at specific grid points, which can be limited by the resolution and constraints of the training grid. In this work, we investigate a couple of alternative frameworks based on latent-space representations of local gas temperature (Tgas) to obtain a faithful, low-dimensional representation of these profiles. This represents the first step toward developing a latent space regression model, offering a structurally cohesive alternative to the existing point-wise prediction method [1]. By capturing the optimal embedding space of atmospheric data, our proposed framework can produce simulated profiles while maintaining computational efficiency, making it suitable for large-scale exoplanet ensemble studies."
+  },
+  {
+   "id": "onboard-predictive-fault-management-seranis-resource-aware",
+   "title": "Onboard Predictive Fault Management for SeRANIS: Resource-Aware Multi-Mode Telemetry Forecasting and Anomaly Detection",
+   "start": 65,
+   "end": 69,
+   "session": "Operations",
+   "sessionNum": "3.4",
+   "kind": "oral",
+   "authors": "Maren Hülsmannand Roger Förstner",
+   "abstract": "Predictive fault management based on Artificial Intelligence (AI) can complement classical spacecraft Fault Detection, Isolation and Recovery (FDIR) by forecasting the current spacecraft behavior into the future and identifying deviations before hard limit violations occur. This paper presents the concept and modeling approaches of the AI4FDIR experiment, an onboard technology demonstrator implemented within the SeRANIS mission, which investigates multi-horizon time-series forecasting and anomaly detection under realistic operational constraints. The approach operates in three forecasting modes (short-, mid-, and long-term) that differ in lookback length, forecast horizon, and temporal resolution to cover both fast transient and slow drift anomalies. The experiment is designed for onboard inference on the mission’s AI-capable onboard computer (AI-OBC), enabling real-time predictive monitoring without interacting with the spacecraft’s nominal FDIR chain. The present pre-flight evaluation compares forecasting accuracy, anomaly-detection behavior, and development-workstation runtime/resource utilization to assess the suitability of the selected methods for future onboard predictive monitoring."
+  },
+  {
+   "id": "comparative-study-reconstruction-based-deep-learning-models",
+   "title": "A Comparative Study of Reconstruction-Based Deep Learning Models for Spacecraft Telemetry Anomaly Detection",
+   "start": 70,
+   "end": 74,
+   "session": "Operations",
+   "sessionNum": "3.4",
+   "kind": "oral",
+   "authors": "Jieon Lee, Kiho Kwon",
+   "abstract": "Anomaly detection in spacecraft telemetry is critical for ensuring mission safety and operational reliability. Telemetry streams are typically high-dimensional multivariate time-series characterized by complex temporal and cross-channel dependencies, making robust modeling challenging. This paper presents a comparative study of deep learning architectures for reconstruction-based anomaly detection in spacecraft telemetry. We evaluate representative models, including USAD (Unsupervised Anomaly Detection), OmniAnomaly, TranAD (Transformer-based Anomaly Detection), and Anomaly-Transformer, under unified experimental settings using public spacecraft telemetry benchmarks as well as a real operational satellite dataset. Experimental results show that Transformer-based architectures generally achieve strong detection performance across the evaluated datasets. In particular, Anomaly- Transformer consistently provides the best balance between precision and recall, achieving the highest F1-scores on both benchmark and real mission telemetry data. These findings suggest the effectiveness of attention mechanisms in modeling long-range temporal dependencies and cross-channel interactions, providing practical insights for selecting suitable deep learning models for spacecraft telemetry anomaly detection."
+  },
+  {
+   "id": "foundation-model-assessment-state-health-prediction-space",
+   "title": "A Foundation Model Assessment for State-of-Health Prediction in Space Li-Ion Batteries",
+   "start": 75,
+   "end": 79,
+   "session": "Operations",
+   "sessionNum": "3.4",
+   "kind": "oral",
+   "authors": "Roberto Giovanni Sbarra, Michele Pasquali, Giuliano Coppotelli, Paolo Gaudenzi, Davide di Ienno, Carlo Ciancarelli, Gianluca Furano",
+   "abstract": "Space applications pose unique challenges to electrochemical systems, making lithium-ion batteries highly nonlinear systems subject to complex degradation mechanisms driven by extreme operating and environmental conditions. In this context, it is essential to develop reliable tools to support mission operations, capable of accurately predicting the evolution of the State of Health (SOH). However, the limited availability of labeled data from past missions and the high variability of operating profiles make SOH prediction particularly complex. To address these issues, this work investigates the use of a pre-trained time-series foundation model that leverages knowledge learned from large-scale time-series data to enable strong generalization capabilities even under operating conditions not observed during model development. The experimental results show that the proposed model achieves high predictive accuracy while maintaining the ability to provide confidence bands on the estimates. This highlights its potential for practical applications in battery health management and decision support in space. The feasibility and validity of the method are demonstrated using an experimental dataset of lithiumion batteries from the NASA Prognostics Center."
+  },
+  {
+   "id": "mpc-underactuated-spacecraft-control-lyapunov-supervised-physics",
+   "title": "MPC for underactuated spacecraft control with a Lyapunov supervised physics-informed neural network correction layer",
+   "start": 81,
+   "end": 85,
+   "session": "Guidance, Navigation and Control 1",
+   "sessionNum": "3.5",
+   "kind": "oral",
+   "authors": "Amirhossein Ayanmanesh Motlaghmofrad, Carlo Cena, Mauro Martini, Marcello Chiaberge",
+   "abstract": "Underactuated spacecraft faces controllability limitations and heightened sensitivity to environmental disturbances, complicating attitude maneuvering and stabilization. Due to the lack of control authority along the underactuated axis, conventional controllers cannot directly stabilize all attitude components and therefore require reference planning strategies. Furthermore, MPC approaches remain sensitive to inertia uncertainty and unmodeled dynamic couplings, resulting in degraded tracking performance under mismatch. To address these issues, we consider a hierarchical architecture integrating three layers: (i) a nonlinear model predictive controller (NMPC) for constraint and underactuation-aware maneuver planning and nominal closed-loop stability under actuator limits; (ii) a physics-informed neural network (PINN) trained offline on simulation data to estimate residual disturbance torques, with loss terms that enforce consistency with rigid-body rotational dynamics; (iii) a Lyapunov-based supervisory safety mechanism that evaluates the learned correction online and bounds or suppresses its influence to preserve the stability properties of the baseline controller. The architecture is evaluated in a high-fidelity simulation environment modelling reaction wheel dynamics, actuator saturation, and environmental disturbances. Experimental studies show statistically significant reductions in steady-state attitude error relative to standalone NMPC while maintaining robust behavior under uncertainty. The supervisory layer ensures graceful degradation to purely model-based control when the learning-based augmentation is unreliable."
+  },
+  {
+   "id": "adversarial-reinforcement-learning-robust-planetary-landing",
+   "title": "Adversarial Reinforcement Learning for Robust Planetary Landing",
+   "start": 86,
+   "end": 90,
+   "session": "Guidance, Navigation and Control 1",
+   "sessionNum": "3.5",
+   "kind": "oral",
+   "authors": "Miguel Leiva-Vélez, Nicolas Gastón-Rozado, Andrea Scorsoglio, Hodei Urrutxua, Víctor Rodríguez-Fernández",
+   "abstract": "Deep reinforcement learning (DRL) policies for planetary landing and other aerospace guidance, navigation, and control tasks are commonly trained under randomized disturbances to improve robustness. However, typical stochastic perturbation sampling assumes independent variations, whereas real mission disturbances often exhibit spatial and temporal correlation and cannot be reproduced through independent random draws. This work investigates adversarial reinforcement learning to discover challenging off-nominal conditions. A secondary agent generates physically constrained perturbations that degrade the performance of a landing controller, forming an asymmetric sequential zero-sum game. Training proceeds in three stages: baseline controller learning, robustness enhancement with stochastic perturbations, and an iterative adversarial phase in which the controller and disturbance generator are alternately optimized. Preliminary experiments in a three-degree-of-freedom landing environment show that adversarial disturbances reveal vulnerabilities missed by conventional randomization and provide early indications that, with a more extensive training campaign, the approach can yield improved robustness and stronger generalization under previously unseen perturbation regimes."
+  },
+  {
+   "id": "learning-cross-view-correspondences-geo-localization-planetary",
+   "title": "Learning Cross-view Correspondences for Geo-localization on Planetary Surfaces",
+   "start": 91,
+   "end": 95,
+   "session": "Guidance, Navigation and Control 1",
+   "sessionNum": "3.5",
+   "kind": "oral",
+   "authors": "Hong Minh Nguyen, Marcus Märtens, Tat-Jun Chin",
+   "abstract": "Maintaining global position awareness is a fundamental challenge for planetary surface exploration, since satellite-based positioning systems are unavailable and onboard odometry drifts over time. Although orbital mapping products, such as overhead imagery and terrain-derived maps, provide global context, aligning them with surface observations is challenging due to large viewpoint differences, low texture, repetitive terrain, and drastic changes in appearance caused by varying illumination and topography. We introduce a new cross-view geo-localization benchmark built from physically rendered surface panoramas and overhead tiles derived from a high-resolution lunar terrain model. Our dataset contains 10 438 ground views rendered as 360◦surface panoramas with matching overhead images precisely centered at the same location. Additionally, a set of overlapping tiles is provided to study off-center localization with multiple plausible candidates per panorama. We study the performance of a state-of-the-art transformer-based geo-localization method on our data, by training it from scratch and reporting retrieval accuracy. Our results demonstrate that learning-based cross-view localization methods can be successfully applied to the domain of planetary surfaces, providing a vision-based alternative to global navigation satellite systems."
+  },
+  {
+   "id": "geometry-learned-representations-event-based-multi-modal",
+   "title": "On the Geometry of Learned Representations in Event-Based Multi-Modal Egomotion Estimation",
+   "start": 96,
+   "end": 101,
+   "session": "Guidance, Navigation and Control 1",
+   "sessionNum": "3.5",
+   "kind": "oral",
+   "authors": "Stefano Silvestrini, Michele Ceresoli",
+   "abstract": "Classical approaches to event-based egomotion estimation, including those adopted by the top-performing teams of the ELOPE challenge, rely on geometric optimization frameworks such as contrast maximization, homography estimation, or dense optical flow combined with analytic motion inversion. This work investigates the geometric structure that emerges inside a multi-modal network for egomotion estimation. Event tensors, inertial measurements, and range signals are fused through a cross-modal attention architecture and trained in a batch setting. We analyze the latent space geometry and attention dynamics, showing that (i) embeddings lie on low-dimensional manifolds aligned with motion variables, (ii) attention weights adapt with angular excitation and visual reliability, and (iii) the fused representation recovers classical observability cues. These results bridge analytical estimation theory and modern data-driven fusion."
+  },
+  {
+   "id": "deploying-neural-networks-fpgas-earth-observation-satellites",
+   "title": "Deploying Neural Networks on FPGAs for Earth Observation satellites",
+   "start": 103,
+   "end": 107,
+   "session": "Earth Observation 1",
+   "sessionNum": "3.6",
+   "kind": "oral",
+   "authors": "Georgios Flengas, Nicolò Ghielmetti, Robert Bayer, Sioni Summers",
+   "abstract": "Following advances in technology and reduction in cost, availability of data onboard satellites has been increasing. Machine Learning has been shown to be effective at identifying relevant data for downlink, but needs to be optimised in order to be deployed onboard within a limited compute and power envelope. We present developments to deploy neural networks for image segmentation onto FPGA SoC processors. Our inference engines are based on the hls4ml and CGRA4ML software, which we have extended to target NanoXplore NG-ULTRA devices. We showcase our developments on the task of identifying plastics pollution in the oceans."
+  },
+  {
+   "id": "assessing-impact-off-nadir-image-acquisition-performance",
+   "title": "Assessing the impact of off-nadir image acquisition on the performance of a deep learning model for on-board ship segmentation",
+   "start": 108,
+   "end": 112,
+   "session": "Earth Observation 1",
+   "sessionNum": "3.6",
+   "kind": "oral",
+   "authors": "Francesco Pasanisi, Tom Hendrix, David Rijlaarsdam, Aubrey Dunne",
+   "abstract": "Off-nadir image acquisition substantially increases the revisit frequency of agile imaging satellites such as CogniSAT- 6, yet its impact on deep learning model performance for ship segmentation remains unstudied. This paper presents an evaluation of off-nadir acquisition (ONA) effects on a CNN-based ship segmentation model, using 38 annotated CogniSAT-6 scenes spanning the full 0°–45° roll angle range, organized into four viewing angle bins. Contrary to findings from building detection studies, no statistically significant relationship was found between viewing angle and model performance (R²=0.030, p=0.302). Spearman correlation analysis revealed that roll angle, sun zenith angle, and median ship size are not significant predictors of performance. Instead, the ship-water contrast ratio emerged as the only significant predictor (r=0.563, p&lt;0.001), indicating that scene-specific spectral characteristics are a stronger determinant of segmentation quality than acquisition geometry. These findings suggest that CogniSAT-6 can operate across its full roll angle range without significant degradation in ship segmentation performance, with scene spectral characteristics being the primary factor to take into account."
+  },
+  {
+   "id": "resource-efficient-super-resolution-multispectral-data-progressive",
+   "title": "Resource-Efficient Super-Resolution for Multispectral Data: a Progressive Focused Transformer Approach",
+   "start": 113,
+   "end": 117,
+   "session": "Earth Observation 1",
+   "sessionNum": "3.6",
+   "kind": "oral",
+   "authors": "Marco Mario Ciamarra",
+   "abstract": "The increasing demand for high-resolution multispectral imagery has highlighted the limitations of current satellite platforms, where spatial resolution remains constrained by hardware and downlink bandwidth. In this paper, we propose a lightweight super-resolution method designed for onboard deployment, capable of enhancing Sentinel-2 four-band RGBNIR multispectral data while preserving spectral integrity. Our approach leverages a Progressive Focused Transformer (PFT) architecture, optimized for computational efficiency, that is adapted for 4× super-resolution of four-band RGBNIR Sentinel-2 imagery. Operating at 84.96 GFLOPs/MPix with only 792K parameters, our model achieves a Spectral Angle Mapper (SAM) of 5.08◦on a 100-tile RGBNIR benchmark, outperforming SEN2SR-M — the current spectral state of the art — at 3× lower computational cost, without any post-hoc spectral correction. Unlike hybrid approaches that enforce spectral consistency through post-hoc constraints, the PFT learns inter-band coherence intrinsically through its progressive attention mechanism. These results suggest the potential of Transformer-based SR for onboard Earth observation pipelines."
+  },
+  {
+   "id": "towards-robust-efficient-multispectral-change-detection",
+   "title": "Towards Robust and Efficient Multispectral Change Detection",
+   "start": 118,
+   "end": 123,
+   "session": "Earth Observation 1",
+   "sessionNum": "3.6",
+   "kind": "oral",
+   "authors": "Swarnava Dey, Pallab Dasgupta, Partha P. Chakrabarti",
+   "abstract": "Objective: Multispectral change detection (CD) supports environmental monitoring and autonomous Earth observation, but onboard models must remain reliable under acquisition variation while satisfying tight compute and memory constraints. Existing OOD work in Earth observation primarily emphasizes detection or uncertainty estimation rather than improving the intrinsic robustness of lightweight CD models. Methods: We introduce Head-Consistency Adversarial Training (HCAT), a lightweight objective that stabilizes pixelwise decision margins under physically structured radiometric, illumination, calibration, and optical perturbations. The perturbations are evaluated over ordinary, development-calibrated, extrapolated, and composed severity regimes. HCAT changes only training and adds no inference-time parameters or computation. Results: Across three pretrained OSCD architectures, HCAT improves activated-shift F1 over matched physical augmentation by 0.035–0.043 and over the corresponding untreated models by 0.093–0.339. On a larger 2,400-pair held-out SYSU-CD replication, activated-shift macro-F1 reaches 0.611, versus 0.548 for physical augmentation and 0.250 for standard training. A six-pair CropRot probe shows that acquisition robustness does not automatically imply semantic-domain transfer. Conclusion and Significance: Decision-margin stabilization provides a practical mechanism for improving acquisition-shift robustness across CD models of substantially different capacities while preserving their original inference graph."
+  },
+  {
+   "id": "memetic-co-design-2d-locomotion-at-variable",
+   "title": "Memetic Co-design of 2D Locomotion at Variable Gravity",
+   "start": 125,
+   "end": 130,
+   "session": "Astrophysics 2",
+   "sessionNum": "3.7",
+   "kind": "oral",
+   "authors": "Leone Costi, Leon Williams, Dario Izzo",
+   "abstract": "Designing robots capable of efficient locomotion requires an embodied approach that tightly couples morphology, control, and environmental interaction. This challenge is particularly critical for planetary exploration, where robotic systems must autonomously adapt to diverse gravitational regimes and unstructured terrains. In this work, we present a memetic co-design framework that combines evolutionary search over robot body morphology with gradient-based optimization of actuation parameters. Using this framework, we show how gravitational acceleration influences the co-evolution of morphology and locomotion strategies. Experiments conducted across multiple gravity settings demonstrate that the proposed approach can autonomously identify transitions between distinct locomotion regimes, revealing how environmental conditions shape embodied behavior. This ability suggests that applying the framework to more detailed robotic simulations may expose critical morphological and control adaptations relevant to real planetary operations."
+  },
+  {
+   "id": "ai-enhanced-spatial-reconstruction-thin-plastic-scintillators",
+   "title": "AI-Enhanced Spatial Reconstruction in Thin Plastic Scintillators for Compact Space Weather Monitors",
+   "start": 131,
+   "end": 135,
+   "session": "Astrophysics 2",
+   "sessionNum": "3.7",
+   "kind": "oral",
+   "authors": "Danilo Elenterio, Salvatore Cassano, Serena Loporchio, Francesco Giordano, Silvia Rainò, Elisabetta Bissaldi",
+   "abstract": "Space Weather (SW) describes the dynamic conditions of the near-Earth space environment driven by solar activity, including solar energetic particles (SEPs), which can affect spacecraft electronics and astronaut safety. Compact radiation monitors capable of discriminating between gamma rays and charged particles are essential for future SW missions. Plastic scintillator tiles are standard in anticoincidence systems for gamma-ray instruments, the chargedparticle flux they detect can offer critical tracking information if the impact position is accurately reconstructed. This work investigates the performance of different Machine Learning (ML) architectures in reconstructing the impact parameters of Minimum Ionizing Particles (MIPs). Leveraging a high-fidelity Geant4 simulation that accounts for SiPM-specific stochastic noise (crosstalk, afterpulsing, and dark counts), we compare a Center-of-Gravity baseline, a fully-connected regressor, a geometry-constrained variant of it, and a gradient-boosted tree ensemble on the mapping from eight SiPM amplitudes to the impact coordinates. The median radial error drops from 2.03 cm for the analytical baseline to 0.57 cm for gradient boosting, a factor 3.6 improvement."
+  },
+  {
+   "id": "breccia-basalt-classification-thin-sections-apollo-rocks",
+   "title": "Breccia and basalt classification of thin sections of Apollo rocks with deep learning",
+   "start": 136,
+   "end": 141,
+   "session": "Astrophysics 2",
+   "sessionNum": "3.7",
+   "kind": "oral",
+   "authors": "Freja Thoresen, Aidan Cowley, Romeo Haak, Jonas Lewe, Clara Moriceau, Piotr Knapczyk, Victoria S. Engelschiøn",
+   "abstract": "Human exploration of the Moon is expected to resume in the next decade, following the last such activities during the Apollo programme. One of the major objectives of returning to the Moon is to continue retrieving geological samples, with a focus on collecting high-quality specimens to maximize scientific return. Tools that assist astronauts in making informed decisions about sample collection activities can maximize the scientific value of future lunar missions. A lunar rock classifier can provide astronauts with the necessary information to analyze lunar rock samples and augment in-situ value identification. In this paper, we introduce a framework for classifying rock types in thin sections of lunar rocks. We leverage the vast collection of petrographic thin-section images from the Apollo missions, captured under plane-polarized light (PPL), cross-polarised light (XPL), and reflected light at varying magnifications. Contrastive learning is applied to analyze these images and extract meaningful features. A pre-trained Inception- ResNet-v2 network is fine-tuned using the SimCLR loss function to effectively extract features from thin-section images of Apollo rocks. A binary classifier trained with transfer learning from the fine-tuned Inception-ResNet-v2 achieves 93.51% (±3.17) image-level accuracy and 98.83% (±0.95) sample-level accuracy in separating breccias from basalts."
+  },
+  {
+   "id": "semhopqa-automated-pipeline-generating-question-answer-benchmarks",
+   "title": "SemHopQA: An Automated Pipeline for Generating Question-Answer Benchmarks for RAG System Evaluation in Spacecraft Operations",
+   "start": 143,
+   "end": 149,
+   "session": "Operations 2",
+   "sessionNum": "3.8",
+   "kind": "oral",
+   "authors": "Matthis Houlès, Tiago de Freitas, Alessio Silverio, Evridiki V. Ntagiou",
+   "abstract": "Evaluating Retrieval-Augmented Generation (RAG) systems in specialized fields remains a significant challenge, largely due to the lack of high-quality, domain-specific benchmarks. This is particularly acute in critical fields such as spacecraft operations, where rigorous assessment of system performance is essential. To address this, we present SemHopQA, an automated pipeline for generating single- and multi-hop question-answer (QA) datasets from unstructured spacecraft operations documentation. Our approach integrates Knowledge Graph (KG) construction with a random-walk traversal strategy to generate structurally grounded QA pairs based on explicit semantic paths. To ensure dataset integrity, we propose an automated LLM-asa-judge evaluation framework spanning three dimensions: clarity, grammar, and answerability. Experimental results show that SemHopQA competes directly with chunk-based generation frameworks like Hugging Face’s YourBench. While YourBench yields higher output volumes, our use of verified semantic paths produces significantly more answerable questions by minimizing reasoning hallucinations and chunking artifacts. This provides a reliable foundation for benchmarking RAG systems in documentation-heavy domains."
+  },
+  {
+   "id": "multi-agent-work-flow-automated-mbse-model",
+   "title": "Multi-Agent Work Flow for Automated MBSE Model Generation: A Satellite System Case Study",
+   "start": 150,
+   "end": 153,
+   "session": "Operations 2",
+   "sessionNum": "3.8",
+   "kind": "oral",
+   "authors": "Hairun Xie, Xinyao Wang, Bokai Li, Xinkang Zhuang, Kanlin Yin, Pueschel Niclas, Farid Gamgami",
+   "abstract": "Model-Based Systems Engineering is essential for managing the complexity of modern aerospace systems, yet the transition from natural language requirements to formal system models remains a labor-intensive bottleneck. This paper presents a novel multi-agent framework leveraging Large Language Models to automate the generation of Systems Modeling Language models. The proposed architecture decomposes the modeling process into three specialized agents: a Requirement Analyzer that structures informal text, an XML Generator that synthesizes core model artifacts, and an XML Validator that ensures syntactic correctness through iterative self-correction. We validate this approach through both a quantitative comparative experiment and a communication satellite design case study, demonstrating the system’s ability to reliably generate compliant XMI files importable into tools like MagicDraw. The results suggest that multi-agent collaboration significantly improves the reliability and structural validity of code-based model generation compared to direct LLM inference."
+  },
+  {
+   "id": "analysis-space-research-through-neural-topic-modeling",
+   "title": "Analysis of Space Research through Neural Topic Modeling leveraging Large Language Models",
+   "start": 154,
+   "end": 160,
+   "session": "Operations 2",
+   "sessionNum": "3.8",
+   "kind": "oral",
+   "authors": "Ruben Belo, Marta Guimarães, Cláudia Soares",
+   "abstract": "The rapid growth of space-related research, spanning disciplines from Earth observation to robotics and machine learning, presents challenges for efficiently navigating and contextualizing the literature. Traditional categorization approaches struggle to capture emerging themes and crossdisciplinary connections. In this work, we present a data-driven analysis of space science publications from the wellknown preprint server arXiv, using neural topic modeling enhanced with large language models to uncover latent topics and track their evolution over time. Our methodology identifies major research themes, highlights the emergence of multimodal and self-supervised approaches, and captures methodological trends within high-prevalence topics. This analysis provides a resource for researchers and newcomers alike to navigate the rapidly expanding literature, supporting informed exploration and fostering interdisciplinary understanding."
+  },
+  {
+   "id": "robust-flood-extent-mapping-gated-fusion-multi",
+   "title": "Robust Flood Extent Mapping with Gated Fusion of Multi-Temporal and Multimodal Sentinel Observations",
+   "start": 162,
+   "end": 165,
+   "session": "Earth Observation 2 / Operations 3",
+   "sessionNum": "3.9",
+   "kind": "oral",
+   "authors": "Andreas Luyts, Jasper Wouters",
+   "abstract": "Rapid flood extent mapping from satellite imagery is critical for disaster response, yet operational settings rarely provide a complete and perfectly synchronized set of observations. Existing fusion approaches typically combine Sentinel-1 (S1) and Sentinel-2 (S2) acquisitions observed close in time to the flood event, which limits their ability to exploit historical context and makes them sensitive to missing modalities. We propose a multimodal framework for flood extent mapping that uses one mandatory flood-time S1 image together with optional auxiliary modalities: flood-time S2, pre-flood S1, and pre-flood S2. Each modality is encoded with a remote-sensing foundation model, to obtain a common embedding space. A lightweight context generator produces a shared context embedding, which is concatenated with each modality embedding and processed by a gating network. The resulting gates are used to compute a weighted average over the available modality embeddings before decoding into a binary flood mask. The aggregation is permutation-invariant and naturally handles missing inputs. Experiments on a subset of the Kuro Siwo dataset with added Sentinel-2 images, show that the proposed design effectively leverages multimodal and multi-temporal observations while remaining robust when auxiliary modalities are unavailable."
+  },
+  {
+   "id": "tenka-physics-guided-multimodal-deep-learning-bolide",
+   "title": "TENKA: Physics-Guided Multimodal Deep Learning for Bolide Detection from Geostationary Satellite Observations",
+   "start": 166,
+   "end": 170,
+   "session": "Earth Observation 2 / Operations 3",
+   "sessionNum": "3.9",
+   "kind": "oral",
+   "authors": "Dario Ruggeri, Andrea Cavallini",
+   "abstract": "Bolide detection from geostationary satellite observations is a challenging problem due to the overwhelming prevalence of lightning and meteorological optical emissions. Existing approaches rely primarily on rule-based filtering or physics-driven machine learning, often trading detection sensitivity for precision. We present TENKA a physics-guided multimodal deep learning architecture that integrates spatial–spectral ABI imagery, temporal GLM event sequences, and physics-inspired summary features derived from GLM group evolution. TENKA jointly exploits morphological cues, temporal coherence, and physically meaningful constraints associated with meteoroid atmospheric entry. Evaluated on a curated dataset of 2,000 manually vetted bolides and 2,000 non-bolide flashes, the approach achieves an AUC of 0.9983 and a recall of 0.983. Under a simulated real-world imbalance representative of operational GLM observations, TENKA model significantly reduces false positives compared to purely data-driven DL baselines while maintaining high sensitivity. These results highlight the importance of integrating domain-informed physical descriptors within deep learning frameworks for robust aerospace event detection."
+  },
+  {
+   "id": "methane-detection-board-satellites-unorthorectified-imagery",
+   "title": "Methane Detection On Board Satellites from Unorthorectified Imagery",
+   "start": 171,
+   "end": 175,
+   "session": "Earth Observation 2 / Operations 3",
+   "sessionNum": "3.9",
+   "kind": "oral",
+   "authors": "Maggie Chen, Hala Lamdouar, Luca Marini, Laura Martínez-Ferrer, Chris Bridges, Giacomo Acciarini",
+   "abstract": "As a potent greenhouse gas, methane is a major driver of climate change. Its effective mitigation relies on timely detection. Conventional detection methods rely on orthorectification to correct geometric distortions and matched filters to enhance plume signals, which are steps designed for ground processing and poorly suited to onboard execution. We introduce UnorthoDOS, a dataset and approach for training machine learning models directly on unorthorectified hyperspectral imagery, bypassing both orthorectification and matched-filter products. Our U- Net models trained on unorthorectified data approach the performance of models trained on orthorectified data (IoU 16.91% vs. 18.47% on all plumes), while both substantially outperform the mag1c matched-filter baseline (IoU 4.76%). We further demonstrate the feasibility of onboard deployment: FP16 compression halves model size with under 0.3% output deviation. The trained ML models and two ML-ready datasets – orthorectified and unorthorectified hyperspectral imagery from the EMIT sensor – are publicly available at https://huggingface. co/datasets/SpaceML/UnorthoDOS, with code at https: //github.com/spaceml-org/plume-hunter."
+  },
+  {
+   "id": "floodcatch-physics-guided-machine-learning-flood-dynamics",
+   "title": "FloodCatch: Physics-Guided Machine Learning for Flood Dynamics Monitoring Between Sentinel-1 Acquisitions",
+   "start": 176,
+   "end": 180,
+   "session": "Earth Observation 2 / Operations 3",
+   "sessionNum": "3.9",
+   "kind": "oral",
+   "authors": "Jiayi Cai, Marin Heckmann, Julien Elkhiati, Martin Chauvin, Kevin De Vasconcelos, Sofiane Schaack",
+   "abstract": "Floods are among the most frequent and damaging natural disasters, with impacts across social, economic, and environmental systems. As climate change intensifies extreme rainfall events, both the frequency and severity of floods are increasing. Reliable flood monitoring is therefore essential for early warning and post-event impact assessment. While physics-based hydrological and hydrodynamic models are widely used for flood prediction, they remain constrained by data scarcity, computational complexity, and uncertain initial and boundary conditions. Earth observation, particularly Synthetic Aperture Radar (SAR), provides spatially detailed and near all-weather flood mapping; however, satellite revisit intervals are typically too coarse to capture continuous flood dynamics. To address this limitation, FloodCatch proposes a physics-guided machine learning framework for reconstructing flood probability maps at unobserved timestamps. The approach combines unsupervised SAR-based flood segmentation with hybrid spatio-temporal imputation that integrates physical constraints into the learning process. Experiments across multiple flood cycles demonstrate improved temporal continuity and physically coherent flood evolution compared to purely data-driven baselines."
+  },
+  {
+   "id": "fun-q1-scouring-first-euclid-data-astrophysical",
+   "title": "Fun with Q1: Scouring the First Euclid Data for Astrophysical Anomalies with AnomalyMatch",
+   "start": 182,
+   "end": 187,
+   "session": "Astrophysics 3",
+   "sessionNum": "3.10",
+   "kind": "oral",
+   "authors": "Pablo Gómez, Giuseppe Galardi, David O’Ryan",
+   "abstract": "The Euclid Quick Data Release 1 (Q1) provides a first glimpse at the survey that will ultimately cover a third of the sky. We present a systematic search for astrophysical anomalies across the full Q1 footprint — approximately 30 million source cutouts generated on-the-fly from ∼19.4 TB of survey mosaics — using AnomalyMatch, a semi-supervised active learning framework, and the streaming cutout generator Cutana. Each complete pass sustains a generation rate of ∼200 images per second and completes the entire data volume in 48–72 hours on ESA Datalabs. Starting from 35 known anomalies, we perform three iterative training runs with active learning and identify 8,547 anomaly candidates, achieving a 60% anomaly ratio among the top-ranked predictions, of which 95% lack prior literature associations. We characterise the pipeline’s computational performance and demonstrate scalability to Euclid’s upcoming Data Release 1 (∼30× the sky area)."
+  },
+  {
+   "id": "improving-faint-object-detection-space-situational-awareness",
+   "title": "Improving Faint Object Detection for Space Situational Awareness with Variational Autoencoders",
+   "start": 188,
+   "end": 193,
+   "session": "Astrophysics 3",
+   "sessionNum": "3.10",
+   "kind": "oral",
+   "authors": "Angela Cratere, Luca Ghilardi, Vishnu Reddy, Francesco Dell’Olio, Charalampos S. Kouzinopoulos, Roberto Furfaro",
+   "abstract": "We present a deep-learning pipeline for enhancing the detection of faint moving objects in optical space situational awareness (SSA) imagery through automated star removal and background reconstruction. Detecting lowsignal-to-noise ratio (SNR) objects remains extremely challenging in optical observations, particularly in the cislunar (X-GEO) environment, where structured sky backgrounds, dense stellar fields, and scattered moonlight significantly degrade the performance of classical detection algorithms. To address this problem, the proposed pipeline combines a lightweight segmentation network (Tiny-U-Net) to generate stellar masks with a partial-convolution variational autoencoder (astro-VAE), designed to learn the statistical distribution of astronomical backgrounds and perform context-aware inpainting of masked regions. The reconstructed background maps can then be used as a preprocessing step to suppress fixed sources and background inhomogeneities prior to detection. As a proof of concept, the approach is integrated with a shift-and-stack scheme and evaluated on real ground-based telescope observations targeting the X-GEO region. Results demonstrate that the method reconstructs star-free backgrounds with high fidelity, while preserving moving targets and significantly enhancing detectability, thereby providing an effective data-driven preprocessing strategy for faint moving-object detection in optical SSA scenarios."
+  },
+  {
+   "id": "developing-digital-twin-magao-x-telemetry-based",
+   "title": "Developing a digital twin of MagAO-X for telemetry-based post-processing of high contrast imaging data",
+   "start": 194,
+   "end": 198,
+   "session": "Astrophysics 3",
+   "sessionNum": "3.10",
+   "kind": "oral",
+   "authors": "Matthijs Mars, Louis Desdoigts, Sebastiaan Haffert",
+   "abstract": "High-contrast imaging aims to detect faint companions and circumstellar material by suppressing on-axis stellar light, but residual structure in the stellar point spread function (PSF) still limits achievable contrast close to the star. Even with extreme adaptive optics, low-order aberrations and instrument/telescope vibrations can introduce time-variable leakage that is challenging to remove with post-processing methods that rely on diversity or reference observations. We present a telemetry-based forward-modelling approach that reconstructs low-order aberrations from a focal-plane low-order wavefront sensor (FLOWFS) and propagates them through a fully differentiable digital twin of the MagAO-X instrument to predict the stellar PSF. In simulation, we show that this approach can accurately model the stellar PSF and achieve post-processed images that are dominated by photon noise. We discuss a development path toward laboratory and onsky validation, and outline practical challenges such as telemetry data volume and the fusion of low- and high-order wavefront sensor estimates. These techniques can also be applied to space-based observatories like the Habitable Worlds Observatory (HWO)."
+  },
+  {
+   "id": "traceable-spectral-inference-influence-functions-efficient-data",
+   "title": "Traceable Spectral Inference via Influence Functions: Efficient Data Attribution and Error Proxies for the Ariel Mission",
+   "start": 199,
+   "end": 204,
+   "session": "Astrophysics 3",
+   "sessionNum": "3.10",
+   "kind": "oral",
+   "authors": "Nikki Grens, Luís F. Simões, Kai Hou Yip, Theresa Lueftinger",
+   "abstract": "Interpretability is critical for machine learning models deployed in scientific space missions such as ESA’s Ariel, where ground truth is unavailable during operations and physical plausibility must be assessed. While most explainable AI methods focus on feature attribution, this work investigates training data attribution through influence functions and introduces three key contributions for operational spectroscopy pipelines. First, influence is reformulated in terms of prediction rather than loss, enabling label-free deployment. Second, by leveraging the closed-form ridge solution of an Extreme Learning Machine, infinitesimal prediction influence is efficiently computed. Third, an influence-based conservative error proxy is derived by propagating training residuals through the influence sensitivities. Evaluated against simulated spectra, the proposed proxy correlates strongly with scale and shape-based spectral errors. Furthermore, influence functions enable the identification of the most influential samples and the approximation of the most harmful ones. Together, these results suggest that this approach can serve as an operational framework for scientific machine learning."
+  },
+  {
+   "id": "leveraging-parallel-computing-visual-onboard-attitude-tracking",
+   "title": "Leveraging parallel computing for a visual onboard attitude tracking algorithm on qualified space hardware",
+   "start": 206,
+   "end": 210,
+   "session": "Onboard AI 2",
+   "sessionNum": "3.11",
+   "kind": "oral",
+   "authors": "Giacomo Battaglia, Gianluca Giuffrida, Gionata Benelli, Gabriele Meoni, Paolo Panicucci",
+   "abstract": "Earth Observation (EO) missions represent a vital component of the space industry and support a wide range of scientific, environmental, and commercial applications. These missions retrieve visual data from payload cameras to be then post-processed for on-ground analysis and relegate critical support functions to the spacecraft platform. However, the recent need for autonomy raises the possibility of exploiting that data as additional information for onboard perception using Earth-related cues. Nevertheless, algorithm design has to consider hardware constraints to ensure successful integration into qualified space systems. This article introduces a novel visual attitude tracking algorithm for EO missions that uses Earth images to retrieve a direct relative attitude measurement. The algorithm uses the SuperPoint keypoint extractor coupled with a brute force matcher to build frame-to-frame correspondences. Those are then exploited by a geometrical relative attitude estimation algorithm bulked with RANSAC for outlier rejection. Crucially, this algorithm is developed to run on the space-graded Class-1-qualified board GPU@SAT. Hence, the design considers the evident constraints brought about by space-qualified hardware but also accelerates computation by exploiting parallel computing through the provided soft-GPU environment. This article shows performance levels as estimation accuracy and computational runtime of this complex algorithm, enabled by GPU@SAT."
+  },
+  {
+   "id": "prior-knowledge-informed-centroiding-cnn-planetary-small",
+   "title": "Prior knowledge-informed centroiding CNN for planetary and small bodies navigation",
+   "start": 211,
+   "end": 216,
+   "session": "Onboard AI 2",
+   "sessionNum": "3.11",
+   "kind": "oral",
+   "authors": "Umberto Mondini, Pietro Califano, Paolo Panicucci, Francesco Topputo",
+   "abstract": "This work proposes a prior-informed convolutional neural network for centroid estimation in autonomous optical navigation around planetary and small bodies. The architecture integrates an EfficientNet backbone with handcrafted image descriptors and physical priors through a Feature-wise Linear Modulation (FiLM) conditioning module, predicting a correction to the intensity-weighted center of brightness rather than the center of figure directly. Centroiding for non-spherical targets is challenging due to irregular geometries, strong self-shadowing, large phase angles, and partial field-of-view coverage. Existing deep learning approaches have demonstrated improved robustness to illumination variability but typically generalize poorly across different body shapes. The proposed model is compared against two algorithms developed for the RAMSES’ Farinella CubeSat mission: an analytical COB correction law and a lightweight handcrafted-feature network. Evaluation covers training targets (Itokawa and Bennu) and unseen bodies (Apophis, Mars, Moon). The FiLM model consistently achieves the lowest centroiding errors and best generalization across all test scenarios. Inference on a NVIDIA Jetson Orin Nano runs below 55 ms in the ONNX Runtime framework with CUDA acceleration."
+  },
+  {
+   "id": "ai-driven-framework-automated-identification-classification-multi",
+   "title": "An AI-Driven Framework for Automated Identification and Classification of Multi-Label Solar Radio Bursts",
+   "start": 217,
+   "end": 221,
+   "session": "Onboard AI 2",
+   "sessionNum": "3.11",
+   "kind": "oral",
+   "authors": "Aditya Ade, Jasmina Lazendic-Galloway, Pietro Zucca, Mark Bentum",
+   "abstract": "This work presents an AI-driven framework for automated multi-label identification and classification of solar radio bursts (SRBs) in LOFAR dynamic spectra. The central contribution is a novel Self-Supervised Learning (SSL) pre-training strategy tailored to dynamic spectra morphology, which leverages large volumes of unlabeled LO- FAR observations and filtered/unfiltered pair views to learn domain-invariant, burst-aware, RFI-robust representations prior to supervised fine-tuning. Our results demonstrate that SSL is a scalable and label-efficient approach for operational SRB cataloging, enabling reliable detection of both common and minority burst types directly from archived LOFAR observations."
+  },
+  {
+   "id": "agile-earth-observation-satellite-scheduling-hybrid-repair",
+   "title": "Agile Earth Observation Satellite Scheduling with Hybrid Repair and Pointer-Based Reinforcement Learning",
+   "start": 222,
+   "end": 227,
+   "session": "Onboard AI 2",
+   "sessionNum": "3.11",
+   "kind": "oral",
+   "authors": "F. Favaretto, S. Giannattasio, G. Volpi, L. Petronzio",
+   "abstract": "Agile Earth observation (EO) satellites must select imaging and downlink opportunities in real time while respecting attitude agility, energy, storage, and payload-duty constraints. We couple an Orekit-based physics simulator with a deterministic repair routine and a proximal policy optimization (PPO) agent that proposes incremental edits to a warmstarted, ground-uplinked plan. Each decision is a scalar index into a fixed-capacity but dynamically populated bank of imaging, downlink, reinsertion, charging, and Noop actions. The repair routine commits feasible insertions and may evict lowerpriority imaging activities; removed activities with remaining visibility windows are exposed for reinsertion. We compare two MLP policies with a pointer-based Transformer that preserves the typed candidate structure. Across 1000 held-out episodes per policy, paired by seed, the pointer policy achieves higher mean return (64.3 versus 51.0 and 42.3), executes about 2.5 times more successful downlinks, and proposes fewer infeasible actions. This gain is accompanied by greater plan churn; some unreinserted activities can arise from fixed-window warm-start tasks that cannot be rescheduled after eviction. The results support candidate-wise attention as a useful inductive bias for hybrid on-board replanning, while exposing the operational trade-off between accumulated utility and schedule stability."
+  },
+  {
+   "id": "improving-board-shape-models-sun-sensors-implicit",
+   "title": "Improving On-board Shape Models Using Sun Sensors and Implicit Representations",
+   "start": 229,
+   "end": 234,
+   "session": "Space Flight Dynamics 2 / Guidance, Navigation and Control 2",
+   "sessionNum": "3.12",
+   "kind": "oral",
+   "authors": "Zacharia A. Rudge, Giacomo Acciarini, Dario Izzo, Dominik Dold, Moritz Fieback, Said Hamdioui",
+   "abstract": "We propose an original, end-to-end approach to generate and refine the onboard 3D shape model of irregular small bodies, such as asteroids, using only low-cost Sun sensor eclipse data and coarse a priori knowledge, tailored for resource-constrained missions like CubeSats. Leveraging EclipseNets, a differentiable neural model of eclipse boundaries, our pipeline first refines 2D silhouettes by learning from real-time entry and exit events during spacecraft orbits, avoiding the limitations of traditional imaging or lidar in bandwidth-starved environments. These silhouettes then supervise a compact neural signed-distance field with periodic activations, enabling incremental updates to a high-fidelity implicit geometry representation capable of capturing fine-scale features and concavities. In simulations of the body Eros under realistic orbital dynamics, the method increases silhouette IoU from 0.70 to 0.87 and produces coherent 3D reconstructions, suggesting our approach could find a place in future autonomous architectures for small-body exploration."
+  },
+  {
+   "id": "identification-gravitational-constant-satellite-trajectories-neural-ordinary",
+   "title": "Identification of the Gravitational Constant from Satellite Trajectories Using Neural Ordinary Differential Equations",
+   "start": 235,
+   "end": 240,
+   "session": "Space Flight Dynamics 2 / Guidance, Navigation and Control 2",
+   "sessionNum": "3.12",
+   "kind": "oral",
+   "authors": "Katarina Dyreby, Cláudia Soares",
+   "abstract": "The rapid growth of satellite constellations in low Earth orbit has increased the probability of collisions involving satellites and debris, making accurate orbit propagation increasingly important. However, accurate orbit prediction remains challenging. Propagators depend on spacecraft properties, environmental parameters, and nonconservative forces that are often uncertain, causing propagation errors to accumulate over time. Estimating these values directly from orbital data offers a solution that could improve propagation accuracy. This work investigates whether a global physical constant can be identified directly from real orbital data using Neural Ordinary Differential Equations (Neural ODEs). A hybrid Neural ODE model is developed in which the equations of motion of satellites are split into two parts: known gravitational dynamics, with the gravitational constant treated as a trainable parameter, and a Neural Network that learns the residual accelerations representing the unmodelled forces. Using different initial biases, the model successfully recovers the gravitational constant for relative errors of up to 150%. Increasing the initialization error primarily increases the number of training epochs required for convergence, as the final relative errors achieved are below 0.02% for all different initial biases used. At higher initial errors, the Neural Network instead compensates for the incorrect gravitational term by learning residual accelerations several orders of magnitude larger than physically expected, preventing recovery of the gravitational constant. These results show that Neural ODEs can recover physical parameters from real orbital data, while also revealing the limits of parameter identifiability when unknown dynamics are learned simultaneously."
+  },
+  {
+   "id": "second-order-gradient-informed-spacecraft-neural-guidance",
+   "title": "Second-Order Gradient-Informed Spacecraft Neural Guidance",
+   "start": 241,
+   "end": 245,
+   "session": "Space Flight Dynamics 2 / Guidance, Navigation and Control 2",
+   "sessionNum": "3.12",
+   "kind": "oral",
+   "authors": "Zhong Zhang, Dario Izzo, Francesco Topputo",
+   "abstract": "Building on the Pontryagin Minimum Principle (PMP)–Hamilton–Jacobi–Bellman (HJB) correspondence, second-order differential relations are derived to construct loss terms for neural guidance training. While zerothand first-order terms provide standard supervision for the value function and its gradient (costate), the proposed second-order formulation enforces physics consistency without requiring Hessian ground-truth labels, state-transition-matrix propagation, or additional adjoint generation. The framework is evaluated on an Earth-to-Venus low-thrust trajectory optimization problem. Compared with zeroth- and first-order supervision, the second-order formulation improves the accuracy of guidance reconstruction, residual consistency, and closed-loop robustness."
+  },
+  {
+   "id": "learning-based-reconstruction-space-resident-objects-single",
+   "title": "Learning-Based Reconstruction of Space Resident Objects from Single Orbit Data",
+   "start": 246,
+   "end": 250,
+   "session": "Space Flight Dynamics 2 / Guidance, Navigation and Control 2",
+   "sessionNum": "3.12",
+   "kind": "oral",
+   "authors": "Alessandro Scarciglia, Enrico Magli",
+   "abstract": "We present a learning-based method, built on the Neural Radiance Fields (NeRF) framework, to jointly recover the geometry and appearance of a Space Resident Object (SRO) from a sequence of frames acquired during a single radial boost maneuver. The approach efficiently encodes spatial information while modeling complex, in-the-wild appearance. A key contribution is the explicit separation of geometry and appearance, allowing operational control over visual effects without compromising 3D structure fidelity. A dedicated appearance branch, regularized through learned codes, resolves geometry–appearance ambiguity, preventing illumination variations from being misinterpreted as structural features."
+  },
+  {
+   "id": "enhancing-ai-trustworthiness-rover-navigation-risk-aware",
+   "title": "Enhancing AI Trustworthiness in Rover Navigation: Risk-Aware Path Planning through Uncertainty Quantification",
+   "start": 253,
+   "end": 258,
+   "session": "Wednesday 21 October",
+   "sessionNum": "4.1",
+   "kind": "poster",
+   "authors": "Théo Gachet, Luis Mansilla, Diane Magnin",
+   "abstract": "Autonomous Martian rovers must operate in harsh data-scarce environments under uncertainty. We propose a framework for uncertainty quantification in terrain segmentation combining Adaptive Prediction Sets with Kandinsky Calibration, yielding spatially coherent, statistically valid estimates. Integrated into a pixel-level risk map, they enable risk-aware navigation in unstructured environments. Trained on AI4Mars with a U-Net MobileNetV2 backbone, our model produces calibrated uncertainty whose marginal coverage guarantee transfers to unseen Martian terrain. The UQ approach mitigates overconfident predictions in low-data regimes and supports decisionmaking through interpretable maps. A modified A* planner leverages these maps for risk-aware path planning across terrain and uncertainty levels. This study provides a principled UQ framework for segmentation in space robotics, enhancing safety and interpretability in autonomous navigation. Keywords: Uncertainty Quantification, Conformal Prediction, Semantic Segmentation, Autonomous Navigation, Risk-Aware Planning, Planetary Rovers"
+  },
+  {
+   "id": "launcher-trajectory-criticality-prediction-recurrent-neural-networks",
+   "title": "Launcher Trajectory Criticality Prediction using Recurrent Neural Networks",
+   "start": 259,
+   "end": 263,
+   "session": "Wednesday 21 October",
+   "sessionNum": "4.1",
+   "kind": "poster",
+   "authors": "Arthur Péquin, Daniel Blanquez, Lionel Brayeur",
+   "abstract": "The prediction of launcher trajectories is a central problem in aerospace engineering, as safety is at stake in the event of trajectory failure. The Autonomous Flight Safety System (AFSS), as an independent subsystem of launch vehicles, processes data from the onboard Global Positioning System (GPS) and the Inertial Measurement Unit (IMU) sensors to make flight termination decisions in the event of an errant vehicle. In an effort to improve on-flight mission control, this work reports on the integration of predictive machine learning (ML) models into the AFSS for the detection of launcher trajectory failures. Machine learning algorithms pertaining to the recurrent neural networks (RNNs) class are explored for their predictive capabilities in time-dependent problems. The models are trained and validated on data generated using a launcher flight simulator. All investigated models provide high global accuracies hence validating the approach. An inference time benchmark was performed on an embedded AMD Kria board to challenge the models in a practical environment for space mission control."
+  },
+  {
+   "id": "structure-aware-unsupervised-anomaly-detection-spacecraft-telemetry",
+   "title": "Structure-Aware Unsupervised Anomaly Detection for Spacecraft Telemetry with Adaptive EVT Thresholding",
+   "start": 264,
+   "end": 268,
+   "session": "Wednesday 21 October",
+   "sessionNum": "4.1",
+   "kind": "poster",
+   "authors": "Óscar Alcarria, Rafael Sánchez, Javier Sempere, Pablo Torrijos, Juan C. Alfaro, Juan M. Auñón, José A. Gámez, José M. Puerta",
+   "abstract": "Operational anomaly detection in spacecraft telemetry typically requires labeled historical anomalies or extended warm-up periods. These requirements are rarely met in practice. We propose an unsupervised, deployment-ready framework that produces predictions from the second month of operation without any labels, prior fault knowledge, or mission-specific tuning. The approach combines incremental monthly retraining, statistical model selection, and adaptive Extreme Value Theory (EVT) thresholding for false alarm control. On the ESA Anomalies Dataset (ESA- AD), it achieves F0.5 = 0.700 on Mission 1 and F0.5 = 0.698 on Mission 2 under strict chronological evaluation."
+  },
+  {
+   "id": "exploring-trade-off-between-structured-pruning-fault",
+   "title": "Exploring the Trade-Off Between Structured Pruning and Fault Tolerance in Deep Neural Networks for Space Applications",
+   "start": 269,
+   "end": 273,
+   "session": "Wednesday 21 October",
+   "sessionNum": "4.1",
+   "kind": "poster",
+   "authors": "Toon Vinck, Naïn Jonckers, Jaro De Roose, Jeffrey Prinzie, Peter Karsmakers",
+   "abstract": "Deep Neural Networks (DNNs) inherently exhibit a degree of robustness to bit-level faults due to their distributed representation of information. As a model increases in width, this information becomes more dispersed, theoretically reducing the impact of any single bit fault. In this paper, we empirically investigate the relationship between model width and robustness to Single Event Upsets (SEUs). We conduct a comprehensive experiment in which baseline models undergo iterative structured pruning to reduce their width while preserving task performance as much as possible. At each pruning stage, we run a targeted faultinjection campaign to evaluate the model’s performance under simulated bit-flip scenarios. Our results show that, although structured pruning increases per-inference sensitivity to faults by reducing redundancy, this effect is effectively counterbalanced by shorter execution time, which lowers the probability of encountering an SEU. These findings suggest that structured pruning can yield significant energy and latency savings without compromising overall reliability, providing useful guidance for designing robust AI systems for space applications."
+  },
+  {
+   "id": "physics-informed-convlstm-networks-transient-thermal-modeling",
+   "title": "Physics-Informed ConvLSTM Networks for Transient Thermal Modeling of Spacecraft PCBs",
+   "start": 274,
+   "end": 279,
+   "session": "Wednesday 21 October",
+   "sessionNum": "4.1",
+   "kind": "poster",
+   "authors": "Ismael Gallo-López, David González-Bárcena, Ernesto Enfedaque-Medina",
+   "abstract": "This work integrates physical principles into neural networks for transient thermal modeling of spacecraft Printed Circuit Boards (PCBs). A Convolutional Long Short-Term Memory (ConvLSTM) architecture captures spatiotemporal dynamics, with scheduled sampling to stabilise autoregressive inference over long horizons. To address the scarcity of high-fidelity thermal data in early design phases, we add a physics-informed loss term penalising violations of the nodal energy balance. Across six training-set sizes (N = 10 to N = 1000), the physics-informed variant reduces Mean Absolute Error (MAE) by 67–96% relative to an identically structured data-driven baseline, with the largest gains in the data-scarce regime (8.15 K to 0.29 K at N = 50). Worstcase errors fall below the 5 K margin typically required in spacecraft thermal analysis for N ≥200, against 12–58 K for the baseline. We additionally report a screening against three alternative architectures, a grid search over the loss weights, and a runtime comparison against the reference solver."
+  },
+  {
+   "id": "incremental-online-learning-european-space-agency-benchmark",
+   "title": "Incremental Online Learning on the European Space Agency Benchmark for Anomaly Detection in Satellite Telemetry",
+   "start": 280,
+   "end": 284,
+   "session": "Wednesday 21 October",
+   "sessionNum": "4.1",
+   "kind": "poster",
+   "authors": "Jonathan Langer, Wadim Koslow, Alexander Rüttgers, Valentin Loiseau, Marc Hilbert, Michael Felderer",
+   "abstract": "Ensuring safe and continuous spacecraft operation requires reliable satellite telemetry health monitoring, yet manual inspection of high dimensional telemetry streams is labor intensive and error prone. Automatic anomaly detection is therefore essential for autonomous spacecraft operations and a central component of the European Space Agency’s (ESA) Artificial Intelligence for Automation (A2I) initiative. The \"European Space Agency Benchmark for Anomaly Detection in Satellite Telemetry\" (ESA-ADB) provides a standardized research framework with real mission data, expert annotations, dedicated evaluation metrics, and baseline anomaly detection results. Although the benchmark establishes consistent evaluation, its baseline relies on static training without model updates during inference and therefore does not explicitly address concept drift in long running telemetry streams. This work investigates incremental online learning on ESA-ADB using modified versions of Mondrian Forest and Efficient Incremental Local Outlier Factor (EILOF), both designed for streaming updates and scalable to large numbers of telemetry channels. Our results demonstrate that online adaptation significantly improves performance in the most important metric (EW F0.5) compared to static training. We analyzed a sliding-window strategy for EILOF to balance adaptivity and stability. This analysis provides insights into memory constraints and computational trade-offs relevant for potential on-board deployment scenarios."
+  },
+  {
+   "id": "marker-free-computer-vision-driven-autonomous-docking",
+   "title": "Marker-Free Computer-Vision-Driven Autonomous Docking for a Space Interface",
+   "start": 285,
+   "end": 290,
+   "session": "Wednesday 21 October",
+   "sessionNum": "4.1",
+   "kind": "poster",
+   "authors": "Andoni Benito, Endika Llano, Ainhoa Ruiz, Verónica González",
+   "abstract": "Automation is becoming indispensable for on-orbit servicing, assembly, and manufacturing, driving the need for standardized robotic interfaces. This work presents a marker-free vision subsystem for the Standard Interface for Robotic Manipulation (SIROM) that provides real-time six-degree-of-freedom (6-DoF) pose estimation of a passive SIROM relative to its active counterpart. The subsystem relies solely on dual grayscale images from two rigidly mounted cameras and outputs a learned visibility score and the relative pose, represented by Cartesian translation and quaternion orientation. Trained on a 20,000-sample dataset collected with a UR10e manipulator, the model obtains 8.431 mm translational RMSE and 0.0986 rad (5.65◦) C3-symmetry-aware rotational RMSE on the held-out test set; close to the 0.20 m docking decision distance, errors fall to approximately 5 mm and 0.05 rad. Visibility was classified correctly for every test example. At approximately 30 Hz, the system completed autonomous demonstrations under clutter, target motion, and tilted/elevated configurations. These results represent a step toward reliable, marker-independent, vision-only docking for modular space robotics."
+  },
+  {
+   "id": "detecting-lunar-craters-at-scale",
+   "title": "Detecting Lunar Craters at Scale",
+   "start": 291,
+   "end": 295,
+   "session": "Wednesday 21 October",
+   "sessionNum": "4.1",
+   "kind": "poster",
+   "authors": "Patrick Bauer, Marius Schwinning, Florian Renk, Andreas Weinmann, Melanie Siegel, Hichem Snoussi",
+   "abstract": "The reliable detection of lunar craters is a common research topic in machine learning-driven object detection. It is also of practical interest given the focus of the European Space Agency on planned lunar missions. There are many sites of interest on the lunar surface, and an automated system that can detect as many craters as possible would be valuable for observing and analyzing potential landing sites. Nevertheless, automated crater detection algorithms based on deep learning methods struggle with challenging image conditions, such as rugged terrain and different illumination that affect the appearance of craters. Additionally, some detection models fail to generalize when faced with distinct variations in crater shape and size, and are unable to detect craters that are only a few pixels in size. In this paper, we build upon the OWLv2 framework to introduce a multi-scale crater detection approach capable of robustly identifying craters of diverse sizes and shapes across varying illumination conditions. We contribute a system that processes full Calibrated Data Record images from the Lunar Reconnaissance Orbiter Camera and outputs detection results that cover the entire image."
+  },
+  {
+   "id": "hardware-aware-comparison-keypoint-vs-end-end",
+   "title": "A Hardware-Aware Comparison: Keypoint vs. End-to-End Pose Estimation for Space Objects",
+   "start": 296,
+   "end": 300,
+   "session": "Wednesday 21 October",
+   "sessionNum": "4.1",
+   "kind": "poster",
+   "authors": "Andreas Rebsamen, Matthias Hoefflin, Andreas Ming, Juergen Wassner",
+   "abstract": "Vision-based pose estimation enables autonomous spacecraft navigation but faces two major challenges: domain gaps between synthetic training images and real sensor data, and tight resource constraints of space-qualified hardware. This paper presents a hardware-aware comparison of keypoint-based and direct end-to-end 6D pose estimation approaches for space objects, evaluating pose accuracy and runtime on an FPGA accelerator. To study domain gaps, we test on raw rendered images and Camera-inthe-Loop datasets that introduces realistic optical, sensor, and processing effects. Quantized keypoint-based models achieve on average 48 % lower pose estimation error than end-to-end models, at the cost of 1.6× to 10× longer runtime. A robustness-optimized end-to-end architecture, obtained via evolutionary architecture search, increases robustness to domain shifts while maintaining a competitive accuracy–runtime trade-off. We also demonstrate that parameter count and FLOPs alone are insufficient runtime indicators, since architectural design and accelerator characteristics strongly influence runtime."
+  },
+  {
+   "id": "vstb-camera-loop-testbed-space-vision-ai",
+   "title": "VSTB: A Camera-in-the-Loop Testbed for Space Vision AI",
+   "start": 301,
+   "end": 306,
+   "session": "Wednesday 21 October",
+   "sessionNum": "4.1",
+   "kind": "poster",
+   "authors": "Andreas Rebsamen, Matthias Hoefflin, Roger Bruderer, Juergen Wassner",
+   "abstract": "Validating vision-based pose estimation systems for space applications faces a critical simulation-to-reality gap. Existing approaches are either purely synthetic, neglecting real hardware effects, or robot-based, introducing artifacts from mounting fixtures and backgrounds. This paper presents the Visual Servoing Testbed (VSTB), a novel platform capturing rendered space imagery with a physical camera inside a controlled enclosure. This displayto-camera approach incorporates camera sensor effects (lens distortion, noise, and processing artifacts) without physical mockup artifacts. VSTB integrates astrodynamic simulation, rendering, an FPGA-based camera platform, and web orchestration, supporting data generation, camerain-the-loop testing, model evaluation, and hardware-in-the-loop simulation with closed-loop validation at 10 fps. SSIM analysis on over 4’000 images yields a mean similarity of 0.95, confirming subtle but measurable sensor effects impacting neural network performance. Unlike robot-based testbeds requiring post-processing, VSTB enables uninterrupted closed-loop simulation in a deterministic environment. The modular architecture extends beyond space to other monocular-vision applications."
+  },
+  {
+   "id": "geoai-practice-evaluating-unified-open-source-library",
+   "title": "GeoAI in Practice: Evaluating a Unified Open-Source Library for Geospatial AI",
+   "start": 307,
+   "end": 311,
+   "session": "Wednesday 21 October",
+   "sessionNum": "4.1",
+   "kind": "poster",
+   "authors": "Adriano Gentile, Claudio Domenico Giuliani, Antonio Maci, Pietro Sangermano, Alessandro Santorsola",
+   "abstract": "The proliferation of machine learning applications in geospatial analysis has resulted in a fragmented ecosystem of Python libraries, each covering specific workflow aspects without offering a unified interface. This fragmentation increases implementation complexity and steepens the learning curve for researchers and practitioners. We evaluate GeoAI, an open-source Python library designed to integrate artificial intelligence methods with geospatial workflows, against TorchGeo and TerraTorch on two fundamental tasks: land cover classification and building footprint extraction. A controlled experimental setup enforces identical data, model configurations, and functional specifications across frameworks. The toolchain fragmentation is quantified by aggregating the static structural metrics into a composite fragmentation index. GeoAI reduces code volume by over 80% and achieves comparable reductions in structural fragmentation across both tasks, reflecting systematic architectural compactness."
+  },
+  {
+   "id": "aligning-human-oversight-aerospace-cross-sector-approach",
+   "title": "Aligning Human Oversight in Aerospace: A Cross-Sector Approach to Operationalized Trustworthy AI",
+   "start": 312,
+   "end": 317,
+   "session": "Wednesday 21 October",
+   "sessionNum": "4.1",
+   "kind": "poster",
+   "authors": "Sofia Kyrampalidou, Tim Robin Kosack, Dr. Simon Odrowski",
+   "abstract": "Safety-critical space operations increasingly rely on AIenabled decision-support systems to manage conjunction and support collision-avoidance decisions in congested aerospace environments. However, teams still lack guidance on what “human oversight” for high-risk AI systems should look like in an operational setting and in a way that is tangible and auditable. This paper explores a proposed minimum set of sociotechnical oversight actions and their corresponding auditable evidence for demonstrating alignment with the EU AI Act’s requirement on human oversight. Using structured document analysis, we combine the AI Act as a regulatory anchor, EASA guidance as a mature aviation baseline, space operational sources from ESA and NASA and human-factors literature on known oversight failure modes. We propose: (i) a catalogue of oversight actions across the system’s lifecycle (before/during/after an action) and (ii) a Minimum Oversight Evidence Set (MOES) that makes those actions implementable and auditable. A collision avoidance use case walkthrough is used to illustrate how the framework can be applied across both sectors, providing a reusable template for operationalizing trustworthy AI oversight."
+  },
+  {
+   "id": "planet-detection-protoplanetary-disks-symmetry-exploitation-contrastive",
+   "title": "Planet detection in protoplanetary disks by symmetry exploitation and contrastive learning",
+   "start": 318,
+   "end": 322,
+   "session": "Wednesday 21 October",
+   "sessionNum": "4.1",
+   "kind": "poster",
+   "authors": "Alexandra Murariu, Jason P. Terry, Sergei Gleyzer",
+   "abstract": "Symmetries are present everywhere in nature: they usually reflect the underlying governing forces or intrinsic structures, thus they offer a powerful bias that can guide learning in complex systems. In this research, we explore how symmetry-aware models can improve exoplanet detection in protoplanetary disks. Using simulated velocity channel maps that capture gas motion at different velocities, we propose a novel detection approach focused on identifying subtle symmetry violations potentially caused by embedded planets, through handcrafted inputs or equivariant networks that follow the symmetries by design. In parallel, we investigate different contrastive learning methods to learn latent representations sensitive to these symmetry patterns. Our results show that explicitly modeling symmetry violations as input features consistently improves performance over baseline and equivariant models. Notably, the SupCon framework, combined with an XGBoost classifier, achieved the highest test accuracy of 94.6% in classifying protoplanetary disks as having a planet or not, outperforming all classical supervised approaches."
+  },
+  {
+   "id": "quantum-inspired-convolutional-networks-high-resolution-pseudo",
+   "title": "Quantum-Inspired Convolutional Networks for High-Resolution Pseudo-Label Generation from Multimodal Earth Observation Data",
+   "start": 323,
+   "end": 327,
+   "session": "Wednesday 21 October",
+   "sessionNum": "4.1",
+   "kind": "poster",
+   "authors": "Abhishek Singh, Giovanni Cuozzo, Alexander Jacob, Claudia Notarnicola",
+   "abstract": "Accurate land-cover mapping from multimodal Earth observation (EO) data remains a challenge in regions where high-resolution annotations are scarce or costly to obtain. This work introduces a quantum convolutional encoder–decoder network for pseudo-label generation using Sentinel-1 SAR and Sentinel-2 multispectral imagery, guided only by coarse MODIS-derived land-cover maps. The proposed framework uses quantum-inspired convolutional blocks to enhance feature extraction and cross-sensor fusion, enabling the model to infer a fine-scale semantic structure from heterogeneous inputs. Experiments were conducted on the DFC2020 dataset, which provides a quadruple of Sentinel-1 SAR, Sentinel-2 multispectral, low-resolution MODIS labels and high-resolution reference land-cover maps. The proposed training framework first learns a robust representation of multimodal inputs through the reconstruction branch before any supervision from low-resolution labels is applied. This self-supervised stage enables the model to capture a fine-scale spectral–spatial structure, which is then used to generate high-resolution pseudo-labels. These pseudo-labels are subsequently evaluated through classification metrics on the test data, demonstrating that the proposed approach produces more spatially coherent and class-consistent compared to classical baselines. The results highlight the potential of quantum-inspired deep learning to improve label generation in low-annotation remote sensing scenarios, offering a scalable path towards high-quality land-cover products for EO applications."
+  },
+  {
+   "id": "reinforcement-learning-co-planar-multi-target-mission",
+   "title": "Reinforcement learning for co-planar multi-target mission planning with a solar sail in Low Earth Orbit",
+   "start": 328,
+   "end": 334,
+   "session": "Wednesday 21 October",
+   "sessionNum": "4.1",
+   "kind": "poster",
+   "authors": "Arturo De Marinis, Fernando Gámez Losada, Jeannette Heiligers",
+   "abstract": "Active Debris Removal (ADR) is a critical priority to ensure the continuity and security of space activities in low Earth orbit. We investigate, in this paper, the design of solar sail missions preparatory for ADR, with the objective of visiting co-planar circular orbits in the order that minimizes the mission transfer time. This challenge is a one-dimensional traveling salesperson problem, which we solve by using Reinforcement Learning (RL). The employment of RL is feasible thanks to the patched method, a semi-analytical technique to estimate the transfer time of trajectories, without numerically integrating and optimizing them. This is decisive for training RL models. We target approximately dawn-dusk sun-synchronous orbits between 700 km and 900 km, where there is high density of debris objects, and constant exposure to sunlight during the year provides ideal conditions for solar sail propulsion. The RL approach is validated against Exhaustive Search (when feasible) and Ant Colony Optimization, and against two simple baselines, i.e. Ascending Sorting and Descending Sorting. The results of the numerical experiments demonstrate that RL effectively identifies optimal and near-optimal transfer sequences, matching the performance of traditional metaheuristics, and offering a framework for rapid mission planning in orbital environment."
+  },
+  {
+   "id": "covariance-estimation-orbit-determination-physics-informed-extreme",
+   "title": "Covariance Estimation for Orbit Determination with Physics-Informed Extreme Learning Machines",
+   "start": 335,
+   "end": 340,
+   "session": "Wednesday 21 October",
+   "sessionNum": "4.1",
+   "kind": "poster",
+   "authors": "Benedikt Aigner, Fabian Dallinger, Thomas Andert, Roger Förstner",
+   "abstract": "Physics-Informed Extreme Learning Machines (PIELMs) are an efficient alternative to classical orbit determination by combining measurement fitting with explicit enforcement of the equations of motion. Practical applications, however, also require uncertainty information. This paper investigates a covariance estimation procedure for PIELM-based orbit determination that propagates assumed measurement noise through the trained model to obtain time-varying position uncertainties. We compute an output-weight covariance from the Jacobian of the stacked residuals with respect to the learned output weights and map it via linear covariance propagation to a time-resolved 3×3 position covariance along the reconstructed trajectory. Using a controlled groundstation tracking scenario over a single orbital arc, we compare the resulting 1σ envelopes against a classical batch weighted least-squares (WLS) reference. Covariance behaviour is assessed by Monte Carlo ensembles over measurement-noise realizations and over random hidden-layer initializations, using the normalized estimation error squared and empirical ellipsoidal coverage. The results indicate that the proposed method yields structured, time-varying uncertainty estimates whose magnitudes are broadly consistent with the realized errors, while exhibiting a systematic time dependence in the calibration along the arc."
+  },
+  {
+   "id": "syndaq-synthetic-data-generation-qualification",
+   "title": "SYNDAQ: Synthetic Data Generation and Qualification",
+   "start": 341,
+   "end": 345,
+   "session": "Wednesday 21 October",
+   "sessionNum": "4.1",
+   "kind": "poster",
+   "authors": "Jose Martinez, Andrea Gobbi, Satish Madhogaria, Patrick Fleith, Kevin Rojczyk, Aiden Ahmet Erdogan, Davide Molinari, Simone Toso, Florian Ehmann, Marco Cristoforetti, Evridiki Ntagiou",
+   "abstract": "Synthetic data is increasingly important for machine learning in domains where real-world data is scarce, sensitive, imbalanced, or costly to obtain. By generating realistic and controllable datasets, it enables robust training, improves performance on rare cases, and supports privacypreserving development. In this work, we investigate synthetic data generation methods across space operations use cases spanning multiple modalities: documentation (text), telemetry (time series), and optical telescope imagery. We report results and lessons learned from applying these methods in operationally relevant scenarios."
+  },
+  {
+   "id": "ai-based-classification-simulated-cosmic-radiation-bit",
+   "title": "AI-based Classification of Simulated Cosmic Radiation Bit Upsets into the SRAMs of a Commercial-grade FPGA",
+   "start": 347,
+   "end": 351,
+   "session": "Friday 23 October",
+   "sessionNum": "4.2",
+   "kind": "poster",
+   "authors": "Artur Kazak, Stefan Popa, Andrei Bertescu, Mihai Ivanovici",
+   "abstract": "Commercial-grade SRAM-based FPGAs can be qualified for space applications. For instance, they can serve as radiation sensors by periodically scanning their SRAMs for bit upsets. However, existing implementations lose data when the upset rates exceed the telemetry buffer capacity, precisely during high-intensity events that are most relevant for analysis. We present an enhanced architecture that integrates on-chip neural-network-based classification with per-element telemetry aggregation. A lightweight multi-layer perceptron (MLP) classifies every pair of detected bit upsets within each scan cycle, distinguishing singlecell from multiple-cell upsets without prior architecture-specific calibration. In synthetic experiments, the MLP achieves F1 scores between 0.92 and 0.97 on structured bitinterleaving physical layouts and up to 0.72 with perfect recall on a previously unseen layout. This aggregation reduces the buffer overflow occurrence. We compare our method with an offset-histogram method from the literature. The two classifiers exhibit nearly identical resource footprints, but only the MLP operates without calibration."
+  },
+  {
+   "id": "space-kbp-dataset-end-end-knowledge-base",
+   "title": "SPACE-KBP: A Dataset for End-to-End Knowledge Base Population in the Space Mission Domain",
+   "start": 352,
+   "end": 356,
+   "session": "Friday 23 October",
+   "sessionNum": "4.2",
+   "kind": "poster",
+   "authors": "José Manuel Gómez-Pérez, Cristian Berrío, Andrés García-Silva",
+   "abstract": "We present SPACE-KBP, to the best of our knowledge the first dataset for end-to-end knowledge base population (KBP) in the space mission domain. The dataset is constructed from textual mission descriptions and structured domain resources, and is aligned with the ESA space mission ontology. It provides paired inputs and outputs for generating ontology-compliant RDF triples, enabling the training and evaluation of large language models (LLMs) for end-to-end KBP. As a case study, we use SPACE-KBP to populate a space mission knowledge graph by fine-tuning LLMs of varying sizes. Our experiments show that compact, domain-specialized models achieve competitive, and in some cases superior, performance compared with larger models. Furthermore, after fine-tuning on SPACE-KBP, the models no longer require explicit ontology descriptions in the prompt, indicating that the required ontology knowledge is effectively captured during fine-tuning. These findings show that compact models and shorter prompts improve deployment efficiency while reducing computational cost for domain-specific KBP."
+  },
+  {
+   "id": "stellar-apps-software-execution-platform-ai-space",
+   "title": "Stellar Apps: software execution platform for AI in space",
+   "start": 357,
+   "end": 361,
+   "session": "Friday 23 October",
+   "sessionNum": "4.2",
+   "kind": "poster",
+   "authors": "Arnau Prat, Armin Purle-Kopacz, Hendrik Otte, Daniel Lüdtke",
+   "abstract": "The increased complexity of space missions, coupled with emerging trends such as long-duration missions and large satellite constellations, demands new approaches to autonomy and on-board data handling. Artificial Intelligence (AI), and in particular Machine Learning (ML), is a key enabler of on-board autonomy and data processing in space systems. However, deploying AI applications on-board spacecraft poses significant challenges in terms of safety, cybersecurity, and resource usage constraints, to name a few. This paper presents Stellar Apps, a software platform designed to enable the safe and secure execution of untrusted third-party applications, including AI-based ones, on spacecraft computers. Stellar Apps provides isolation, multi-tenancy, real-time support, and access to AI accelerators, while enabling incremental in-orbit updates. In this paper, we discuss how Stellar Apps facilitates the execution of AI applications in space."
+  },
+  {
+   "id": "reinforcement-learning-optimized-sensor-placement-boosting-large",
+   "title": "Reinforcement Learning-Optimized Sensor Placement for Boosting Large-Scale Surrogate Hydrological Models",
+   "start": 362,
+   "end": 366,
+   "session": "Friday 23 October",
+   "sessionNum": "4.2",
+   "kind": "poster",
+   "authors": "Amir Aieb, Miguel Pincheira, Massimo Vecchio, Fabio Antonelli",
+   "abstract": "Reliable estimation of potential evapotranspiration (PET) over large spatial domains is challenged by sparse observations, heterogeneous terrain, and the computational cost of physically based models. This work introduces a technique for selecting representative sensor locations and training a 3DCNN surrogate model for accurate large-scale gridded PET prediction. To address the sensor-placement challenge, we reframe sensor data as a pixel-selection problem within the reinforcement-learning (RL) workflow. Using SRTM elevation and CHELSA temperature inputs across Italian catchments, the RL-based approach improves spatial alignment in XGBoost-selected pixels by over 70%. Moreover, it optimises and preserves the data pattern using only 2% of the full pixels. The resulting technique enhances predictive performance of surrogate model compared to the baseline methods and supports scalable, spatially coherent PET estimation under data-sparse conditions."
+  },
+  {
+   "id": "uncertainty-aware-surrogate-modeling-thrust-vectoring-performance",
+   "title": "Uncertainty-Aware Surrogate Modeling of Thrust Vectoring Performance in Differentially Throttled Linear Aerospike Nozzles",
+   "start": 367,
+   "end": 371,
+   "session": "Friday 23 October",
+   "sessionNum": "4.2",
+   "kind": "poster",
+   "authors": "Bernard Postrach",
+   "abstract": "Differential throttling enables gimbal-free thrust vector control in linear aerospike nozzles. However, high-fidelity CFD remains prohibitively expensive for iterative design and control. Three uncertainty-aware surrogate models— Gaussian process regression (composite anisotropic RBF + rational quadratic kernel), Support Vector Regression (RBF kernel), and Polynomial Ridge Regression (L2-regularized polynomial expansion)—were trained on steady 2D RANS linear aerospike simulations. The input parameter space (inlet pressure, throttle ratio, ambient pressure) was sampled using two-stage Latin hypercube sampling. Axial and lateral thrust components were predicted independently, with epistemic uncertainty quantified from GPR posterior variance or bootstrapped ensembles (SVR, PRR). Repeated 10-fold cross-validation demonstrates high predictive effectiveness for all surrogates with Gaussian process regression achieving the lowest mean absolute error in both thrust magnitude and thrust vector angle across sparse training sets, while delivering well-calibrated ±3σ bounds with high empirical coverage of test and cross-validation points. The resulting surrogates provide rapid, confidence-aware predictions that bridge high-fidelity aerodynamics and mission-oriented thrust vector control applications."
+  },
+  {
+   "id": "reducing-false-positives-wide-field-astronomical-streak",
+   "title": "Reducing false positives in wide-field astronomical streak detection using a lightweight CNN classifier",
+   "start": 372,
+   "end": 377,
+   "session": "Friday 23 October",
+   "sessionNum": "4.2",
+   "kind": "poster",
+   "authors": "Vincent Fiszbin, Elisabeth Rachith, Andrew Price, Stephan Hellmich, Mathieu Salzmann",
+   "abstract": "Satellites and orbital debris crossing a telescope’s field of view leave linear streaks on long-exposure images. These streaks contain information on object orbit, size, and rotation. Streaks found in astronomical archives can thus be exploited for the benefit of Space Situational Awareness (SSA). We build upon an existing deep-learning streak detection pipeline applied to the VLT Survey Telescope (VST) archive. While accurate at localizing streak endpoints, the detector produces a high false positive rate on previously unseen data, preventing reliable large-scale processing. We introduce a lightweight post-detection classifier trained on manually annotated VST cutouts to filter detector outputs. On a withheld test month of archival data, the classifier rejects 96% of false positives while preserving 97% of true streaks, increasing the pipeline F1-score from 0.87 to 0.98. We conduct a systematic study to identify the most effective data representation and model architecture. A lightweight VGG6 convolutional neural network achieves the highest validation performance, while deeper residual models do not provide measurable gains. A multilayer perceptron using only numerical features produced by the detector enables faster inference but at reduced accuracy. The resulting pipeline enables reliable full-archive processing and a more comprehensive analysis of the detected streaks, potentially including uncatalogued debris."
+  },
+  {
+   "id": "towards-automated-grain-size-analysis-exomars-preliminary",
+   "title": "Towards Automated Grain Size Analysis for ExoMars: Preliminary Results from the GRAINS Project",
+   "start": 378,
+   "end": 382,
+   "session": "Friday 23 October",
+   "sessionNum": "4.2",
+   "kind": "poster",
+   "authors": "Cristina Luna, Almudena Moreno, Augusto Gómez Eguíluz, Guillermo Algarabel, Sergio Álvarez, Joanna Kozakiewicz, Alexander M. Barrett, Jean-Luc Josset, Elena A. Favaro, Elliot Sefton-Nash",
+   "abstract": "Grain size is a fundamental descriptor of sedimentary material. For the ExoMars Rosalind Franklin Rover, it carries direct relevance to the search for preserved organic matter at Oxia Planum. However, laboratory sieving and manual photosieving are both incompatible with the operational timeline of the mission, making automated image-based granulometry a necessity rather than a convenience. This paper reviews the progression of image-based grain size methods with emphasis on deep learning segmentation, and identifies the ImageGrains 2.0 framework as the most suitable current approach for planetary deployment. We describe its adaptation within the GRAINS project, including the camera and illumination setup used to acquire PanCam and CLUPI representative analogue imagery, and present preliminary segmentation and grain size results obtained on a dataset of 21 Antarctic analogue samples that is now being extended to further Mars analogue materials."
+  },
+  {
+   "id": "ground-orbit-enabling-real-time-board-anomaly",
+   "title": "From Ground to In-Orbit: Enabling Real-Time On-Board Anomaly Detection with ATHMoS",
+   "start": 383,
+   "end": 388,
+   "session": "Friday 23 October",
+   "sessionNum": "4.2",
+   "kind": "poster",
+   "authors": "Kathrin Helmsauer, Clemens Schefels, Leonard Schlag, Christian Stirm",
+   "abstract": "The Automated Telemetry Health Monitoring System (ATHMoS) has been operational at the German Space Operations Center (GSOC) since 2022 as a semi-supervised novelty detection framework for spacecraft telemetry, enabling the detection of previously unseen system states without labeled anomaly data. This paper presents the systematic transformation of ATHMoS from a batch-oriented ground analysis tool to a real-time onboard implementation (ATHMoS-RT). We introduce architectural and algorithmic adaptations that enable deployment at the edge under strict safety and computational constraints, while preserving statistical traceability and human oversight. A comparative analysis of ground and onboard configurations reveals how simplified workflows can maintain reliable detection despite limited compute resources. This transition significantly reduces the time-to-detection by removing dependencies on ground-station contact, allowing operators to prepare for anomalies in real-time before the next scheduled satellite pass."
+  },
+  {
+   "id": "online-learning-dynamic-constellation-topologies",
+   "title": "Online Learning for Dynamic Constellation Topologies",
+   "start": 389,
+   "end": 393,
+   "session": "Friday 23 October",
+   "sessionNum": "4.2",
+   "kind": "poster",
+   "authors": "João Norberto, Ricardo N. Ferreira, Cláudia Soares",
+   "abstract": "The use of satellite networks has increased significantly in recent years due to their advantages over purely terrestrial systems, such as higher availability and coverage. However, to effectively provide these services, satellite networks must cope with the continuous orbital movement and maneuvering of their nodes and the impact on the network’s topology. In this work, we address the problem of (dynamic) network topology configuration under the online learning framework. As a byproduct, our approach does not assume structure about the network, such as known orbital planes (that could be violated by maneuvering satellites). We empirically demonstrate that our problem formulation matches the performance of state-of-the-art offline methods. Importantly, we demonstrate that our approach is amenable to constrained online learning, exhibiting a trade-off between computational complexity per iteration and convergence to a final strategy."
+  },
+  {
+   "id": "transformer-attention-as-domain-clustering-tool-space",
+   "title": "Transformer attention as a domain clustering tool for space survey machine learning pipelines",
+   "start": 394,
+   "end": 399,
+   "session": "Friday 23 October",
+   "sessionNum": "4.2",
+   "kind": "poster",
+   "authors": "Saamie Helena Vincken",
+   "abstract": "Modern astronomical surveys generate imaging datasets containing billions of objects, requiring automated machine learning (ML) pipelines. As survey sizes increase, analyzing these datasets at full scale becomes increasingly challenging. Methods that can group visually similar objects and reduce large datasets through clustering are therefore of practical importance. In this work we investigate the clustering behavior of embeddings produced by transformer based vision models. Controlled experiments are performed using images from the Euclid Space Telescope, with three architectures being compared: a ResNet-50 convolutional neural network (CNN); a vision transformer (ViT); and a ViT fine-tuned on Euclid data. Feature embeddings are analyzed using uniform manifold approximation and projection (UMAP) across multiple experiments including galaxy morphology separation, star–galaxy separation, simulated versus real observation separation, and larger randomly selected sets. The results show that transformer embeddings often produce clear separated clusters corresponding to meaningful domains. This suggests that transformer embeddings could be used as a pre- or postfiltering step in survey pipelines, reducing the volume of data that requires expensive inspection or further machine learning analysis."
+  },
+  {
+   "id": "cross-task-analysis-post-training-quantization-robustness",
+   "title": "A Cross-Task Analysis of Post-Training Quantization Robustness in Earth Observation",
+   "start": 400,
+   "end": 404,
+   "session": "Friday 23 October",
+   "sessionNum": "4.2",
+   "kind": "poster",
+   "authors": "Franz Figueroa, César Cabezas, Jose Carlos Salinas, Gonzalo Alvis",
+   "abstract": "Deploying deep neural networks onboard Earth Observation (EO) platforms requires model compression strategies that reduce memory footprint and computational cost without compromising task performance. Post-training quantization (PTQ) is a deployment-viable approach, yet its robustness across different EO task types remains insufficiently characterized. This work evaluates the algorithmic robustness of static INT8 PTQ across three EO tasks—scene-level classification, object-level detection, and pixel-level semantic segmentation—using a shared ResNet-50 backbone and backbone-only quantization as a controlled compression strategy. Evaluation is performed on EuroSAT, DIOR, and LoveDA, with model size reduction and compression ratio reported as hardware-agnostic efficiency indicators. Results show that quantization sensitivity differs across the evaluated EO task types: scene classification and semantic segmentation exhibit limited degradation under backbone-only INT8 PTQ, while object detection with Faster R-CNN shows substantially higher sensitivity at a reduced compression ratio. This behavior may be associated with error propagation across the two-stage pipeline, suggesting that architectural factors may contribute beyond spatial prediction granularity alone. These results provide a baseline for assessing the trade-offs of INT8 PTQ across EO task types in resource-constrained onboard systems."
+  },
+  {
+   "id": "data-driven-framework-space-tailored-state-health",
+   "title": "A Data-Driven Framework For Space-Tailored State Of Health Battery Management System",
+   "start": 405,
+   "end": 409,
+   "session": "Friday 23 October",
+   "sessionNum": "4.2",
+   "kind": "poster",
+   "authors": "Roberto Giovanni Sbarra, Michele Pasquali, Giuliano Coppotelli, Paolo Gaudenzi, Davide di Ienno, Carlo Ciancarelli, Gianluca Furano, Livia Manovi, Mihalis Tourloukis",
+   "abstract": "The evolution of distributed space systems is increasingly mirroring the architectural transformation of modern automotive embedded systems, moving from rigid, hardware-centric designs to software-defined, intelligent platforms. In this shifting landscape, the development of autonomous satellite units requires onboard processing and decision-support capabilities to ensure service continuity while reducing the high costs associated with groundsegment operations. Central to these distributed architectures are energy storage subsystems; specifically, lithiumion batteries, which are subject to highly non-linear degradation and must be monitored with extreme precision under the harsh thermal and radiation environments of space. To address these challenges, this work introduces a State of Health (SOH) monitoring framework based on a supervised Machine Learning algorithm. The model is evaluated under different operating conditions to analyze its generalization ability. Recognizing the stringent computing power and storage constraints typical of space-grade hardware, the algorithm is optimized using pruning and quantization techniques, allowing sophisticated inference to run on resource-constrained microcontrollers. Finally, a specialized BMS architecture is proposed to host these compressed algorithms, providing a holistic solution that combines a predictive model with a real-world architectural blueprint. This study contributes to the realization of advanced, autonomous health monitoring for the next generation of distributed space missions."
+  },
+  {
+   "id": "differentiable-mascons-spatialmass-joint-optimization-framework-asteroid",
+   "title": "Differentiable Mascons: A Spatial–Mass Joint Optimization Framework for Asteroid Gravity Inversion",
+   "start": 410,
+   "end": 414,
+   "session": "Friday 23 October",
+   "sessionNum": "4.2",
+   "kind": "poster",
+   "authors": "Yaqiong Wang, Daniel Hestroffer, Huan Xie",
+   "abstract": "Accurate gravity-field reconstruction around irregular small bodies is critical for safe close-proximity operations in deep-space missions. Classical mascon models are physically interpretable but are tied to static grids, limiting their ability to represent localized high-frequency anomalies without heavy discretization. Implicit neural gravity representations can be accurate, yet are often expensive for dense evaluation and may exhibit near-surface artifacts. We propose Differentiable Mascons (DM), a physicsconstrained spatial–mass joint optimization framework for explicit asteroid gravity inversion. DM liberates mascons from rigid grids and jointly optimizes their masses and 3D coordinates using differentiable gravity residuals. Physical validity is ensured by construction via a smooth non-negative mass parameterization and a shape-informed optimizer-state pruning strategy that keeps mascons inside the target body. A gradient-driven adaptive resampling mechanism further reallocates mascons toward high-error regions to better capture localized anomalies. Experiments on a highly heterogeneous asteroid benchmark across multiple orbital altitudes show that DM consistently outperforms static-grid mascons and implicitnetwork baselines, reducing far-field relative errors by up to an order of magnitude. Visualizations also indicate improved recovery of salient internal heterogeneity in our synthetic experiments."
+  },
+  {
+   "id": "accelerating-integer-quantized-ai-related-workloads-space",
+   "title": "Accelerating Integer-Quantized AI and Related Workloads in a Space-Grade Multicore Processor via SWAR ISA Extensions",
+   "start": 415,
+   "end": 419,
+   "session": "Friday 23 October",
+   "sessionNum": "4.2",
+   "kind": "poster",
+   "authors": "Martin Daněk, Roman Bartosinski, Carl Nettelblad, Fredrik Hellman, Daniel Cederman, Johan Klockars, Pablo Ghiglino, Rafael Tordoya, Lucana Santos, Roland Weigand",
+   "abstract": "This paper describes how SIMD Within A Register (SWAR) custom instruction set architecture extensions have been added to the GR765 multicore RISC-V/SPARC space-grade processor. These extensions help speed up low-precision quantized arithmetic operations, which are common in AI workloads. The work also covers changes made to the software stack, compiler, and debugging support that allow SWAR to be used. Benchmark results show a performance boost for typical space-related applications, including those based on machine learning, when SWAR is activated. Additionally, for the AI components, we present a space-qualified inference engine that has a modular mathematical backend that relies on the concept of micro-kernels to implement deep neural network operators for a RISC-V core (NOEL-V) and SWAR, showing the speedup achieved on the OBPMark-ML performance framework when SWAR is enabled."
+  },
+  {
+   "id": "manusat-onboard-edge-ai-health-monitoring-cmg",
+   "title": "MANUSAT: Onboard Edge AI Health Monitoring for CMG Bearing Fault Detection",
+   "start": 420,
+   "end": 424,
+   "session": "Friday 23 October",
+   "sessionNum": "4.2",
+   "kind": "poster",
+   "authors": "Eleonora Mariotti, Gianluca Furano, Andrea Zanellini, Riccardo Zanella, Mattia Violi, Kevin Russo, Francesco Aldrigo, Riccardo Rovatti, Mauro Mangia",
+   "abstract": "Early-stage bearing faults in satellite Control Moment Gyroscopes (CMGs) produce high-frequency vibration signatures that cannot be captured through conventional lowrate telemetry and are impractical to downlink due to bandwidth limitations. This paper presents MANUSAT, an edge-computing health monitoring architecture that detects CMG anomalies directly onboard the spacecraft. The system integrates six-axis vibration sensing with an Field-Programmable Gate Array (FPGA)-based processing unit performing signal acquisition and machine learning inference at the edge. Anomaly detection relies on convolutional autoencoder models trained exclusively on nominal vibration data, using Short-Time Fourier Transform (STFT) spectrograms as input. The approach is validated on an experimental testbed featuring a modified CMG with an artificially induced outer-race bearing defect. Both model variants achieve perfect class separation, i.e., Area Under the Curve (AUC) = 1, on severe faults; sensitivity to weaker anomalies is further improved by a moving-average confirmation strategy. Deployment on a Commercial Off-The- Shelf (COTS) PolarFire SoC FPGA yields an inference latency of 70 ms, confirming real-time onboard feasibility."
+  },
+  {
+   "id": "early-detection-satellite-telemetry-data-anomalies-hyperdimensional",
+   "title": "Early Detection of Satellite Telemetry Data Anomalies using Hyperdimensional Computing",
+   "start": 425,
+   "end": 430,
+   "session": "Friday 23 October",
+   "sessionNum": "4.2",
+   "kind": "poster",
+   "authors": "Benjamin Scott, Tajana Rosing, Flavio Ponzina",
+   "abstract": "Spacecraft operations depend on continuous telemetry streams to assess subsystem health, yet most anomaly detectors are reactive, raising alarms only after anomalous samples appear. We present SatAnomHD, a prediction-driven pipeline for early detection of satellite telemetry anomalies using hyperdimensional computing (HDC). SatAnomHD encodes each telemetry channel with permutation–level hypervectors that preserve temporal order and continuous values, and trains a multivariate HDC autoregressor to forecast S future samples per channel. Predicted trajectories are re-encoded via random projection and scored by a lightweight binary HDC classifier to estimate anomaly probability within a tunable horizon, providing tens-ofseconds to minutes of lead time. HDC learning uses simple, gradient-free operations with incremental updates, enabling efficient inference and on-board finetuning under CubeSat-class power and memory limits. We evaluate SatAnomHD on the ESA Anomaly Detection Benchmark (ESA- ADB), Mission1, spanning 14 years of operations. Across horizons from 30 s to 5 min ahead, SatAnomHD matches the alarm precision of the current state of the art while delivering up to 60×/230× faster and 56×/206× more energy-efficient inference/training, shifting detection from reactive scoring to predictive early warning."
+  },
+  {
+   "id": "boosting-sentinel-2-crop-disease-classification-self",
+   "title": "Boosting Sentinel-2 Crop Disease Classification via Self-Supervised Pretraining: A Comparative Study of CNN and SwinV2 Backbones",
+   "start": 431,
+   "end": 436,
+   "session": "Friday 23 October",
+   "sessionNum": "4.2",
+   "kind": "poster",
+   "authors": "Salvatore Cassano, Alessandra Costantino, Silvia Rainò, Francesco Giordano, Alexey Petrushin, Franco Maria Battagello",
+   "abstract": "Satellite imagery can deliver timely, scalable insights to farmers and cooperatives, enabling early detection of crop stress and disease before symptoms become evident at field level. Motivated by the Beyond Visible Spectrum AI for Agriculture 2026 Kaggle challenge, we investigated a practical end-to-end pipeline that converts raw multi-spectral Sentinel-2 patches into actionable disease-class predictions. The task consists of classifying four categories (Aphid, Blast, Rice Plant Hopper (RPH), Rust) from per-band Geo- TIFF inputs (B1–B12). To assess design choices under class imbalance and acquisition variability, we perform a controlled comparison between a convolutional backbone and a hierarchical Transformer backbone, and evaluate the impact of self-supervised masked pretraining on downstream performance. Models are fine-tuned with class-weighted crossentropy. Finally, we leveraged an Explainable AI technique to attribute predictions to spatial regions and spectral bands, supporting the interpretability of the architectures. Results show that self-supervised pretraining can improve classification performance, with clearer gains for the SwinV2 backbone than for ResNet-18. Explainability analysis qualitatively confirms that the architecture considered focuses on specific regions of the field, taking its decisions with varying degrees of confidence (the self-supervised-initialised one is more confident). Furthermore, this analysis shows how the best-performing net focuses on the relevant agronomic bands. Potential limits of the study so far conducted and further research directions are illustrated in the Discussion section."
+  },
+  {
+   "id": "rapid-prediction-exoplanetary-cloud-properties-autoencoders",
+   "title": "Rapid Prediction of Exoplanetary Cloud Properties via Autoencoders",
+   "start": 437,
+   "end": 441,
+   "session": "Friday 23 October",
+   "sessionNum": "4.2",
+   "kind": "poster",
+   "authors": "Amit Reza, Zlata Zelenska, Ludmila Carone, Christiane Helling",
+   "abstract": "Cloud formation modeling is a crucial frontier for understanding atmospheric composition, dynamics, and the potential habitability (i.e., biosignature) of exoplanets. The formation of cloud particles is determined by local gas temperature, gas density, and gas composition, and hence traces the local thermodynamic conditions. The relevant cloud properties include mean particle size, cloud particle number density, material volume fractions, and depleted element abundances for the elements that participate in the cloud formation process, which are required for solving the radiative transfer. These cloud properties are computed from one-dimensional local pressure-temperature profiles obtained from a three-dimensional general circulation model (GCM). Computing cloud properties involves solving a complex time-dependent reaction-diffusion equation, which is computationally intensive. To reduce these computational costs, we present a neural network (NN) emulator that maps atmospheric parameters to cloud properties via a latent-space representation learned by an autoencoder. By leveraging multiple specialized NN branches for inhomogeneous data, this approach efficiently predicts cloud properties, achieving high accuracy on a GCM grid of 10 hot Jupiters. This generative approach shows high prediction accuracy for cloud properties at lower global temperatures. At higher global temperatures, increased prediction errors are expected, reflecting the greater complexity of cloud formation in these regimes."
+  },
+  {
+   "id": "automated-satellite-conjunction-management-transformer-based-bayesian",
+   "title": "Automated Satellite Conjunction Management with Transformer-Based Bayesian Deep Learning Approach",
+   "start": 442,
+   "end": 447,
+   "session": "Friday 23 October",
+   "sessionNum": "4.2",
+   "kind": "poster",
+   "authors": "Amirah Almutairi, Jana Redaini, Rana Alzahrani, Mai Fadel",
+   "abstract": "The rapid growth of satellite mega-constellations in Low Earth Orbit (LEO) has increased the frequency of conjunction events, creating a need for reliable collision-risk assessment tools. Conjunction Data Messages (CDMs) provide sequential updates during close approaches, but their analysis is challenging due to orbital uncertainty and the increasing volume of conjunction data. This paper proposes an uncertainty-aware framework for Next-CDM prediction using a Transformer Encoder (TE) architecture. The TE leverages self-attention to capture temporal dependencies across CDM sequences and is evaluated as an alternative to recurrent architectures for modeling successive conjunction updates. The framework integrates Monte Carlo (MC) Dropout for epistemic uncertainty estimation and conformal calibration to improve the reliability of predictive intervals. The framework is evaluated against LSTM, GRU, and Last-CDM baselines using the ESA Kelvins dataset and the Aldoria dataset. The TE achieved the lowest deterministic mean squared error (MSE) on both datasets, with values of 0.1566 on Kelvins and 0.1061 on Aldoria, while also attaining the strongest uncertainty ranking and requiring fewer trainable parameters than the recurrent baselines. Computationally, the TE achieved faster inference on the larger Kelvins workload. Overall, the results demonstrate the potential of the TE for accurate and uncertainty-aware Next-CDM prediction."
+  }
+ ],
+ "pages": 447,
+ "pdfUrl": "https://github.com/SytzeAndr/spaice-interactive-proceedings/releases/download/LTS/Conference_Proceedings_SPAICE_2026.pdf",
+ "record": "https://zenodo.org/records/23495603"
+}

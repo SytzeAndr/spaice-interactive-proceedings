@@ -1,2 +1,4 @@
 papers/*/figures/raw/
 __pycache__/
+*.pdf
+!papers/*/source.pdf

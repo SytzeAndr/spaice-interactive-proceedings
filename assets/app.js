@@ -29,31 +29,28 @@ const math = (html) => html
 
 /* ---------- boot ---------- */
 let P, G, N, base; // paper, glossary, notes, paper folder
+let MODE = "showcase";  // "showcase" (hand-curated example paper) or "proc" (a SPAICE proceedings paper)
+let IDX;                // proceedings index (sessions, papers)
 const params = new URLSearchParams(location.search);
 const paperId = params.get("p");
 applySettings();
-(paperId ? openPaper(paperId) : openLibrary()).catch((e) => {
+route().catch((e) => {
   $("#main").innerHTML = `<p class="loading">Could not load this page: ${esc(e.message)}.<br><a href="./">Back to all papers</a></p>`;
   console.error(e);
 });
+
+async function route() {
+  if (!paperId) return openLibrary();
+  if (paperId === "front") return openFront();
+  const showcase = await getJSON("papers/index.json").catch(() => []);
+  if (showcase.some((p) => p.id === paperId)) return openPaper(paperId);
+  return openProc(paperId);
+}
 
 async function getJSON(url) {
   const r = await fetch(url);
   if (!r.ok) throw new Error(`${url} returned ${r.status}`);
   return r.json();
-}
-
-/* ---------- library ---------- */
-async function openLibrary() {
-  const list = await getJSON("papers/index.json");
-  document.title = "SPAICE Interactive Proceedings";
-  $("#app").innerHTML = `<main id="main" class="library">
-    <h1>SPAICE interactive proceedings</h1>
-    <p>Papers from the proceedings, rebuilt for reading on screen. Every figure you can explore, every unfamiliar term you can tap, and the original PDF page is always one tap away.</p>
-    ${list.map((p) => `<a class="papercard" href="?p=${encodeURIComponent(p.id)}">
-        <h2>${esc(p.title)}</h2><p>${esc(p.authors)} · ${esc(p.venue)}</p>
-        <p class="feat">${esc(p.features)}</p></a>`).join("")}
-  </main>`;
 }
 
 /* ---------- paper ---------- */
@@ -266,12 +263,17 @@ function buildToc() {
 
 /* ---------- inline enrichment: citations, cross-references, glossary terms ---------- */
 function enrich(root) {
-  const refs = P.references.filter((r) => r.year);
   const reEsc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const cites = refs.map((r) => ({ r, re: `${reEsc(r.cite)}(?:, ${r.year}| \\(${r.year}\\))` }));
-  const citeRe = new RegExp(cites.map((c) => `(${c.re})`).join("|"), "g");
-  const xrefRe = /\b(Figure|Table|Algorithm|Section|Appendix)\s+(\d+(?:\.\d+)*|[AB])\b/g;
-  const xrefTarget = (kind, n) => ({ Figure: `fig${n}`, Table: `tab${n}`, Algorithm: `alg${n}`, Section: `s${n.replace(/\./g, "-")}`, Appendix: `app${n}` }[kind]);
+  const refs = P.references.filter((r) => r.year);
+  const cites = MODE === "proc" ? [] : refs.map((r) => ({ r, re: `${reEsc(r.cite)}(?:, ${r.year}| \\(${r.year}\\))` }));
+  const citeRe = MODE === "proc" ? /\[(\d{1,3}(?:\s*[,–-]\s*\d{1,3})*)\]/g : new RegExp(cites.map((c) => `(${c.re})`).join("|"), "g");
+  const refIds = new Set(P.references.map((r) => r.id));
+  const xrefRe = /\b(Figures?|Figs?\.|Tables?|Tab\.|Algorithm|Alg\.|Sections?|Secs?\.|Appendix|Equations?|Eqs?\.)\s*(\(?\d+(?:\.\d+)*\)?|[A-D])(?=[^\w]|$)/g;
+  const xrefTarget = (kind, n) => {
+    n = n.replace(/[()]/g, "");
+    const k = kind[0].toUpperCase() + kind.slice(1, 3).toLowerCase();
+    return { Fig: `fig${n}`, Tab: `tab${n}`, Alg: `alg${n}`, Sec: `s${n.replace(/\./g, "-")}`, App: `app${n}`, Equ: `eqn${n}`, "Eq.": `eqn${n}`, Eqs: `eqn${n}` }[k];
+  };
 
   const terms = G.terms.flatMap((t, i) => t.match.map((m) => ({ m, i })));
   terms.sort((a, b) => b.m.length - a.m.length);
@@ -279,7 +281,7 @@ function enrich(root) {
   const termOf = Object.fromEntries(terms.map((t) => [t.m, t.i]));
 
   const SKIP = new Set(["A", "BUTTON", "CODE", "PRE", "B", "SUMMARY", "H2", "H3", "H4", "SCRIPT", "SVG", "TEXT"]);
-  const skip = (el) => el.closest(".katex, .added, .w, .tabs, .meta, .kicker, .authors, .affil, .dates, .refs, header, pre, .algo .c b");
+  const skip = (el) => el.closest(".katex, .added, .w, .tabs, .meta, .kicker, .authors, .affil, .dates, .refs, header, pre, .algo .c b, .pager, .m, code");
   let section = "top", seen = new Set();
 
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT);
@@ -296,12 +298,22 @@ function enrich(root) {
     const inPaperText = n.parentElement.closest("p, li");
     const spans = [];
     for (const m of s.matchAll(citeRe)) {
+      if (MODE === "proc") { // [3], [3, 7], [3–5]: link each number
+        let html = "[", first = true;
+        for (const part of m[1].split(/(\s*[,–-]\s*)/)) {
+          const id = `ref${part.trim()}`;
+          html += /^\d+$/.test(part.trim()) && refIds.has(id) ? `<a class="cite" href="#${id}" data-ref="${id}">${part}</a>` : esc(part);
+          first = false;
+        }
+        spans.push([m.index, m[0].length, html + "]"]);
+        continue;
+      }
       const ref = cites[m.slice(1).findIndex(Boolean)].r;
       spans.push([m.index, m[0].length, `<a class="cite" href="#${ref.id}" data-ref="${ref.id}">${esc(m[0])}</a>`]);
     }
     for (const m of s.matchAll(xrefRe)) {
       const id = xrefTarget(m[1], m[2]);
-      if (document.getElementById(id)) spans.push([m.index, m[0].length, `<a class="xref" href="#${id}" data-xref="${id}">${esc(m[0])}</a>`]);
+      if (id && document.getElementById(id)) spans.push([m.index, m[0].length, `<a class="xref" href="#${id}" data-xref="${id}">${esc(m[0])}</a>`]);
     }
     if (inPaperText) for (const m of s.matchAll(termRe)) {
       const i = termOf[m[1]];
@@ -348,7 +360,7 @@ function wire() {
     const pg = t.closest("[data-page]");
     if (pg && pg.tagName === "BUTTON") return viewer({ page: +pg.dataset.page });
     const zoom = t.closest("img[data-zoom]");
-    if (zoom) return viewer({ src: zoom.src, title: zoom.closest("figure").querySelector("figcaption b").textContent });
+    if (zoom) return viewer({ src: zoom.src, title: zoom.closest("figure, .float")?.querySelector("figcaption b, .cap b")?.textContent || "Image" });
     const term = t.closest(".term");
     if (term && !document.body.classList.contains("no-terms")) return termPop(term);
     const cite = t.closest(".cite");
@@ -362,6 +374,8 @@ function wire() {
     const sheetBtn = t.closest("[data-sheet]");
     if (sheetBtn) return openSheet(sheetBtn.dataset.sheet, sheetBtn);
     if (t.closest("[data-act=cite]")) return citeThis(t.closest("button"));
+    const csv = t.closest("[data-csv]");
+    if (csv) return downloadCSV(csv.dataset.csv);
     const th = t.closest("th button[data-col]");
     if (th) return sortTable(th);
     const ln = t.closest("pre.code[data-lines] .ln");
@@ -451,22 +465,26 @@ function pop(anchor, html) {
 function closePop() { popEl?.remove(); popEl = null; }
 function termPop(el) {
   const t = G.terms[el.dataset.term];
-  const see = t.see && document.getElementById(t.see) ? `<a class="more" href="#${t.see}">Where the paper covers this</a>` : "";
+  const see = t.see && document.getElementById(t.see) ? `<a class="more" href="#${t.see}">Where the paper covers this</a>` : t.link ? `<a class="more" href="${t.link}" target="_blank" rel="noopener">Read more</a>` : "";
   pop(el, `<span class="who">Explanation added for this site</span><h3>${esc(t.term)}</h3><p>${esc(t.def)}</p>${see}`);
 }
 function citePop(el) {
   const r = P.references.find((x) => x.id === el.dataset.ref);
-  pop(el, `<span class="who" style="color:var(--ink-3)">Reference</span><p>${linkify(esc(r.text))}</p><a class="more" href="#${r.id}">In the reference list</a>`);
+  if (!r) return;
+  pop(el, `<span class="who" style="color:var(--ink-3)">Reference${r.n ? ` [${r.n}]` : ""}</span><p>${MODE === "proc" ? linkify(r.html) : linkify(esc(r.text))}</p><a class="more" href="#${r.id}">In the reference list</a>`);
   $("a.more", popEl).onclick = (e) => { e.preventDefault(); closePop(); jump(r.id); };
 }
 function xrefPreview(a) {
-  const el = document.getElementById(a.dataset.xref);
+  let el = document.getElementById(a.dataset.xref);
+  if (el.id.startsWith("eqn")) el = el.closest(".eqimg");
   const cap = el.querySelector("figcaption, .cap");
-  const img = el.querySelector("img.orig");
+  const img = el.querySelector("img.orig, img.eq");
+  if (!cap && img) return pop(a, `<img src="${img.src}" alt="">`);
   const h = el.matches("h2,h3,h4") ? `<p><b>${esc(el.textContent.replace(/#$/, ""))}</b></p><p>${esc(strip(el.nextElementSibling?.nextElementSibling?.innerHTML || "").slice(0, 220))}…</p>` : "";
   pop(a, cap ? `${img ? `<img src="${img.src}" alt="">` : ""}<p>${cap.innerHTML.slice(0, 400)}</p>` : h);
 }
 function citeThis(btn) {
+  if (MODE === "proc") return citeProc(btn);
   const m = P.meta;
   const apa = `${m.authors.map((a) => a.name).join(", & ").replace(/Sytze P\. E\. Andringa/, "Andringa, S. P. E.").replace(/Neil Yorke-Smith/, "Yorke-Smith, N.")} (${m.year}). ${m.title}. ${m.journal}. https://doi.org/${m.doi}`;
   const bib = `@article{andringa${m.year}neuro,\n  title   = {${m.title}},\n  author  = {${m.authors.map((a) => a.name).join(" and ")}},\n  journal = {${m.journal}},\n  year    = {${m.year}},\n  doi     = {${m.doi}}\n}`;
@@ -493,8 +511,8 @@ function openSheet(kind, btn = $(`[data-sheet=${kind}]`)) {
   document.body.append(scrimEl, sheetEl);
   const bodyEl = $(".body", sheetEl);
   if (kind === "toc") bodyEl.innerHTML = `<nav class="toc">${tocHTML()}</nav>`;
-  if (kind === "terms") bodyEl.innerHTML = `<p class="hint">Written for this site to help readers new to the field. Underlined terms in the text open these too.</p><dl class="gloss">${
-    [...G.terms].sort((a, b) => a.term.localeCompare(b.term)).map((t) => `<dt>${esc(t.term)}</dt><dd>${esc(t.def)}${t.see && document.getElementById(t.see) ? ` <a class="more" href="#${t.see}">In the paper</a>` : ""}</dd>`).join("")}</dl>`;
+  if (kind === "terms") bodyEl.innerHTML = `<p class="hint">Written for this site to help readers new to the field.${MODE === "proc" ? " Only the terms used in this paper are listed." : ""} Underlined terms in the text open these too.</p><dl class="gloss">${
+    [...G.terms].filter((t) => MODE !== "proc" || $$(`.term[data-term="${G.terms.indexOf(t)}"]`).length).sort((a, b) => a.term.localeCompare(b.term)).map((t) => `<dt>${esc(t.term)}</dt><dd>${esc(t.def)}${t.see && document.getElementById(t.see) ? ` <a class="more" href="#${t.see}">In the paper</a>` : ""}</dd>`).join("")}</dl>`;
   if (kind === "search") searchSheet(bodyEl);
   if (kind === "settings") settingsSheet(bodyEl);
   ($("input", sheetEl) || $(".x", sheetEl)).focus();
@@ -566,14 +584,15 @@ function settingsSheet(el) {
 
 /* ---------- full-screen viewer: PDF pages and original figures ---------- */
 let viewerEl;
+const pageSrc = (n) => MODE === "proc" ? `proceedings/pages/p${String(n).padStart(3, "0")}.webp` : `${base}pages/p${String(n).padStart(2, "0")}.webp`;
 function closeViewer() { viewerEl?.remove(); viewerEl = null; }
 function viewer({ page, src, title }) {
   closeViewer();
   viewerEl = document.createElement("div");
   viewerEl.className = "viewer"; viewerEl.setAttribute("role", "dialog"); viewerEl.setAttribute("aria-modal", "true");
-  const n = P.meta.pageCount;
+  const n = MODE === "proc" ? IDX.pages : P.meta.pageCount;
   const render = () => {
-    const s = page ? `${base}pages/p${String(page).padStart(2, "0")}.webp` : src;
+    const s = page ? pageSrc(page) : src;
     viewerEl.innerHTML = `<header><span class="t">${page ? `PDF page ${page} of ${n}` : esc(title)}</span>
       ${page ? `<button type="button" data-v="prev" ${page <= 1 ? "disabled" : ""} aria-label="Previous page">‹</button><button type="button" data-v="next" ${page >= n ? "disabled" : ""} aria-label="Next page">›</button>` : ""}
       <button type="button" data-v="zoom">Zoom</button><button type="button" data-v="close">Close</button></header>
@@ -589,4 +608,255 @@ function viewer({ page, src, title }) {
   });
   document.body.append(viewerEl);
   $("[data-v=close]", viewerEl).focus();
+}
+
+/* =====================================================================================
+   SPAICE proceedings: library, front matter, and paper pages
+   ===================================================================================== */
+const THEME_OF = (s) => s.replace(/\s+\d+$/, "").replace(/\s*\/.*$/, "");
+const plain = (h) => strip(h || "").replace(/\s+/g, " ").trim();
+
+async function openLibrary() {
+  MODE = "library";
+  const [idx, showcase] = await Promise.all([getJSON("proceedings/index.json"), getJSON("papers/index.json").catch(() => [])]);
+  IDX = idx;
+  document.title = "SPAICE 2026 Interactive Proceedings";
+  const orals = idx.sessions.filter((s) => s.kind === "oral"), posters = idx.sessions.filter((s) => s.kind === "poster");
+  const byId = Object.fromEntries(idx.papers.map((p) => [p.id, p]));
+  const row = (p) => `<li data-id="${p.id}" data-kind="${p.kind}" data-text="${esc((p.title + " " + p.authors + " " + p.abstract + " " + p.session).toLowerCase())}">
+      <a href="?p=${encodeURIComponent(p.id)}"><span class="t">${esc(p.title)}</span><span class="a">${esc(p.authors)}</span></a>
+      <span class="pg" aria-label="Page ${p.start}">p.&nbsp;${p.start}</span></li>`;
+  const session = (s) => `<section class="session" id="session-${s.num.replace(/\./g, "-")}" data-kind="${s.kind}">
+      <h3><span class="n">${s.num}</span>${esc(s.name)}${s.chair ? `<span class="chair">Chair: ${esc(s.chair)}</span>` : ""}</h3>
+      <ol class="plist">${s.papers.map((id) => row(byId[id])).join("")}</ol></section>`;
+  $("#app").innerHTML = `<main id="main" class="library">
+    <header class="lib-head">
+      <p class="kicker">ESTEC, Noordwijk, 21–23 October 2026</p>
+      <h1>Proceedings of SPAICE 2026</h1>
+      <p class="lede">The third Conference on AI in and for Space. All ${idx.papers.length} papers, readable on any screen, with zoomable figures, tables you can sort, and difficult terms explained.</p>
+      <div class="meta">
+        <a href="?p=front">Foreword, keynotes and committees</a>
+        <a href="${idx.pdfUrl}" download>Full PDF (209 MB)</a>
+        <a href="${idx.record}" target="_blank" rel="noopener">Zenodo record</a>
+      </div>
+    </header>
+    <div class="finder" role="search">
+      <label class="sr" for="q">Search papers</label>
+      <input id="q" type="search" placeholder="Search titles, authors and abstracts" autocomplete="off" enterkeyhint="search">
+      <div class="w"><div class="seg" role="group" aria-label="Show">
+        <button type="button" data-k="all" aria-pressed="true">All papers</button><button type="button" data-k="oral" aria-pressed="false">Talks</button><button type="button" data-k="poster" aria-pressed="false">Posters</button>
+      </div></div>
+      <p class="count" aria-live="polite"></p>
+    </div>
+    <h2 class="group" data-kind="oral">Talks</h2>
+    ${orals.map(session).join("")}
+    <h2 class="group" data-kind="poster">Posters</h2>
+    ${posters.map(session).join("")}
+    <p class="empty" hidden>No paper matches that search. Try fewer or different words.</p>
+    ${showcase.length ? `<section class="showcase">
+      <h2>A fully interactive example</h2>
+      <p>This paper is <b>not part of the SPAICE proceedings</b>. It is a published journal article by the owner of this repository, used to show how far an interactive edition can go: every figure, table and algorithm is rebuilt as something you can explore.</p>
+      ${showcase.map((p) => `<a class="papercard" href="?p=${encodeURIComponent(p.id)}"><h3>${esc(p.title)}</h3><p>${esc(p.authors)}. ${esc(p.venue)}.</p></a>`).join("")}
+    </section>` : ""}
+    <p class="license">Papers © their authors, licensed under CC BY 4.0, from the Preliminary Proceedings of SPAICE 2026 (© 2026 ESA Advanced Concepts Team). This site re-presents them for reading on screen; the PDF is the version of record. Explanations and summaries marked in green were written for this site.</p>
+  </main>`;
+  const q = $("#q"), count = $(".count");
+  let kind = store.get("ip-kind", "all");
+  q.value = store.get("ip-libq", "");
+  const filter = () => {
+    const words = q.value.toLowerCase().split(/\s+/).filter(Boolean);
+    let n = 0;
+    $$(".plist li").forEach((li) => {
+      const ok = (kind === "all" || li.dataset.kind === kind) && words.every((w) => li.dataset.text.includes(w));
+      li.hidden = !ok; n += ok;
+    });
+    $$(".session").forEach((s) => (s.hidden = !$$("li:not([hidden])", s).length));
+    $$("h2.group").forEach((h) => (h.hidden = !$$(`.session[data-kind="${h.dataset.kind}"]:not([hidden])`).length));
+    $$(".finder .seg button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.k === kind));
+    count.textContent = words.length || kind !== "all" ? `${n} of ${idx.papers.length} papers` : "";
+    $(".empty").hidden = n > 0;
+    store.set("ip-libq", q.value); store.set("ip-kind", kind);
+  };
+  q.addEventListener("input", filter);
+  $(".finder .seg").addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) { kind = b.dataset.k; filter(); } });
+  filter();
+  const last = store.get("ip-last", "");
+  const li = last && $(`.plist li[data-id="${CSS.escape(last)}"]`);
+  if (li) li.classList.add("last");
+}
+
+/* ---------- foreword, keynotes, committees ---------- */
+async function openFront() {
+  MODE = "library";
+  const F = await getJSON("proceedings/front/front.json");
+  document.title = "Foreword and keynotes, SPAICE 2026";
+  $("#app").innerHTML = `<main id="main" class="library front">
+    <p class="kicker"><a href="./">All papers</a></p>
+    <h1>${esc(F.title)}</h1>
+    <p class="lede">${esc(F.subtitle)}. ${esc(F.venue)}, ${esc(F.dates)}.</p>
+    <h2>Foreword</h2>
+    ${F.foreword.map((p) => `<p class="prose">${esc(p)}</p>`).join("")}
+    <h2>Keynotes</h2>
+    ${F.keynotes.map((k) => `<div class="keynote">${k.photo ? `<img src="proceedings/${k.photo}" alt="Portrait of ${esc(k.name)}" loading="lazy">` : ""}
+      <div><h3>${esc(k.name)}</h3><p class="role">${esc(k.role)}</p><p>${esc(k.bio)}</p></div></div>`).join("")}
+    <h2>Committees</h2>
+    <div class="committees">${F.committees.map((c) => `<div><h3>${esc(c.name)}</h3>${c.groups.map((g) => `${g.name ? `<h4>${esc(g.name)}</h4>` : ""}<ul>${g.people.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>`).join("")}</div>`).join("")}</div>
+    <p class="license">${esc(F.logoCredit || "")}. ${esc(F.copyright)}</p>
+  </main>`;
+}
+
+/* ---------- a proceedings paper ---------- */
+async function openProc(id) {
+  MODE = "proc";
+  base = `proceedings/${id}/`;
+  let S, I;
+  [IDX, P, G, S, I] = await Promise.all([getJSON("proceedings/index.json"), getJSON(base + "paper.json"),
+    getJSON("proceedings/glossary.json").catch(() => ({ terms: [] })), getJSON("proceedings/summaries.json").catch(() => ({})),
+    getJSON("proceedings/interactive.json").catch(() => ({}))]);
+  P.meta.interactive = I[id] || {};
+  N = S[id] || {};
+  store.set("ip-last", id);
+  document.title = P.meta.title;
+  const eqNums = {};
+  for (const b of P.blocks) if (b.t === "eq") { const m = (b.alt || "").match(/\((\d{1,3}[a-z]?)\)\s*$/); if (m && !eqNums[m[1]]) eqNums[m[1]] = b.id; }
+  P.eqNums = eqNums;
+  $("#app").innerHTML = `<div class="reader"><nav class="toc" aria-label="Contents"></nav>
+    <article id="main" lang="en">${procHeader()}${procBody()}${procBack()}</article></div>${toolbar()}`;
+  buildToc();
+  enrich($("article"));
+  mountWidgets();
+  wire();
+  if (location.hash) {
+    const h = decodeURIComponent(location.hash.slice(1)), go = () => document.getElementById(h)?.scrollIntoView();
+    requestAnimationFrame(go); setTimeout(go, 400); setTimeout(go, 1200);
+  }
+}
+
+function procHeader() {
+  const m = P.meta, i = IDX.papers.findIndex((p) => p.id === m.id), s = IDX.sessions.find((x) => x.papers.includes(m.id));
+  const where = m.kind === "oral" ? `Talk in session ${s.num}, ${esc(s.name)}` : `Poster, ${esc(s.name)}`;
+  const tl = N.tldr ? `<div class="added tldr"><span class="who">In plain words · added for this site</span><p>${esc(N.tldr)}</p></div>` : "";
+  return `<header>
+    <p class="kicker"><a href="./#session-${s.num.replace(/\./g, "-")}">SPAICE 2026</a> / ${where}</p>
+    <h1 class="title">${esc(m.title)}</h1>
+    <p class="authors">${m.authorsHtml || esc(m.authors.map((a) => a.name).join(", "))}</p>
+    ${m.affiliations.length ? `<p class="affil">${m.affiliations.map((a) => esc(a).replace(/^(\d+|∗)\s*/, "<sup>$1</sup>")).join("<br>")}</p>` : ""}
+    <div class="meta">
+      <button type="button" data-page="${m.pages[0]}">Original pages ${m.pages[0]}–${m.pages[1]}</button>
+      <a href="${m.pdfUrl}" download>Proceedings PDF (209 MB)</a>
+      <a href="${m.record}" target="_blank" rel="noopener">Zenodo record</a>
+      <button type="button" data-act="cite">Cite</button>
+    </div>
+    ${tl}
+    ${P.abstract ? `<section class="abstract-box" aria-label="Abstract"><h2 id="abstract" data-toc="1" data-label="Abstract">Abstract</h2><p class="abstract">${P.abstract}</p></section>` : ""}
+  </header>`;
+}
+
+function procBody() {
+  let out = "", page = P.meta.pages[0];
+  for (const b of P.blocks) {
+    if (b.t === "h" && /^(references|bibliography)$/i.test(b.title.trim())) continue; // rendered in the back matter
+    if (b.page > page) {
+      page = b.page;
+      out += `<div class="pagemark" role="separator"><button type="button" data-page="${page}">PDF page ${page}</button></div>`;
+    }
+    out += procBlock(b);
+  }
+  return out;
+}
+
+const imgTag = (b, cls = "orig") => {
+  const [w, h] = b.imgSize || [0, 0];
+  const dpi = b.t === "eq" ? 220 : 200;
+  const natural = Math.round((w / dpi) * 96 * 1.3); // the size it has in the PDF, scaled to our text size
+  const style = b.t === "eq" || b.t === "graphic" ? ` style="width:${natural}px"` : ` style="width:${Math.min(100, Math.round((natural * 1.45) / 6.6))}%"`;
+  return `<img class="${cls}" src="${base}${b.img}" alt="${esc(b.alt || plain(b.caption).slice(0, 200))}" loading="lazy" decoding="async" data-zoom${w ? ` width="${w}" height="${h}"` : ""}${style}>`;
+};
+
+function procBlock(b) {
+  switch (b.t) {
+    case "h": {
+      const lvl = Math.min(b.level, 3), tag = ["h2", "h3", "h4"][lvl - 1];
+      return `<${tag} id="${b.id}" data-toc="${lvl}" data-label="${esc((b.num ? b.num + " " : "") + b.title)}">${b.num ? `<span class="n">${b.num}</span>` : ""}${esc(b.title)}<a class="hlink" href="#${b.id}" aria-label="Link to this section">#</a></${tag}>`;
+    }
+    case "p": return `<p data-page="${b.page}">${b.html}</p>`;
+    case "eq": {
+      const m = (b.alt || "").match(/\((\d{1,3}[a-z]?)\)\s*$/);
+      const anchor = m && P.eqNums[m[1]] === b.id ? ` <span id="eqn${m[1]}"></span>` : "";
+      return `<div class="eqimg" id="${b.id}">${anchor}${imgTag(b, "eq")}</div>`;
+    }
+    case "graphic": return `<div class="eqimg graphic" id="${b.id}">${imgTag(b, "orig")}</div>`;
+    case "figure": {
+      const label = b.label || "Figure";
+      const live = P.meta.interactive?.[b.id];
+      const head = live ? tabs(b.id, [["live", "Interactive"], ["orig", "Original"]], b.page) : tabs(b.id, [["orig", label]], b.page);
+      return `<figure id="${b.id}" class="wide">${head}
+        ${live ? `<div class="panel w" id="${b.id}-live" data-widget="${live.widget}" data-fig="${b.id}" data-src="${base}${live.data}" role="tabpanel"></div>` : ""}
+        <div class="panel" id="${b.id}-orig" role="tabpanel" ${live ? "hidden" : ""}>${b.img ? imgTag(b) : `<p class="missing">This ${label.toLowerCase()} could not be cut out of the PDF automatically. <button type="button" class="linkish" data-page="${b.page}">Open PDF page ${b.page}</button></p>`}</div>
+        <figcaption><b>${label} ${b.num}.</b> ${b.caption}</figcaption></figure>`;
+    }
+    case "table": {
+      const has = b.rows?.length;
+      const numeric = has && b.rows[0].some((_, j) => b.rows.filter((r) => isNum(r[j])).length >= Math.max(2, b.rows.length * 0.6));
+      const t = [["orig", "Table"]];
+      if (has) t.push(["data", "Data"]);
+      if (numeric) t.push(["live", "Chart"]);
+      return `<div class="float wide" id="${b.id}"><div class="cap top"><b>Table ${b.num}.</b> ${b.caption}</div>
+        ${tabs(b.id, t, b.page)}
+        <div class="panel" id="${b.id}-orig" role="tabpanel">${b.img ? imgTag(b, "orig tableimg") : `<p class="missing">This table could not be cut out of the PDF automatically. <button type="button" class="linkish" data-page="${b.page}">Open PDF page ${b.page}</button></p>`}</div>
+        ${has ? `<div class="panel" id="${b.id}-data" role="tabpanel" hidden>${dataTable(b)}</div>` : ""}
+        ${numeric ? `<div class="panel w" id="${b.id}-live" data-widget="tablechart" data-table="${b.id}" role="tabpanel" hidden></div>` : ""}
+      </div>`;
+    }
+  }
+  return "";
+}
+
+const isNum = (v) => /^[-+−±~≈<>]?\s*\d[\d.,]*\s*(%|×|x|e[-−]?\d+)?(\s*±\s*[\d.,]+)?\s*$/i.test(String(v).trim());
+const toNum = (v) => parseFloat(String(v).replace(/−/g, "-").replace(/,(?=\d{3}\b)/g, "").replace(/[^\d.eE+-]/g, ""));
+
+function dataTable(b) {
+  const head = b.head.map((h, j) => `<th scope="col" aria-sort="none"><button type="button" data-col="${j}">${esc(h || "—")}<span class="arrow"></span></button></th>`).join("");
+  const rows = b.rows.map((r, i) => `<tr data-i="${i}">${r.map((v) => `<td class="${isNum(v) ? "num" : ""}">${esc(v)}</td>`).join("")}</tr>`).join("");
+  return `<p class="note-added">Read from the PDF automatically. Check against the Table tab before relying on a value.</p>
+    <div class="tablewrap"><table class="data"><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div>
+    <p><button type="button" class="linkish" data-csv="${b.id}">Download as CSV</button></p>`;
+}
+
+function procBack() {
+  const m = P.meta, i = IDX.papers.findIndex((p) => p.id === m.id);
+  const prev = IDX.papers[i - 1], next = IDX.papers[i + 1];
+  return `<section class="back">
+    ${P.footnotes?.length ? `<h2 id="notes">Notes</h2><ol class="fnotes">${P.footnotes.map((f) => `<li>${f}</li>`).join("")}</ol>` : ""}
+    ${P.references.length ? `<h2 id="references" data-toc="1" data-label="References">References</h2>
+    <ol class="refs numbered">${P.references.map((r) => `<li id="${r.id}" value="${r.n}">${linkify(r.html)}</li>`).join("")}</ol>` : ""}
+    <nav class="pager" aria-label="More papers">
+      ${prev ? `<a href="?p=${prev.id}" rel="prev"><small>Previous paper</small>${esc(prev.title)}</a>` : "<span></span>"}
+      ${next ? `<a href="?p=${next.id}" rel="next"><small>Next paper</small>${esc(next.title)}</a>` : "<span></span>"}
+    </nav>
+    <p class="license">${esc(m.copyright || "")} Re-presented from the Preliminary Proceedings of SPAICE 2026, pages ${m.pages[0]}–${m.pages[1]}. The PDF is the version of record: use the <b>PDF page</b> buttons to compare any passage with the original. Text was extracted automatically; figures, tables and equations are shown as images cut from the PDF. Summaries, explanations and table data views were added for this site and are marked as such.</p>
+  </section>`;
+}
+
+function citeProc(btn) {
+  const m = P.meta;
+  const names = m.authors.map((a) => a.name);
+  const apa = `${names.join(", ")} (2026). ${m.title}. In Preliminary Proceedings of the 3rd Conference on AI in and for Space (SPAICE 2026) (pp. ${m.pages[0]}–${m.pages[1]}). ESA. ${m.record}`;
+  const key = (names[0] || "paper").split(" ").pop().toLowerCase().replace(/[^a-z]/g, "") + "2026";
+  const bib = `@inproceedings{${key},\n  title     = {${m.title}},\n  author    = {${names.join(" and ")}},\n  booktitle = {Preliminary Proceedings of the 3rd Conference on AI in and for Space (SPAICE 2026)},\n  pages     = {${m.pages[0]}--${m.pages[1]}},\n  year      = {2026},\n  url       = {${m.record}}\n}`;
+  pop(btn, `<span class="who" style="color:var(--ink-3)">Cite this paper</span><p>${esc(apa)}</p>
+    <p><button type="button" class="more" data-copy="apa">Copy APA</button> &nbsp; <button type="button" class="more" data-copy="bib">Copy BibTeX</button></p>`);
+  popEl.querySelectorAll("[data-copy]").forEach((b) => (b.style.cssText = "border:0;background:none;color:var(--act);cursor:pointer;padding:0",
+    b.onclick = async () => { try { await navigator.clipboard.writeText(b.dataset.copy === "apa" ? apa : bib); b.textContent = "Copied"; } catch { b.textContent = "Copy not allowed here"; } }));
+}
+
+function downloadCSV(id) {
+  const b = P.blocks.find((x) => x.id === id);
+  const q = (v) => /[",\n]/.test(v) ? `"${String(v).replace(/"/g, '""')}"` : v;
+  const csv = [b.head, ...b.rows].map((r) => r.map(q).join(",")).join("\n");
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob(["﻿" + csv], { type: "text/csv" }));
+  a.download = `${P.meta.id}-table${b.num}.csv`;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000);
 }

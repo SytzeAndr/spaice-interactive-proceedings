@@ -1,0 +1,126 @@
+{
+ "title": "Preliminary Proceedings of SPAICE 2026",
+ "subtitle": "The third Conference on AI in and for Space",
+ "dates": "21–23 October 2026",
+ "venue": "European Space Research and Technology Centre (ESTEC), Noordwijk",
+ "logoCredit": "Logo design by Zacharia A. Rudge (TU Delft)",
+ "committees": [
+  {
+   "name": "Organising committee",
+   "groups": [
+    {
+     "name": "",
+     "people": [
+      "Christophe Honvault (ESA)",
+      "Lee-Anne Graham (ESA)",
+      "Nik Boehm (ESA)"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Scientific committee",
+   "groups": [
+    {
+     "name": "Chairs",
+     "people": [
+      "Dario Izzo (ESA)",
+      "Giacomo Acciarini (ESA)",
+      "Dominik Dold (University of Vienna)",
+      "Alexander Hadjiivanov (Netherlands eScience Center)",
+      "Max Bannach (ESA)",
+      "Théo Verhelst (ESA)",
+      "Thore Gerlach (ESA)"
+     ]
+    },
+    {
+     "name": "Members",
+     "people": [
+      "Evana Gizzi (MIT)",
+      "Victoria Da Poian (Tyto Athene LLC)",
+      "Ioana Ciuca (Stanford)",
+      "Ana Stroescu (ESA)",
+      "Valentina Salvatelli (Microsoft Research)",
+      "Valentina Zantedeschi (ServiceNow Research)",
+      "Anna Jungbluth (Imperial College)",
+      "Audrey Berquand (ESA)",
+      "Claudia Soares (NOVA School of Science and Technology)",
+      "Massimo Casasco (ESA)",
+      "Michele Ginolfi (University of Florence)",
+      "Marcus Märtens (Institute of Science Tokyo)",
+      "Laurent Hili (ESA)",
+      "Victor Rodriguez (Technical University of Madrid)",
+      "Tomas Navarro (ESA)",
+      "Luis F. Simões (ML Analytics)",
+      "Gabriele Meoni (ESA)",
+      "Ignacio López-Francos (NASA)",
+      "Emmanuel Blazquez (ESA)",
+      "Zacharia Rudge (TU Delft)",
+      "Tat-Jun Chin (University of Adelaide)",
+      "Vit Ruzicka (NASA JPL)",
+      "Ben Moseley (Imperial College)",
+      "David Steenari (ESA)",
+      "Alessandro Zavoli (Sapienza Università di Roma)",
+      "Leone Costi (ESA)",
+      "Paolo Panicucci (PoliMi)",
+      "Alejandro G. Gener (Technical University of Madrid)"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Proceedings editors",
+   "groups": [
+    {
+     "name": "",
+     "people": [
+      "Dario Izzo (ESA)",
+      "Giacomo Acciarini (ESA)",
+      "Dominik Dold (University of Vienna)",
+      "Alexander Hadjiivanov (Netherlands eScience Center)",
+      "Max Bannach (ESA)",
+      "Théo Verhelst (ESA)",
+      "Thore Gerlach (ESA)"
+     ]
+    }
+   ]
+  }
+ ],
+ "copyright": "© 2026 ESA Advanced Concepts Team.",
+ "foreword": [
+  "It is a pleasure to welcome you to SPAICE 2026, the third edition of the European Space Agency’s conference on AI in and for Space, held at ESTEC in Noordwijk, the Netherlands, from 21 to 23 October 2026. When SPAICE began in 2024, the question in the room was still largely whether AI methods could earn a place in the space engineering toolbox. Two years later, the question has drastically changed to how: how to qualify a neural network for flight hardware, how to quantify what a learned model does not know, how to combine decades of physical modelling with data-driven methods instead of replacing it, and how can we trust neural models in the control of the spacecraft. The contributions in this volume reflect that shift. Many of them deal with topics such as FPGA deployment, quantisation robustness, fault tolerance under radiation, and models that run on qualified processors. These sit alongside physics-informed and differentiable approaches to orbit determination, gravity inversion and guidance, and a growing body of work on trustworthiness and uncertainty.",
+  "This year we received 147 submissions. After a double blind peer-review by our Scientific Committee, 79 made it to the program: 42 oral presentations, given in two parallel tracks, and 37 posters. The programme covers six themes: Onboard AI, Spaceflight Dynamics, Guidance, Navigation & Control, Operations, Earth Observation, and Astronomy. Talks range from continual adaptation for space robots and reinforcement learning for planetary landing, to transformer-based generative models of planetary systems, anomaly detection in spacecraft telemetry, and retrieval-augmented language models for mission operations. This breadth is intentional. SPAICE exists to put the people developing new learning methods in the same room as the people who fly them and the scientists who depend on their outputs.",
+  "Our three keynote speakers span the same range. Christopher Bishop (Microsoft Research AI for Science) and Nathan Kutz (Autodesk Research, on leave from the University of Washington) represent the foundations, from probabilistic machine learning to the integration of learning with dynamical systems and model reduction. Andrea Connell (NASA Jet Propulsion Laboratory) represents the other end of the pipeline. Her work has involved onboard autonomy in missions including the Perseverance rover on Mars, where scheduling autonomy is now part of everyday flagship operations. We are very grateful to all three for joining us, and we are very much looking forward to their keynote presentations. As in previous editions, part of the programme is deliberately left unplanned. The unconference sessions on the second day are proposed, voted on, and moderated by the participants themselves. Some of the most productive conversations at past editions happened in exactly this format, and we hope this year’s are no different.",
+  "SPAICE is jointly organised by ESA’s AI Competence Centre and the Advanced Concepts Team. We thank the members of the Scientific Committee, who reviewed submissions with care and on a tight schedule, and the session chairs. We also thank ESA Academy, whose Conference Student Sponsorship Programme allowed four students to attend. Most of all, we thank the authors and attendees, whose work is the reason the conference exists.",
+  "We hope this volume serves both as a record of the current state of AI for space and as a starting point for the collaborations it inspires.",
+  "Kind regards,",
+  "The Organising and Scientific Committee of SPAICE 2026",
+  "7"
+ ],
+ "keynotes": [
+  {
+   "name": "Christopher Bishop",
+   "role": "Technical Fellow, Microsoft Research AI for Science",
+   "photo": "front/keynote-1.webp",
+   "bio": "Chris Bishop is a Microsoft Technical Fellow and the founder of Microsoft Research AI for Science. He is also Honorary Professor of Computer Science at the University of Edinburgh, a Fellow of Darwin College Cambridge, a Fellow of the Royal Academy of Engineering, and a Fellow of the Royal Society. Chris was a founding member of the UK AI Council, and in 2019 he was appointed to the Prime Minister’s Council for Science and Technology. He has a PhD in theoretical physics and worked for ten years on plasma physics for the fusion programme before transitioning into machine learning. Chris joined Microsoft in 1997 and was Lab Director of Microsoft Research Cambridge from 2015 until 2022 when he founded the new AI for Science team. Chris is the author of the highly cited and widely adopted machine learning textbooks Neural Networks for Pattern Recognition (Oxford, 1995) and Pattern Recognition and Machine Learning (Springer, 2006). He recently published a new textbook Deep Learning: Foundations and Concepts which was recently confirmed as Springer-Nature’s top selling book of both 2024 and 2025. Chris is also a keen amateur rocketry enthusiast and works with university teams on high-altitude student rocketry projects."
+  },
+  {
+   "name": "Nathan Kutz",
+   "role": "Physics-Informed AI at Autodesk Research, London UK",
+   "photo": "front/keynote-2.webp",
+   "bio": "Nathan Kutz is Director of Physics-Informed AI at Autodesk Research in London UK where he is leading a team that integrates model reduction techniques with machine learning and AI. He is on-leave from the University of Washington where he is the Boeing Professor of Applied Mathematics and Electrical and Computer Engineering and former Director of the AI Institute in Dynamic Systems. He received the BS degree in physics and mathematics from the University of Washington in 1990 and the Phd in applied mathematics from Northwestern University in 1994. He was a postdoc in the applied and computational mathematics program at Princeton University before taking his faculty position. He has a wide range of interests, including neuroscience to fluid dynamics where he integrates machine learning with dynamical systems and control. 9"
+  },
+  {
+   "name": "Andrea Connell",
+   "role": "Senior Software Engineer at NASA JPL",
+   "photo": "front/keynote-3.webp",
+   "bio": "Andrea Connell is a Senior Software Engineer at the NASA Jet Propulsion Laboratory specializing in activity planning, scheduling, and commanding for deep space missions. She leads the Mars 2020 Activity Planning and Sequencing Subsystem, overseeing the software suite that enables scientists and engineers to orchestrate the Perseverance rover’s daily exploration. She has additional experience on both the Science Operations and Engineering Operations teams for the mission. Andrea received a 2024 NASA Exceptional Public Achievement Medal for her work integrating the Perseverance Rover’s onboard scheduling autonomy into the ground software and operations processes – enabling a first-of-its-kind paradigm shift for a flagship mission. Andrea is also the Ground Software System Engineer for the Rover Operations Center, which brings JPL’s decades of expertise and innovation in planetary surface operations to industry, academic, and agency partners. Andrea has worked on the Deep Space Network, the Cassini Mission to Saturn, and Europa Clipper. She has a Bachelor’s and Master’s degree in Computer Science. 10"
+  }
+ ],
+ "stats": {
+  "submissions": 147,
+  "accepted": 79,
+  "orals": 42,
+  "posters": 37
+ }
+}
