@@ -1,5 +1,11 @@
 # SPAICE interactive proceedings
 
+### ▶ [Open the interactive proceedings](https://sytzeandr.github.io/spaice-interactive-proceedings/)
+
+Or go straight to the example paper: [Neuro-Symbolic Enterprise Optimization](https://sytzeandr.github.io/spaice-interactive-proceedings/?p=neuro-symbolic-enterprise-optimization)
+
+---
+
 Papers from the SPAICE proceedings, rebuilt as interactive web pages
 ([too-useful-not-to-build #13](https://github.com/gomezzz/too-useful-not-to-build/issues/13)).
 This is the proof of concept with one paper: *Neuro-Symbolic Enterprise Optimization* (Andringa & Yorke-Smith, 2026).
