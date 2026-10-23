@@ -832,7 +832,7 @@ function drawPlot(el, spec, D) {
       <label>To <input type="range" class="r1" min="0" max="1000" value="1000" aria-label="End of the visible range"></label>
       <button type="button" class="btn quiet reset">Reset zoom</button>
       <button type="button" class="btn quiet csv">Download data (CSV)</button></div>
-    <p class="toy">Redrawn from the vector graphics in the PDF; values are as precise as the original drawing.${spec.omitted ? ` Not included: ${esc(spec.omitted)}.` : ""} Hover or tap to read values; drag across the plot (mouse) or use the sliders to zoom.</p>`;
+    <p class="toy">${D.source?.mixed ? "Panel (a) traced from the chart image in the PDF (values approximate, to about a pixel); panel (b) redrawn from the vector graphics." : D.source?.raster ? "Traced from the chart image in the PDF by colour; values are approximate, to about one pixel of the original image." : "Redrawn from the vector graphics in the PDF; values are as precise as the original drawing."}${spec.omitted ? ` Not included: ${esc(spec.omitted)}.` : ""} Hover or tap to read values; drag across the plot (mouse) or use the sliders to zoom.</p>`;
   const host = el.querySelector(".plot"), tip = tipFor(host), leg = el.querySelector(".toggles");
   const r0 = el.querySelector(".r0"), r1 = el.querySelector(".r1");
   const W = host.clientWidth && host.clientWidth < 520 ? 400 : 600;
@@ -879,7 +879,7 @@ function drawPlot(el, spec, D) {
     const ya = yr("y"), sy = mk(ya, P.y.log), ya2 = P.y2 ? yr("y2") : null, sy2 = ya2 ? mk(ya2, P.y2.log) : null;
     const full = lo === X0 && hi === X1;
     const ticksFor = (ax, [a, b], useOrig) => {
-      if (useOrig) return ax.ticks.filter((t) => { const u = lin(ax.log)(t); return u >= a - 1e-9 && u <= b + 1e-9; });
+      if (useOrig && !P.traced) return ax.ticks.filter((t) => { const u = lin(ax.log)(t); return u >= a - 1e-9 && u <= b + 1e-9; });
       return ax.log ? (logTicks(10 ** a, 10 ** b) || niceTicks(10 ** a, 10 ** b, 4)) : niceTicks(a, b, 5);
     };
     const g0 = svg("g", { class: "axis" }, s);

@@ -438,5 +438,110 @@
     "Debris"
    ]
   }
+ },
+ "foundation-model-assessment-state-health-prediction-space": {
+  "fig1": {
+   "widget": "plot",
+   "data": "plots/fig1.json",
+   "x": "Cycles",
+   "y": "State Of Health",
+   "names": [
+    "historical",
+    "prediction interval",
+    "forecast",
+    "future (ground truth)"
+   ],
+   "omitted": "the dashed line marking the forecast start"
+  },
+  "fig2": {
+   "widget": "plot",
+   "data": "plots/fig2.json",
+   "x": "Cycles",
+   "y": "State Of Health",
+   "names": [
+    "historical",
+    "prediction interval",
+    "forecast",
+    "future (ground truth)"
+   ],
+   "omitted": "the dashed line marking the forecast start"
+  },
+  "fig3": {
+   "widget": "plot",
+   "data": "plots/fig3.json",
+   "x": "Cycles",
+   "y": "State Of Health",
+   "names": [
+    "historical",
+    "prediction interval",
+    "forecast",
+    "future (ground truth)"
+   ],
+   "omitted": "the dashed line marking the forecast start"
+  },
+  "fig4": {
+   "widget": "plot",
+   "data": "plots/fig4.json",
+   "x": "Cycles",
+   "y": "State Of Health",
+   "names": [
+    "historical",
+    "prediction interval",
+    "forecast",
+    "future (ground truth)"
+   ],
+   "omitted": "the dashed line marking the forecast start"
+  }
+ },
+ "learning-based-reconstruction-space-resident-objects-single": {
+  "fig3": {
+   "widget": "plot",
+   "data": "plots/fig3.json",
+   "x": "",
+   "y": "Relative MAE [%]",
+   "names": [
+    "SRO w/o",
+    "SRO w",
+    "Background w/o",
+    "Background w"
+   ]
+  }
+ },
+ "offline-approximate-value-iteration-reinforcement-learning-approach": {
+  "fig5": {
+   "widget": "plot",
+   "data": "plots/fig5.json",
+   "x": "Time (months)",
+   "y": "Number of satellites",
+   "names": [
+    "Raising maneuver",
+    "Operational orbit (NOS)"
+   ],
+   "omitted": "the launch markers and the dashed target-update line"
+  }
+ },
+ "boosting-sentinel-2-crop-disease-classification-self": {
+  "fig3": {
+   "widget": "plot",
+   "data": "plots/fig3.json",
+   "x": "Epoch",
+   "y": "Accuracy",
+   "panels": [
+    {
+     "title": "(a) Random initialization",
+     "names": [
+      "val_acc",
+      "train_acc"
+     ]
+    },
+    {
+     "title": "(b) SSL initialization",
+     "names": [
+      "train_acc",
+      "val_acc"
+     ]
+    }
+   ]
+  }
  }
 }
