@@ -380,3 +380,8 @@ ol.fnotes { font: .85rem/1.5 var(--sans); color: var(--ink-2); }
 .w .plot.zoomable { touch-action: pan-y; user-select: none; -webkit-user-select: none; }
 .w .controls.range { display: flex; flex-wrap: wrap; gap: .4rem 1rem; align-items: center; }
 .w .controls.range input[type=range] { width: 8.5rem; accent-color: var(--act); vertical-align: middle; }
+.w .seg.panels { display: flex; flex-wrap: wrap; gap: .35rem; margin: .2rem 0 .5rem; }
+.w .seg.panels button { font: inherit; font-size: .85rem; border: 1px solid var(--rule); background: var(--sheet); color: var(--ink-2); border-radius: 8px; padding: .3rem .7rem; min-height: 2.1rem; cursor: pointer; }
+.w .seg.panels button[aria-pressed="true"] { background: var(--act); border-color: var(--act); color: #fff; }
+.w .legend.toggles button.bars::before, .w .legend.toggles button.area::before { height: .7rem; border-top: 0; background: var(--c); border-radius: 2px; vertical-align: -.05rem; }
+.w .legend.toggles button.area::before { opacity: .55; }

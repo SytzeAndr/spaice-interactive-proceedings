@@ -1,31 +1,442 @@
 {
-  "_about": "Figures with an interactive version. Data were recovered from the vector drawings in the PDF by pipeline/digitize.py and each replot was compared with the original by eye. Series names and axis titles are copied from the original figure.",
-  "covariance-estimation-orbit-determination-physics-informed-extreme": {
-    "fig1": {"widget": "plot", "data": "plots/fig1.json", "x": "Time [min]", "y": "Error [m]",
-      "names": ["x, PIELM", "x, WLS", "y, PIELM", "y, WLS", "z, PIELM", "z, WLS"]},
-    "fig3": {"widget": "plot", "data": "plots/fig3.json", "x": "Time [min]", "y": "NEES",
-      "names": ["PIELM(A)", "PIELM(B)", "WLS"], "omitted": "the grey line for 𝔼[ε_k] and its 95% region"}
+ "_about": "Figures with an interactive version. Data were recovered from the vector drawings in the PDF by pipeline/digitize.py and each replot was compared with the original by eye. Series names, panel titles and axis titles are copied from the original figure; 'hide' lists recovered series that only repeat another one (such as the outline of a shaded band).",
+ "covariance-estimation-orbit-determination-physics-informed-extreme": {
+  "fig1": {
+   "widget": "plot",
+   "data": "plots/fig1.json",
+   "x": "Time [min]",
+   "y": "Error [m]",
+   "names": [
+    "x, PIELM",
+    "x, WLS",
+    "y, PIELM",
+    "y, WLS",
+    "z, PIELM",
+    "z, WLS"
+   ]
   },
-  "high-fidelity-low-earth-orbit-determination-physics": {
-    "fig2": {"widget": "plot", "data": "plots/fig2.json", "x": "Time [min]", "y": "Error [m]",
-      "names": ["X, PIELM", "X, WLS", "Y, PIELM", "Y, WLS", "Z, PIELM", "Z, WLS"]},
-    "fig3": {"widget": "plot", "data": "plots/fig3.json", "x": "Time [min]", "y": "Error [m]",
-      "names": ["R, PIELM", "R, WLS", "S, PIELM", "S, WLS", "W, PIELM", "W, WLS"]}
+  "fig3": {
+   "widget": "plot",
+   "data": "plots/fig3.json",
+   "x": "Time [min]",
+   "y": "NEES",
+   "names": [
+    "PIELM(A)",
+    "PIELM(B)",
+    "WLS"
+   ],
+   "omitted": "the grey line for 𝔼[ε_k] and its 95% region"
   },
-  "identification-gravitational-constant-satellite-trajectories-neural-ordinary": {
-    "fig2": {"widget": "plot", "data": "plots/fig2.json", "x": "Epoch", "y": "G relative error (%)", "y2": "Validation position RMSE (km)",
-      "names": ["G relative error (%)", "Validation position RMSE (km)"]},
-    "fig3": {"widget": "plot", "data": "plots/fig3.json", "x": "Epoch", "y": "G predicted (×10⁻¹⁰ m³ kg⁻¹ s⁻²)", "y2": "NN learned acceleration magnitude mean (km/s²)",
-      "names": ["Mean G predicted", "Mean NN acceleration magnitude"], "omitted": "the dotted line for the true value of G"},
-    "fig4": {"widget": "plot", "data": "plots/fig4.json", "x": "Epoch", "y": "G predicted (×10⁻¹¹ m³ kg⁻¹ s⁻²)", "y2": "NN learned acceleration magnitude mean (×10⁻⁸ km/s²)",
-      "names": ["Mean G predicted", "Mean NN learned acceleration magnitude"], "omitted": "the dotted line for the true value of G"}
-  },
-  "second-order-gradient-informed-spacecraft-neural-guidance": {
-    "fig4": {"widget": "plot", "data": "plots/fig4.json", "x": "t [day]", "y": "Switching function S(t)",
-      "names": ["S*(t)", "Ŝ(t), L₀ + L₁", "Ŝ(t), L₀ + L₁ + L₂"], "omitted": "the line S = 0 and the zoomed inset"}
-  },
-  "rapid-prediction-exoplanetary-cloud-properties-autoencoders": {
-    "fig7": {"widget": "plot", "data": "plots/fig7.json", "x": "T_global [K]", "y": "RMSE",
-      "names": ["⟨a⟩", "ρ_d / ρ", "ρ_d"]}
+  "fig2": {
+   "widget": "plot",
+   "data": "plots/fig2.json",
+   "x": "time [min]",
+   "hide": [
+    0
+   ],
+   "names": [
+    "band edge",
+    "empirical ±1σ (200 runs)",
+    null
+   ],
+   "panels": [
+    {
+     "title": "WLS · X",
+     "y": "X [m]",
+     "names": [
+      null,
+      "empirical ±1σ (200 runs)",
+      "predicted ±1σ_X"
+     ]
+    },
+    {
+     "title": "PIELM · X",
+     "y": "X [m]",
+     "names": [
+      null,
+      "empirical ±1σ (200 runs)",
+      "predicted ±1σ_X"
+     ]
+    },
+    {
+     "title": "WLS · Y",
+     "y": "Y [m]",
+     "names": [
+      null,
+      "empirical ±1σ (200 runs)",
+      "predicted ±1σ_Y"
+     ]
+    },
+    {
+     "title": "PIELM · Y",
+     "y": "Y [m]",
+     "names": [
+      null,
+      "empirical ±1σ (200 runs)",
+      "predicted ±1σ_Y"
+     ]
+    },
+    {
+     "title": "WLS · Z",
+     "y": "Z [m]",
+     "names": [
+      null,
+      "empirical ±1σ (200 runs)",
+      "predicted ±1σ_Z"
+     ]
+    },
+    {
+     "title": "PIELM · Z",
+     "y": "Z [m]",
+     "names": [
+      null,
+      "empirical ±1σ (200 runs)",
+      "predicted ±1σ_Z"
+     ]
+    }
+   ]
   }
+ },
+ "high-fidelity-low-earth-orbit-determination-physics": {
+  "fig2": {
+   "widget": "plot",
+   "data": "plots/fig2.json",
+   "x": "Time [min]",
+   "y": "Error [m]",
+   "names": [
+    "X, PIELM",
+    "X, WLS",
+    "Y, PIELM",
+    "Y, WLS",
+    "Z, PIELM",
+    "Z, WLS"
+   ]
+  },
+  "fig3": {
+   "widget": "plot",
+   "data": "plots/fig3.json",
+   "x": "Time [min]",
+   "y": "Error [m]",
+   "names": [
+    "R, PIELM",
+    "R, WLS",
+    "S, PIELM",
+    "S, WLS",
+    "W, PIELM",
+    "W, WLS"
+   ]
+  },
+  "fig1": {
+   "widget": "plot",
+   "data": "plots/fig1.json",
+   "x": "Time [min]",
+   "names": [
+    "Kourou",
+    "St. Maria",
+    "Weilheim",
+    "New Norcia"
+   ],
+   "panels": [
+    {
+     "title": "Range",
+     "y": "Range [km]"
+    },
+    {
+     "title": "Azimuth",
+     "y": "Azim. [deg]"
+    },
+    {
+     "title": "Elevation",
+     "y": "Elev. [deg]"
+    }
+   ]
+  },
+  "fig4": {
+   "widget": "plot",
+   "data": "plots/fig4.json",
+   "x": "Time [min]",
+   "names": [
+    "ref. - PIELM est.",
+    "ref. - WLS est.",
+    "ref. - obs."
+   ],
+   "panels": [
+    {
+     "title": "Range",
+     "y": "Range [m]"
+    },
+    {
+     "title": "Azimuth",
+     "y": "Azim. [deg]"
+    },
+    {
+     "title": "Elevation",
+     "y": "Elev. [deg]"
+    }
+   ]
+  }
+ },
+ "identification-gravitational-constant-satellite-trajectories-neural-ordinary": {
+  "fig2": {
+   "widget": "plot",
+   "data": "plots/fig2.json",
+   "x": "Epoch",
+   "y": "G relative error (%)",
+   "y2": "Validation position RMSE (km)",
+   "names": [
+    "G relative error (%)",
+    "Validation position RMSE (km)"
+   ]
+  },
+  "fig3": {
+   "widget": "plot",
+   "data": "plots/fig3.json",
+   "x": "Epoch",
+   "y": "G predicted (×10⁻¹⁰ m³ kg⁻¹ s⁻²)",
+   "y2": "NN learned acceleration magnitude mean (km/s²)",
+   "names": [
+    "Mean G predicted",
+    "Mean NN acceleration magnitude"
+   ],
+   "omitted": "the dotted line for the true value of G"
+  },
+  "fig4": {
+   "widget": "plot",
+   "data": "plots/fig4.json",
+   "x": "Epoch",
+   "y": "G predicted (×10⁻¹¹ m³ kg⁻¹ s⁻²)",
+   "y2": "NN learned acceleration magnitude mean (×10⁻⁸ km/s²)",
+   "names": [
+    "Mean G predicted",
+    "Mean NN learned acceleration magnitude"
+   ],
+   "omitted": "the dotted line for the true value of G"
+  }
+ },
+ "second-order-gradient-informed-spacecraft-neural-guidance": {
+  "fig4": {
+   "widget": "plot",
+   "data": "plots/fig4.json",
+   "x": "t [day]",
+   "y": "Switching function S(t)",
+   "names": [
+    "S*(t)",
+    "Ŝ(t), L₀ + L₁",
+    "Ŝ(t), L₀ + L₁ + L₂"
+   ],
+   "omitted": "the line S = 0 and the zoomed inset"
+  },
+  "fig3": {
+   "widget": "plot",
+   "data": "plots/fig3.json",
+   "x": "t [day]",
+   "y": "|Δr| [km] (×10⁶)",
+   "names": [
+    "L₀ + L₁ mean",
+    "L₀ + L₁ + L₂ mean",
+    "L₀ + L₁: ±3σ",
+    "L₀ + L₁ + L₂: ±3σ"
+   ]
+  }
+ },
+ "rapid-prediction-exoplanetary-cloud-properties-autoencoders": {
+  "fig7": {
+   "widget": "plot",
+   "data": "plots/fig7.json",
+   "x": "T_global [K]",
+   "y": "RMSE",
+   "names": [
+    "⟨a⟩",
+    "ρ_d / ρ",
+    "ρ_d"
+   ]
+  },
+  "fig3": {
+   "widget": "plot",
+   "data": "plots/fig3.json",
+   "x": "Epochs",
+   "y": "Loss",
+   "names": [
+    "Train Loss",
+    "Val Loss"
+   ]
+  },
+  "fig4": {
+   "widget": "plot",
+   "data": "plots/fig4.json",
+   "x": "RMSE",
+   "y": "count",
+   "names": [
+    "Train",
+    "Test"
+   ]
+  },
+  "fig5": {
+   "widget": "plot",
+   "data": "plots/fig5.json",
+   "x": "R²",
+   "y": "count",
+   "names": [
+    "Train",
+    "Test"
+   ]
+  },
+  "fig6": {
+   "widget": "plot",
+   "data": "plots/fig6.json",
+   "x": "RMSE",
+   "y": "Density",
+   "hide": [
+    2,
+    3
+   ],
+   "names": [
+    "PCA (Mean: 0.0305)",
+    "Autoencoder (Mean: 0.0176)"
+   ]
+  }
+ },
+ "enhancing-ai-trustworthiness-rover-navigation-risk-aware": {
+  "fig4": {
+   "widget": "plot",
+   "data": "plots/fig4.json",
+   "x": "Cumulative-probability threshold (q)",
+   "y": "Coverage (1 − α)",
+   "y2": "Mean set size |S(x)|",
+   "names": [
+    "Coverage",
+    "Mean |S|"
+   ],
+   "omitted": "the dashed target line and the markers for the calibrated threshold"
+  },
+  "fig5": {
+   "widget": "plot",
+   "data": "plots/fig5.json",
+   "x": "Gaussian noise intensity (σ)",
+   "y": "Mean Kandinsky score U",
+   "y2": "Mean APS |S|",
+   "names": [
+    "Kandinsky score U",
+    "APS |S|"
+   ]
+  }
+ },
+ "fun-q1-scouring-first-euclid-data-astrophysical": {
+  "fig2": {
+   "widget": "plot",
+   "data": "plots/fig2.json",
+   "hide": [
+    1
+   ],
+   "omitted": "the time-breakdown bar chart and the peak and mean annotations",
+   "panels": [
+    {
+     "title": "System RAM (process tree)",
+     "x": "Time (min)",
+     "y": "RAM (GB)",
+     "names": [
+      "RAM"
+     ]
+    },
+    {
+     "title": "GPU VRAM (system-wide)",
+     "x": "Time (min)",
+     "y": "VRAM (GB)",
+     "names": [
+      "VRAM"
+     ]
+    },
+    {
+     "title": "Prediction throughput",
+     "x": "Cumulative processing time (min)",
+     "y": "Throughput (img/s)",
+     "names": [
+      "Throughput"
+     ]
+    }
+   ]
+  }
+ },
+ "physics-informed-convlstm-networks-transient-thermal-modeling": {
+  "fig2": {
+   "widget": "plot",
+   "data": "plots/fig2.json",
+   "x": "Time [s]",
+   "y": "Temperature [K]",
+   "hide": [
+    0,
+    1
+   ],
+   "names": [
+    null,
+    null,
+    "Baseline Prediction",
+    "Physics Prediction",
+    "Ground Truth",
+    "Baseline ±P95.0",
+    "Physics ±P95.0"
+   ]
+  }
+ },
+ "prior-knowledge-informed-centroiding-cnn-planetary-small": {
+  "fig1": {
+   "widget": "plot",
+   "data": "plots/fig1.json",
+   "x": "Euclidean Error [px]",
+   "y": "Relative Frequency [%]",
+   "hide": [
+    3,
+    4
+   ],
+   "names": [
+    "ACOB",
+    "NeuralCOB",
+    "FiLM"
+   ],
+   "omitted": "the summary table drawn inside the plot"
+  },
+  "fig2": {
+   "widget": "plot",
+   "data": "plots/fig2.json",
+   "x": "Euclidean Error [px]",
+   "y": "Relative Frequency [%]",
+   "hide": [
+    3,
+    4
+   ],
+   "names": [
+    "ACOB",
+    "NeuralCOB",
+    "FiLM"
+   ],
+   "omitted": "the summary table drawn inside the plot"
+  },
+  "fig3": {
+   "widget": "plot",
+   "data": "plots/fig3.json",
+   "x": "Euclidean Error [px]",
+   "y": "Relative Frequency [%]",
+   "hide": [
+    3,
+    4
+   ],
+   "names": [
+    "ACOB",
+    "NeuralCOB",
+    "FiLM"
+   ],
+   "omitted": "the summary table drawn inside the plot"
+  }
+ },
+ "reinforcement-learning-co-planar-multi-target-mission": {
+  "fig2": {
+   "widget": "plot",
+   "data": "plots/fig2.json",
+   "x": "Altitude (km)",
+   "y": "# Debris",
+   "names": [
+    "Debris"
+   ]
+  }
+ }
 }

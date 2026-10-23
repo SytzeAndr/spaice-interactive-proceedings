@@ -802,91 +802,148 @@ function tablechart(el, ctx) {
   render(); onTheme(render);
 }
 
-/* ======================= Recovered line plots (proceedings) ======================= */
-// Data come from the vector drawing in the PDF (pipeline/digitize.py); names and axis titles from proceedings/interactive.json.
+/* ======================= Recovered plots (proceedings) ======================= */
+// Data come from the vector drawing in the PDF (pipeline/digitize.py): lines, markers, bars and shaded areas,
+// per panel, with linear or log axes. Names and axis titles come from proceedings/interactive.json.
 function plot(el, ctx) {
   const spec = ctx.paper.meta.interactive[el.dataset.fig];
   el.innerHTML = `<p class="toy">Loading…</p>`;
   fetch(el.dataset.src).then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); }).then((D) => drawPlot(el, spec, D))
-    .catch((e) => { el.innerHTML = `<p style="color:var(--ink-3)">The interactive version could not load (${esc(e.message)}). The original is in the other tab.</p>`; });
+    .catch((e) => { el.innerHTML = `<p style="color:var(--ink-3)">The interactive version could not load (${esc(e.message)}). The original is in the other tab.</p>`; console.error(e); });
 }
 function drawPlot(el, spec, D) {
-  const S = D.series.map((s, i) => ({ ...s, name: spec.names?.[i] || s.name || `Series ${i + 1}`, on: true,
-    pts: [...s.lines.flat(), ...s.markers].sort((a, b) => a[0] - b[0]) }));
-  const all = S.flatMap((s) => s.pts.map((p) => p[0]));
-  const X0 = Math.min(D.x.ticks[0], ...all), X1 = Math.max(D.x.ticks.at(-1), ...all);
-  let lo = X0, hi = X1;
-  const csvName = `${el.dataset.fig}.csv`;
-  el.innerHTML = `<div class="legend toggles">${S.map((s, i) => `<button type="button" aria-pressed="true" data-i="${i}" class="${s.dash ? "dash" : ""}" style="--c:${s.color === "#000000" ? "var(--ink)" : s.color}">${esc(s.name)}</button>`).join("")}</div>
+  const panels = (D.panels || [{ ...D, x: { ...D.x, log: false }, y: { ...D.y, log: false }, y2: D.y2 && { ...D.y2, log: false } }])
+    .map((P, k) => {
+      const ps = spec.panels?.[k] || {};
+      const names = ps.names || spec.names || [];
+      const hide = new Set(ps.hide || spec.hide || []);
+      const series = P.series.map((s, i) => ({ kind: "line", lines: [], markers: [], ...s, i })).filter((s) => !hide.has(s.i))
+        .map((s, j) => ({ ...s, name: names[s.i] ?? s.name ?? `Series ${j + 1}`, on: true }));
+      return { ...P, series, title: ps.title ?? spec.panelTitles?.[k] ?? `Panel ${k + 1}`,
+        xl: ps.x ?? spec.x ?? P.x.title ?? "", yl: ps.y ?? spec.y ?? "", y2l: ps.y2 ?? spec.y2 ?? "" };
+    });
+  let cur = 0, P, X0, X1, lo, hi;
+  const xsOf = (s) => s.kind === "bars" ? s.bars.flatMap((b) => [b[0], b[1]]) : s.kind === "area" ? s.polys.flat().map((p) => p[0]) : [...s.lines.flat(), ...s.markers].map((p) => p[0]);
+  const ink = (c) => (c === "#000000" ? "var(--ink)" : c);
+  el.innerHTML = `${panels.length > 1 ? `<div class="seg panels" role="group" aria-label="Panel">${panels.map((p, k) => `<button type="button" data-k="${k}" aria-pressed="${k === 0}">${esc(p.title)}</button>`).join("")}</div>` : ""}
+    <div class="legend toggles"></div>
     <div class="plot zoomable"></div>
     <div class="controls range"><label>From <input type="range" class="r0" min="0" max="1000" value="0" aria-label="Start of the visible range"></label>
       <label>To <input type="range" class="r1" min="0" max="1000" value="1000" aria-label="End of the visible range"></label>
       <button type="button" class="btn quiet reset">Reset zoom</button>
       <button type="button" class="btn quiet csv">Download data (CSV)</button></div>
     <p class="toy">Redrawn from the vector graphics in the PDF; values are as precise as the original drawing.${spec.omitted ? ` Not included: ${esc(spec.omitted)}.` : ""} Hover or tap to read values; drag across the plot (mouse) or use the sliders to zoom.</p>`;
-  const host = el.querySelector(".plot"), tip = tipFor(host);
+  const host = el.querySelector(".plot"), tip = tipFor(host), leg = el.querySelector(".toggles");
   const r0 = el.querySelector(".r0"), r1 = el.querySelector(".r1");
-  const W = host.clientWidth && host.clientWidth < 520 ? 400 : 600, H = W < 600 ? 340 : 320, m = { t: 12, r: D.y2 ? 58 : 14, b: 44, l: 58 };
-  let view;
+  const W = host.clientWidth && host.clientWidth < 520 ? 400 : 600;
+  const H = W < 600 ? 340 : 320;
+  let m, view;
+  // scales: linear or log10, mapping a data value to 0..1
+  const lin = (log) => (log ? (v) => Math.log10(Math.max(v, 1e-300)) : (v) => v);
+  const unl = (log) => (log ? (u) => 10 ** u : (u) => u);
+  const fx = () => lin(P.x.log), gx = () => unl(P.x.log);
+  const logTicks = (a, b) => { const out = []; for (let e = Math.ceil(Math.log10(a) - 1e-9); e <= Math.floor(Math.log10(b) + 1e-9); e++) out.push(10 ** e); return out.length >= 2 ? out : null; };
+  const tickFmt = (v, log) => log ? (Math.abs(Math.log10(v) % 1) < 1e-9 ? `10^${Math.round(Math.log10(v))}`.replace(/\^(-?\d+)/, (_, e) => [...e].map((c) => "⁰¹²³⁴⁵⁶⁷⁸⁹"[c] ?? "⁻").join("")) : fmt(v, 3)) : fmt(v, 4);
+  const yValues = (s) => s.kind === "bars" ? s.bars.filter((b) => b[1] >= lo && b[0] <= hi).flatMap((b) => [b[2], b[3]])
+    : s.kind === "area" ? s.polys.flat().filter((p) => p[0] >= lo && p[0] <= hi).map((p) => p[1])
+    : [...s.lines.flat(), ...s.markers].filter((p) => p[0] >= lo && p[0] <= hi).map((p) => p[1]);
   const yr = (axis) => {
-    const ps = S.filter((s) => s.on && s.axis === axis).flatMap((s) => s.pts.filter((p) => p[0] >= lo && p[0] <= hi));
-    const full = lo === X0 && hi === X1, tk = (axis === "y2" ? D.y2 : D.y).ticks;
-    if (!ps.length) return [tk[0], tk.at(-1)];
-    let a = Math.min(...ps.map((p) => p[1])), b = Math.max(...ps.map((p) => p[1]));
-    if (full) { a = Math.min(a, tk[0]); b = Math.max(b, tk.at(-1)); }
+    const ax = axis === "y2" ? P.y2 : P.y, f = lin(ax.log), g = unl(ax.log);
+    const vs = P.series.filter((s) => s.on && s.axis === axis).flatMap(yValues).filter((v) => isFinite(f(v)));
+    const tk = ax.ticks, full = lo === X0 && hi === X1;
+    if (!vs.length) return [f(tk[0]), f(tk.at(-1))];
+    let a = Math.min(...vs.map(f)), b = Math.max(...vs.map(f));
+    if (full) { a = Math.min(a, f(tk[0])); b = Math.max(b, f(tk.at(-1))); }
     const pad = (b - a || Math.abs(a) || 1) * 0.04; return [a - pad, b + pad];
   };
+  const setPanel = (k) => {
+    cur = k; P = panels[k];
+    const xs = P.series.flatMap(xsOf), f = fx();
+    X0 = Math.min(P.x.ticks[0], ...xs); X1 = Math.max(P.x.ticks.at(-1), ...xs);
+    if (P.x.log) { X0 = Math.max(X0, Math.min(...xs.filter((v) => v > 0))); }
+    lo = X0; hi = X1; syncSliders();
+    m = { t: 12, r: P.y2 ? 60 : 14, b: 44, l: 60 };
+    el.querySelectorAll(".panels button").forEach((b) => b.setAttribute("aria-pressed", +b.dataset.k === k));
+    leg.innerHTML = P.series.map((s, j) => `<button type="button" aria-pressed="${s.on}" data-j="${j}" class="${s.dash ? "dash" : ""} ${s.kind}" style="--c:${ink(s.color)}">${esc(s.name)}</button>`).join("");
+    leg.querySelectorAll("button").forEach((b) => b.onclick = () => { const s = P.series[+b.dataset.j]; s.on = !s.on; b.setAttribute("aria-pressed", s.on); render(); });
+    render();
+  };
   const render = () => {
-    const C = col();
+    const C = col(), f = fx(), g = gx();
     host.querySelectorAll("svg").forEach((x) => x.remove());
-    const s = svg("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": `Line chart: ${spec.y} against ${spec.x}` });
+    const s = svg("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": `Chart: ${P.yl || "values"} against ${P.xl || "x"}` });
     host.append(s);
-    const sx = (v) => m.l + ((v - lo) / (hi - lo)) * (W - m.l - m.r);
-    const mk = ([a, b]) => (v) => H - m.b - ((v - a) / (b - a)) * (H - m.t - m.b);
-    const ya = yr("y"), sy = mk(ya), ya2 = D.y2 ? yr("y2") : null, sy2 = ya2 ? mk(ya2) : null;
-    const g = svg("g", { class: "axis" }, s);
+    const fl = f(lo), fh = f(hi);
+    const sx = (v) => m.l + ((f(v) - fl) / (fh - fl)) * (W - m.l - m.r);
+    const mk = ([a, b], log) => { const ff = lin(log); return (v) => H - m.b - ((ff(v) - a) / (b - a)) * (H - m.t - m.b); };
+    const ya = yr("y"), sy = mk(ya, P.y.log), ya2 = P.y2 ? yr("y2") : null, sy2 = ya2 ? mk(ya2, P.y2.log) : null;
     const full = lo === X0 && hi === X1;
-    const xt = full ? D.x.ticks : niceTicks(lo, hi, 5), yt = full ? D.y.ticks : niceTicks(ya[0], ya[1], 5);
-    for (const t of yt) { svg("line", { x1: m.l, x2: W - m.r, y1: sy(t), y2: sy(t), class: "gridl" }, g);
-      svg("text", { x: m.l - 6, y: sy(t) + 4, "text-anchor": "end", "font-size": 11 }, g).textContent = fmt(t, 4); }
-    if (D.y2) for (const t of full ? D.y2.ticks : niceTicks(ya2[0], ya2[1], 5))
-      svg("text", { x: W - m.r + 6, y: sy2(t) + 4, "font-size": 11 }, g).textContent = fmt(t, 4);
-    for (const t of xt) { svg("line", { x1: sx(t), x2: sx(t), y1: H - m.b, y2: H - m.b + 4 }, g);
-      svg("text", { x: sx(t), y: H - m.b + 16, "text-anchor": "middle", "font-size": 11 }, g).textContent = fmt(t, 4); }
-    svg("line", { x1: m.l, x2: W - m.r, y1: H - m.b, y2: H - m.b }, g);
-    svg("text", { x: (m.l + W - m.r) / 2, y: H - 6, "text-anchor": "middle", "font-size": 11.5 }, g).textContent = spec.x;
-    const yl = (x, txt) => svg("text", { x, y: (m.t + H - m.b) / 2, "text-anchor": "middle", "font-size": 11, transform: `rotate(-90 ${x} ${(m.t + H - m.b) / 2})` }, g).textContent = txt;
-    yl(12, spec.y); if (D.y2) yl(W - 8, spec.y2);
+    const ticksFor = (ax, [a, b], useOrig) => {
+      if (useOrig) return ax.ticks.filter((t) => { const u = lin(ax.log)(t); return u >= a - 1e-9 && u <= b + 1e-9; });
+      return ax.log ? (logTicks(10 ** a, 10 ** b) || niceTicks(10 ** a, 10 ** b, 4)) : niceTicks(a, b, 5);
+    };
+    const g0 = svg("g", { class: "axis" }, s);
+    for (const t of ticksFor(P.y, ya, full)) { svg("line", { x1: m.l, x2: W - m.r, y1: sy(t), y2: sy(t), class: "gridl" }, g0);
+      svg("text", { x: m.l - 6, y: sy(t) + 4, "text-anchor": "end", "font-size": 11 }, g0).textContent = tickFmt(t, P.y.log); }
+    if (P.y2) for (const t of ticksFor(P.y2, ya2, full))
+      svg("text", { x: W - m.r + 6, y: sy2(t) + 4, "font-size": 11 }, g0).textContent = tickFmt(t, P.y2.log);
+    for (const t of ticksFor(P.x, [fl, fh], full)) { svg("line", { x1: sx(t), x2: sx(t), y1: H - m.b, y2: H - m.b + 4 }, g0);
+      svg("text", { x: sx(t), y: H - m.b + 16, "text-anchor": "middle", "font-size": 11 }, g0).textContent = tickFmt(t, P.x.log); }
+    svg("line", { x1: m.l, x2: W - m.r, y1: H - m.b, y2: H - m.b }, g0);
+    svg("text", { x: (m.l + W - m.r) / 2, y: H - 6, "text-anchor": "middle", "font-size": 11.5 }, g0).textContent = P.xl;
+    const yl = (x, txt) => svg("text", { x, y: (m.t + H - m.b) / 2, "text-anchor": "middle", "font-size": 11, transform: `rotate(-90 ${x} ${(m.t + H - m.b) / 2})` }, g0).textContent = txt;
+    yl(12, P.yl); if (P.y2) yl(W - 8, P.y2l);
     const id = `clip-${el.dataset.fig}-${Math.random().toString(36).slice(2, 7)}`;
     svg("rect", { x: m.l, y: m.t - 2, width: W - m.l - m.r, height: H - m.t - m.b + 2 }, svg("clipPath", { id }, svg("defs", {}, s)));
     const pl = svg("g", { "clip-path": `url(#${id})` }, s);
-    S.forEach((se) => {
-      if (!se.on) return;
-      const Y = se.axis === "y2" ? sy2 : sy, c = se.color === "#000000" ? C.ink : se.color;
-      for (const l of se.lines) svg("polyline", { points: l.map((p) => `${sx(p[0]).toFixed(1)},${Y(p[1]).toFixed(1)}`).join(" "), fill: "none", stroke: c, "stroke-width": 1.6, "stroke-dasharray": se.dash ? "5 3" : null, "stroke-linejoin": "round" }, pl);
-      for (const p of se.markers) svg("circle", { cx: sx(p[0]), cy: Y(p[1]), r: 3, fill: c }, pl);
-    });
+    const xy = (p, Y) => `${sx(p[0]).toFixed(1)},${Y(p[1]).toFixed(1)}`;
+    for (const kind of ["area", "bars", "line"]) for (const se of P.series) {
+      if (!se.on || se.kind !== kind) continue;
+      const Y = se.axis === "y2" ? sy2 : sy, c = ink(se.color);
+      if (kind === "area") for (const q of se.polys) svg("polygon", { points: q.map((p) => xy(p, Y)).join(" "), fill: c, "fill-opacity": Math.min(0.55, se.opacity ?? 0.4), stroke: "none" }, pl);
+      if (kind === "bars") for (const b of se.bars) {
+        if (b[1] < lo || b[0] > hi) continue;
+        const xa = sx(Math.max(b[0], P.x.log ? 1e-300 : -Infinity)), xb = sx(b[1]), ya_ = Y(b[3]), yb = Y(b[2]);
+        svg("rect", { x: Math.min(xa, xb), y: Math.min(ya_, yb), width: Math.max(0.6, Math.abs(xb - xa)), height: Math.max(0.6, Math.abs(yb - ya_)), fill: c, "fill-opacity": Math.min(0.85, se.opacity ?? 0.85) }, pl);
+      }
+      if (kind === "line") {
+        for (const l of se.lines) svg("polyline", { points: l.map((p) => xy(p, Y)).join(" "), fill: "none", stroke: c, "stroke-width": 1.6, "stroke-dasharray": se.dash ? "5 3" : null, "stroke-linejoin": "round" }, pl);
+        for (const p of se.markers) if (p[0] >= lo && p[0] <= hi) svg("circle", { cx: sx(p[0]), cy: Y(p[1]), r: se.markers.length > 150 ? 1.8 : 3, fill: c }, pl);
+      }
+    }
     const cross = svg("line", { y1: m.t, y2: H - m.b, stroke: C.ink3, "stroke-dasharray": "2 2", visibility: "hidden" }, s);
     const band = svg("rect", { y: m.t, height: H - m.t - m.b, fill: C.ink3, opacity: 0.15, visibility: "hidden" }, s);
-    view = { s, sx, inv: (px) => lo + ((px - m.l) / (W - m.l - m.r)) * (hi - lo), cross, band, sy, sy2 };
+    view = { s, sx, inv: (px) => g(fl + ((px - m.l) / (W - m.l - m.r)) * (fh - fl)), cross, band };
   };
   const toX = (e) => { const r = view.s.getBoundingClientRect(); return ((e.clientX - r.left) / r.width) * W; };
-  const near = (pts, x) => { let b = null, d = Infinity; for (const p of pts) { const k = Math.abs(p[0] - x); if (k < d) { d = k; b = p; } } return b; };
+  const valueAt = (s, x) => {
+    if (s.kind === "bars") { const b = s.bars.find((b) => b[0] <= x && x <= b[1]); return b ? { v: b[3], note: ` (bin ${fmt(b[0], 4)} – ${fmt(b[1], 4)})` } : null; }
+    if (s.kind === "area") return null;
+    // every place the series crosses x: one for an ordinary curve, two for a band edge drawn as one series,
+    // many for a histogram outline (then the top is the value)
+    const hits = [];
+    for (const l of s.lines) for (let k = 1; k < l.length; k++) {
+      const [a, b] = [l[k - 1], l[k]];
+      if (a[0] === b[0]) continue;
+      if ((a[0] - x) * (b[0] - x) <= 0) hits.push(a[1] + ((x - a[0]) / (b[0] - a[0])) * (b[1] - a[1]));
+    }
+    if (hits.length) {
+      hits.sort((a, b) => a - b);
+      const tol = Math.abs(hits.at(-1) - hits[0]) * 0.02 + 1e-12, u = hits.filter((v, k) => k === 0 || v - hits[k - 1] > tol);
+      return u.length <= 3 ? { v: u[0], more: u.slice(1) } : { v: u.at(-1) };
+    }
+    let best = null, d = Infinity;
+    for (const p of s.markers) { const k = Math.abs(view.sx(p[0]) - view.sx(x)); if (k < d) { d = k; best = p; } }
+    return best && d < 8 ? { v: best[1], note: s.lines.length ? "" : ` at ${fmt(best[0], 4)}` } : null;
+  };
   const hover = (e) => {
     const px = toX(e); if (px < m.l || px > W - m.r) { tip.hide(); view.cross.setAttribute("visibility", "hidden"); return; }
     const x = view.inv(px);
     view.cross.setAttribute("x1", px); view.cross.setAttribute("x2", px); view.cross.setAttribute("visibility", "visible");
-    const at = (s) => { // value on the drawn line at x (linear between drawn points); markers: nearest marker
-      for (const l of s.lines) for (let k = 1; k < l.length; k++) {
-        const [a, b] = [l[k - 1], l[k]];
-        if ((a[0] - x) * (b[0] - x) <= 0) return a[0] === b[0] ? a[1] : a[1] + ((x - a[0]) / (b[0] - a[0])) * (b[1] - a[1]);
-      }
-      const p = near(s.markers, x); return p && Math.abs(p[0] - x) < (hi - lo) * 0.04 ? p[1] : null;
-    };
-    const rows = S.filter((s) => s.on).map((s) => { const v = at(s);
-      return v === null ? null : `<span style="color:${s.color === "#000000" ? "inherit" : s.color}">■</span> ${esc(s.name)}: <b>${fmt(v, 4)}</b>`; }).filter(Boolean);
+    const rows = P.series.filter((s) => s.on).map((s) => { const r = valueAt(s, x);
+      return r ? `<span style="color:${s.color === "#000000" ? "inherit" : s.color}">■</span> ${esc(s.name)}: <b>${[r.v, ...(r.more || [])].map((v) => fmt(v, 4)).join(" / ")}</b>${r.note || ""}` : null; }).filter(Boolean);
     const r = view.s.getBoundingClientRect();
-    if (rows.length) tip.show(`${esc(spec.x)} ≈ ${fmt(x, 4)}<br>${rows.join("<br>")}`, (px / W) * r.width, 40); else tip.hide();
+    if (rows.length) tip.show(`${esc(P.xl || "x")} ≈ ${fmt(x, 4)}<br>${rows.join("<br>")}`, (px / W) * r.width, 40); else tip.hide();
   };
   let drag = null;
   host.addEventListener("pointermove", (e) => {
@@ -897,26 +954,30 @@ function drawPlot(el, spec, D) {
   host.addEventListener("pointerleave", () => { tip.hide(); view.cross.setAttribute("visibility", "hidden"); });
   window.addEventListener("pointerup", (e) => {
     if (drag === null) return;
-    const a = view.inv(Math.min(drag, toX(e))), b = view.inv(Math.max(drag, toX(e))); drag = null;
-    if (Math.abs(toX(e) - (view.sx(a))) > 8 || b - a > (hi - lo) * 0.02) { lo = Math.max(X0, a); hi = Math.min(X1, b); syncSliders(); }
+    const pa = Math.min(drag, toX(e)), pb = Math.max(drag, toX(e)); drag = null;
+    if (pb - pa > 8) { lo = Math.max(X0, view.inv(pa)); hi = Math.min(X1, view.inv(pb)); syncSliders(); }
     render();
   });
-  const syncSliders = () => { r0.value = Math.round(((lo - X0) / (X1 - X0)) * 1000); r1.value = Math.round(((hi - X0) / (X1 - X0)) * 1000); };
+  function syncSliders() { const f = fx(); r0.value = Math.round(((f(lo) - f(X0)) / (f(X1) - f(X0))) * 1000); r1.value = Math.round(((f(hi) - f(X0)) / (f(X1) - f(X0))) * 1000); }
   const fromSliders = () => { let a = +r0.value, b = +r1.value; if (b - a < 10) { if (document.activeElement === r0) a = b - 10; else b = a + 10; }
-    lo = X0 + (a / 1000) * (X1 - X0); hi = X0 + (b / 1000) * (X1 - X0); render(); };
+    const f = fx(), g = gx(), A = f(X0), B = f(X1); lo = g(A + (a / 1000) * (B - A)); hi = g(A + (b / 1000) * (B - A)); render(); };
   r0.oninput = r1.oninput = fromSliders;
   el.querySelector(".reset").onclick = () => { lo = X0; hi = X1; syncSliders(); render(); };
   host.addEventListener("dblclick", () => { lo = X0; hi = X1; syncSliders(); render(); });
-  el.querySelectorAll(".toggles button").forEach((b) => b.onclick = () => {
-    const se = S[+b.dataset.i]; se.on = !se.on; b.setAttribute("aria-pressed", se.on); render(); });
+  el.querySelectorAll(".panels button").forEach((b) => b.onclick = () => setPanel(+b.dataset.k));
   el.querySelector(".csv").onclick = () => {
     const q = (v) => /[",\n]/.test(v) ? `"${v.replace(/"/g, '""')}"` : v;
-    const lines = [["series", spec.x, "value"].map(q).join(",")];
-    for (const s of S) for (const p of s.pts) lines.push([q(s.name), p[0], p[1]].join(","));
-    const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([lines.join("\n")], { type: "text/csv" })); a.download = csvName; a.click();
+    const lines = [["panel", "series", "kind", "x", "y", "x_end"].map(q).join(",")];
+    panels.forEach((p) => { for (const s of p.series) {
+      const pre = [q(p.title), q(s.name)];
+      if (s.kind === "bars") for (const b of s.bars) lines.push([...pre, "bar", b[0], b[3], b[1]].join(","));
+      else if (s.kind === "area") s.polys.forEach((poly) => poly.forEach((pt) => lines.push([...pre, "area outline", pt[0], pt[1], ""].join(","))));
+      else { for (const l of s.lines) for (const pt of l) lines.push([...pre, "line", pt[0], pt[1], ""].join(",")); for (const pt of s.markers) lines.push([...pre, "marker", pt[0], pt[1], ""].join(",")); }
+    } });
+    const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([lines.join("\n")], { type: "text/csv" })); a.download = `${el.dataset.fig}.csv`; a.click();
     setTimeout(() => URL.revokeObjectURL(a.href), 1000);
   };
-  render(); onTheme(render);
+  setPanel(0); onTheme(render);
 }
 
 export const WIDGETS = { plot, tablechart,  sampling2d, workflow, activations, montgomery3d, montgomerystep, composite, table5chart, table6chart, table7chart, appendixA, nnembed };
