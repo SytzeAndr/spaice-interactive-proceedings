@@ -12,7 +12,10 @@ jobs:
         with: { python-version: "3.12" }
       - run: pip install -r requirements.txt
       - name: JSON files are valid
-        run: for f in papers/index.json papers/*/*.json proceedings/*.json proceedings/*/paper.json proceedings/front/*.json; do python -m json.tool "$f" > /dev/null || { echo "invalid: $f"; exit 1; }; done
+        run: |
+          for f in papers/index.json papers/*/*.json proceedings/*.json proceedings/*/paper.json proceedings/front/*.json; do
+            python -m json.tool "$f" > /dev/null || { echo "Invalid JSON in $f"; exit 1; }
+          done
       - uses: actions/setup-node@v4
         with: { node-version: "22" }
       - name: JavaScript has no syntax errors
